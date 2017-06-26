@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homes on Parth Thaker</title>
+    <link>https://parththaker.github.io/home/</link>
+    <description>Recent content in Homes on Parth Thaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 Parth Thaker</copyright>
+    <lastBuildDate>Wed, 21 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://parththaker.github.io/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://parththaker.github.io/home/about/</link>
+      <pubDate>Wed, 21 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/home/about/</guid>
+      <description>Namaste! I am presently prepping up for starting my PhD in Electrical Enginnering department at Arizona State University. Here, I will be working with Prof. Angelia Nedich and Prof. Anna Scaglione on Large Scale Optimization.
+Previously, I was holding the position of Systems Engineer at Netradyne. I was working on using sensor information from Mobile devices/IMU chips to draw out statistics on the general driving behavior of an individual to develop better driver safety features.</description>
+    </item>
+    
+    <item>
+      <title>Recent Publications</title>
+      <link>https://parththaker.github.io/home/publications/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/home/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Posts</title>
+      <link>https://parththaker.github.io/home/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/home/posts/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
