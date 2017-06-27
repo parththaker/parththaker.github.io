@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks on Parth Thaker</title>
+    <link>https://parththaker.github.io/talk/</link>
+    <description>Recent content in Recent &amp; Upcoming Talks on Parth Thaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 Parth Thaker</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+<<<<<<< HEAD
+    <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+=======
+    
+	<atom:link href="https://parththaker.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
+    
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+    
+    <item>
+      <title>Example Talk</title>
+      <link>https://parththaker.github.io/talk/example-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/talk/example-talk/</guid>
+<<<<<<< HEAD
+      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
+=======
+      <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Parth Thaker</title>
+    <link>https://parththaker.github.io/categories/</link>
+    <description>Recent content in Categories on Parth Thaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 Parth Thaker</copyright>
+<<<<<<< HEAD
+    <atom:link href="/categories/" rel="self" type="application/rss+xml" />
+    
+  </channel>
+</rss>
+=======
+    
+	<atom:link href="https://parththaker.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
