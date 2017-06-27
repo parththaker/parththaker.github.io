@@ -8,19 +8,7 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2016 Parth Thaker</copyright>
     <lastBuildDate>Mon, 10 Mar 2014 00:00:00 +0000</lastBuildDate>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <atom:link href="/tags/jekyll/" rel="self" type="application/rss+xml" />
-=======
-    
-	<atom:link href="https://parththaker.github.io/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
-    
->>>>>>> ec304cd638469462741457443dac468d1cd8ff80
-=======
-    
-	<atom:link href="https://parththaker.github.io/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
-    
->>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     
     <item>
       <title>Migrate from Jekyll to Hugo</title>
@@ -28,8 +16,6 @@
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/migrate-from-jekyll/</guid>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <description>
 
 &lt;p&gt;Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s &lt;a href=&#34;https://parththaker.github.io/post/getting-started/&#34; target=&#34;_blank&#34;&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
@@ -70,17 +56,3 @@ With Jekyll, something that looked like&lt;/p&gt;
     
   </channel>
 </rss>
-=======
-=======
->>>>>>> ec304cd638469462741457443dac468d1cd8ff80
-      <description>Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s getting started guide.
-Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like</description>
-    </item>
-    
-  </channel>
-<<<<<<< HEAD
-</rss>
->>>>>>> ec304cd638469462741457443dac468d1cd8ff80
-=======
-</rss>
->>>>>>> ec304cd638469462741457443dac468d1cd8ff80
