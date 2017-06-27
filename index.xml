@@ -36,6 +36,8 @@ $$T_n(x) = cos(n cos^{-1}(x))$$&lt;/p&gt;
 
 &lt;p&gt;They look something like this&amp;hellip;&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&#34;https://parththaker.github.io/home/pain/Coding_Projects/Site/static/img/chebyshev.png&#34; alt=&#34;Chebyshev&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;the extrema of Chebyshev polynomials are distributed over the entire range of the approximation and have alternating values of plus or minus unity. These characteristics make Chebyshev polynomials an ideal basis for approximating functions Its a well known fact that Chebyshev function approximation is as good as it gets.&lt;/p&gt;
 
 &lt;p&gt;It is known that the mean squared error for a function fitting is minimum for a minimax function. But evaluation of a minimax polynomial is computationally expensive. Chebyshev polynomial fitting is quite close to minimax polynomial fitting and is computationally much cheaper.&lt;/p&gt;
@@ -58,7 +60,7 @@ $$T_n(x) = cos(n cos^{-1}(x))$$&lt;/p&gt;
 
 &lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 
-&lt;p&gt;Copyright 2017 [Parth Thaker]().&lt;/p&gt;
+&lt;p&gt;Copyright 2017 &lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34;&gt;Parth Thaker&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
 </description>
