@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Audio Sink on Parth Thaker</title>
+    <link>https://parththaker.github.io/tags/audio-sink/</link>
+    <description>Recent content in Audio Sink on Parth Thaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Parth Thaker</copyright>
+    <lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/audio-sink/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Experimentation with audio sink</title>
+      <link>https://parththaker.github.io/post/working-with-speaker-port/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/post/working-with-speaker-port/</guid>
+      <description>
+
+&lt;p&gt;First I tried experimenting , first good/cool thing I found was this command :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat /dev/urandom | padsp tee /dev/audio &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat /dev/urandom | padsp tee /dev/dsp &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Both produces white noise in speakers.&lt;/p&gt;
+
+&lt;p&gt;On good/sad thing is it sends to the audio sink you have&amp;hellip; If the comp is on speaker mode&amp;hellip; the noise will be in your speakers&lt;/p&gt;
+
+&lt;p&gt;If there are headphones, it will be your headphones..&lt;/p&gt;
+
+&lt;p&gt;But on trying to do something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat &amp;lt;somefile&amp;gt;.mp3 | padsp tee /dev/audio &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unsurprisingly it didnt work. Reason : My speculation, .mp3 is a coding format and it might not have suited the format in which /dev/audio wanted it&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;On to next cool thing (found a lot of them while tweaking things) is the program called mpg123. It is used as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mpg123 &amp;lt;somefile&amp;gt;.mp3 | /dev/pcsp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;/dev/pcsp&lt;/code&gt; basically is your speaker. &lt;code&gt;mpg123&lt;/code&gt; decodes .mp3 file into raw streaming data which is piped (&amp;lsquo;|&amp;rsquo;) to speakers&lt;/p&gt;
+
+&lt;p&gt;A good thing about speakers is that it can overlap all noises no locking system as to who can write and stuff. Ncie one&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Ok.. So we got a way in which we can run raw data streams into speakers. Now how about capturing what is being run to the speakers. In other words snooping on the /dev/pcsp (I am not sure /dev/pcsp is the right place to snoop.)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;arecord -f cd -t raw
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above command starts recording whatever is heard on the speakers. Now to pipe it to a music file we use the &amp;lsquo;oggenc&amp;rsquo; package. So finally its&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;arecord -f cd -t raw | oggenc - -r -o file.ogg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create a music file in the current directory which is capturing all of the sound played in your speakers.&lt;/p&gt;
+
+&lt;p&gt;So where are we right now. We have a way to play to a speaker, we have a way to record from a speaker. Now the remaining si to make a connection.&lt;/p&gt;
+
+&lt;p&gt;Supporting articles :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://debian-administration.org/article/145/use_and_abuse_of_pipes_with_audio_data&#34; target=&#34;_blank&#34;&gt;https://debian-administration.org/article/145/use_and_abuse_of_pipes_with_audio_data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This article deals with piping raw data to files of 0 byte size (FIFO files) and then playing it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://debian-administration.org/article/58/Netcat_The_TCP/IP_Swiss_army_knife&#34; target=&#34;_blank&#34;&gt;https://debian-administration.org/article/58/Netcat_The_TCP/IP_Swiss_army_knife&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This article deals with using &lt;code&gt;netcat&lt;/code&gt; for listening and sending data on ports.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2017 &lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34;&gt;Parth Thaker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Parth Thaker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016 Parth Thaker</copyright>
+    <copyright>&amp;copy; 2017 Parth Thaker</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tags/" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,24 @@
       <guid>https://parththaker.github.io/tags/academic/</guid>
       <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Audio Sink</title>
+      <link>https://parththaker.github.io/tags/audio-sink/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/audio-sink/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chebyshev</title>
+      <link>https://parththaker.github.io/tags/chebyshev/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/chebyshev/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -39,20 +57,65 @@
     </item>
     
     <item>
-      <title>Hugo</title>
-      <link>https://parththaker.github.io/tags/hugo/</link>
+      <title>Github</title>
+      <link>https://parththaker.github.io/tags/github/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://parththaker.github.io/tags/hugo/</guid>
+      <guid>https://parththaker.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Jekyll</title>
-      <link>https://parththaker.github.io/tags/jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <title>Linux Dc&#43;&#43;</title>
+      <link>https://parththaker.github.io/tags/linux-dc&#43;&#43;/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://parththaker.github.io/tags/jekyll/</guid>
+      <guid>https://parththaker.github.io/tags/linux-dc&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Missing Downloads</title>
+      <link>https://parththaker.github.io/tags/missing-downloads/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/missing-downloads/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multiple Accounts</title>
+      <link>https://parththaker.github.io/tags/multiple-accounts/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/multiple-accounts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Noise Generation</title>
+      <link>https://parththaker.github.io/tags/noise-generation/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/noise-generation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Numerical</title>
+      <link>https://parththaker.github.io/tags/numerical/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/numerical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Polynomials</title>
+      <link>https://parththaker.github.io/tags/polynomials/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/tags/polynomials/</guid>
       <description></description>
     </item>
     

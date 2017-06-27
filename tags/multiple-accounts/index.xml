@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Multiple Accounts on Parth Thaker</title>
+    <link>https://parththaker.github.io/tags/multiple-accounts/</link>
+    <description>Recent content in Multiple Accounts on Parth Thaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Parth Thaker</copyright>
+    <lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/multiple-accounts/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Managing multiple github accounts</title>
+      <link>https://parththaker.github.io/post/github-managing-multiple-accounts/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://parththaker.github.io/post/github-managing-multiple-accounts/</guid>
+      <description>
+
+&lt;p&gt;When you are dealing with multiple github accounts you have to be careful of two things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Having proper rights to pull from git&lt;/li&gt;
+&lt;li&gt;Having proper rights to push to git&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It may seem as to the solution to both the problems should be the same, but they are slightly different. Lets look at both the points :&lt;/p&gt;
+
+&lt;h2 id=&#34;having-proper-rights-to-pull-from-git&#34;&gt;Having proper rights to pull from git&lt;/h2&gt;
+
+&lt;p&gt;When you are dealing with multiple accounts, there is &lt;a href=&#34;http://mherman.org/blog/2013/09/16/managing-multiple-github-accounts/#.WFKRwHV948o&#34; target=&#34;_blank&#34;&gt;this nice post&lt;/a&gt; which gives the instructions as to how to go about it.&lt;/p&gt;
+
+&lt;p&gt;Here the basic essence of the whole procedure is that one has to be careful as to which SSH key is being associated with the github account. This is being precisely taretted in the above indicated post.&lt;/p&gt;
+
+&lt;h2 id=&#34;having-proper-rights-to-push-to-git&#34;&gt;Having proper rights to push to git&lt;/h2&gt;
+
+&lt;p&gt;Now the first question which comes to mind is, &amp;ldquo;Why isnt the last setup sufficient for resolving this?&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;That would have been the case (not requiring futher compications) if only one user can work on a single SSH key. You can have a single SSH key being used by different usernames on different github project. Hence the question arises, &amp;ldquo;Which is the correct username for the current commit push?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Thus, in conclusion, one should set up local config setting for each project using,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config user.email &amp;quot;accountname@domain.com&amp;quot;
+git config user.name &amp;quot;username&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can as well use the above commands with the global flag to set it common for all the projects as follows&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.email &amp;quot;accountname@domain.com&amp;quot;
+git config --global user.name &amp;quot;username&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will set the credentials for user.email and user.name as a backup option when the local setting are not present. However I would discourage the use of the global flag. A logical thought experiment is below:&lt;/p&gt;
+
+&lt;p&gt;Lets consider you start a new project with a username which is different from what is set using the global flag. Now in case you forget to setup the local credentials and push your changes then the changes are being pushed with a undesirable username and email.&lt;/p&gt;
+
+&lt;p&gt;If on the other hand, the global user.email and user.name settings are not present, git throws error during pushing that you have not setup the local settings and thus cannot push, which will remind you to setup the credentials which you want to push the changes by.&lt;/p&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2017 &lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34;&gt;Parth Thaker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -14,6 +14,33 @@
     
     <url>
     
+      <loc>https://parththaker.github.io/post/working-with-speaker-port/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/post/caution-linux-dc/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/post/github-managing-multiple-accounts/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://parththaker.github.io/publication/thaker-dual-thesis-2016/</loc>
       <lastmod>2017-04-20T00:00:00+00:00</lastmod>
     </url>
@@ -95,51 +122,6 @@
     
     <url>
     
-      <loc>https://parththaker.github.io/post/getting-started/</loc>
-      <lastmod>2016-04-20T12:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://parththaker.github.io/post/widgets/</loc>
-      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://parththaker.github.io/post/managing-content/</loc>
-      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://parththaker.github.io/post/writing-markdown-latex/</loc>
-      <lastmod>2016-04-20T10:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://parththaker.github.io/post/migrate-from-jekyll/</loc>
-      <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://parththaker.github.io/publication_types/1/</loc>
       <lastmod>2017-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -160,7 +142,27 @@
     
     <url>
     
+      <loc>https://parththaker.github.io/tags/audio-sink/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://parththaker.github.io/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/chebyshev/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -189,7 +191,7 @@
     
     <url>
     
-      <loc>https://parththaker.github.io/tags/hugo/</loc>
+      <loc>https://parththaker.github.io/tags/github/</loc>
       <lastmod>2017-07-01T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -199,8 +201,48 @@
     
     <url>
     
-      <loc>https://parththaker.github.io/tags/jekyll/</loc>
-      <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+      <loc>https://parththaker.github.io/tags/linux-dc&#43;&#43;/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/missing-downloads/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/multiple-accounts/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/noise-generation/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/numerical/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -211,6 +253,16 @@
     
       <loc>https://parththaker.github.io/</loc>
       <lastmod>2017-06-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://parththaker.github.io/tags/polynomials/</loc>
+      <lastmod>2017-07-01T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
