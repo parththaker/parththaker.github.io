@@ -2,9 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <title>Parth Thaker on Parth Thaker</title>
     <link>https://parththaker.github.io/</link>
     <description>Recent content in Parth Thaker on Parth Thaker</description>
+=======
+    <title>Parth Thaker</title>
+    <link>https://parththaker.github.io/</link>
+    <description>Recent content on Parth Thaker</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
 =======
     <title>Parth Thaker</title>
     <link>https://parththaker.github.io/</link>
@@ -15,8 +21,11 @@
     <copyright>&amp;copy; 2016 Parth Thaker</copyright>
     <lastBuildDate>Wed, 21 Jun 2017 00:00:00 +0000</lastBuildDate>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <atom:link href="/" rel="self" type="application/rss+xml" />
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     
 	<atom:link href="https://parththaker.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -48,6 +57,9 @@ Previously, I was holding the position of Systems Engineer at Netradyne. I was w
       <guid>https://parththaker.github.io/home/posts/</guid>
       <description></description>
     </item>
+<<<<<<< HEAD
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     
     <item>
@@ -56,6 +68,7 @@ Previously, I was holding the position of Systems Engineer at Netradyne. I was w
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/chebyshev/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -104,12 +117,17 @@ $$T_n(x) = cos(n cos^{-1}(x))$$&lt;/p&gt;
 &lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
 </description>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
       <description>Though I myself am doubtful about a lot of explanations here. I&amp;rsquo;ll remember and explain whatever I can.
 Lets first start with the basics, The chebyshev polynomial of degree $n$ is dentoed by $T_n(x)$ and given by the formula,
 $$ \begin{equation}T_n(x) = cos(n cos^{-1}(x))\end{equation}$$
 They form the recursive realtion given by, $$T_n(x) = cos(n cos^{-1}(x))$$
 $$T_{n+1} (x) = 2 x T_n(x) - T_{n-1}$$
 Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
+<<<<<<< HEAD
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
@@ -129,8 +147,12 @@ Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
       
       <guid>https://parththaker.github.io/talk/example-talk/</guid>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
+=======
+      <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
 =======
       <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
@@ -143,6 +165,7 @@ Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
       
       <guid>https://parththaker.github.io/project/deep-learning/</guid>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
@@ -153,6 +176,9 @@ Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
 
 &lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
 </description>
+=======
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
 =======
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
@@ -173,6 +199,7 @@ Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
       <pubDate>Wed, 20 Apr 2016 12:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/getting-started/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -361,6 +388,11 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
 Key features:
  Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Easy to customize  Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>The Academic framework enables you to easily create a beautifully simple personal or academic website using the Hugo static site generator.
+Key features:
+ Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Easy to customize  Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -369,6 +401,7 @@ Key features:
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/widgets/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -432,6 +465,10 @@ Key features:
       <description>Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:
  About/biography Selected publications Recent publications Recent news/blog posts Projects Selected talks Recent talks Contact Custom widget (demonstrated with the teaching example)  The example site that you copied to create your site uses all the different types of widget (except talks), so you can generally just delete the widgets you don&amp;rsquo;t need and customize the parameters of the widgets you wish to keep.</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:
+ About/biography Selected publications Recent publications Recent news/blog posts Projects Selected talks Recent talks Contact Custom widget (demonstrated with the teaching example)  The example site that you copied to create your site uses all the different types of widget (except talks), so you can generally just delete the widgets you don&amp;rsquo;t need and customize the parameters of the widgets you wish to keep.</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -440,6 +477,7 @@ Key features:
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/managing-content/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;https://parththaker.github.io/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
 
@@ -583,6 +621,9 @@ Below is an automatically generated list of all my blog posts!
 =======
       <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;{{&amp;lt; ref &amp;quot;post/writing-markdown-latex.md&amp;quot; &amp;gt;}}&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;{{&amp;lt; ref &amp;quot;post/writing-markdown-latex.md&amp;quot; &amp;gt;}}&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -591,6 +632,7 @@ Below is an automatically generated list of all my blog posts!
       <pubDate>Wed, 20 Apr 2016 10:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/writing-markdown-latex/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>&lt;p&gt;Content can be written using &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt;, &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt;, and &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34; target=&#34;_blank&#34;&gt;Hugo Shortcodes&lt;/a&gt;. Additionally, HTML may be used for advanced formatting. This article gives an overview of the most common formatting options.&lt;/p&gt;
 
@@ -939,6 +981,9 @@ Here&#39;s some important information...
 =======
       <description>&lt;p&gt;Content can be written using &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt;, &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt;, and &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34; target=&#34;_blank&#34;&gt;Hugo Shortcodes&lt;/a&gt;. Additionally, HTML may be used for advanced formatting. This article gives an overview of the most common formatting options.&lt;/p&gt;</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>&lt;p&gt;Content can be written using &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt;, &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt;, and &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34; target=&#34;_blank&#34;&gt;Hugo Shortcodes&lt;/a&gt;. Additionally, HTML may be used for advanced formatting. This article gives an overview of the most common formatting options.&lt;/p&gt;</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -947,6 +992,7 @@ Here&#39;s some important information...
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/migrate-from-jekyll/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -989,10 +1035,16 @@ With Jekyll, something that looked like&lt;/p&gt;
   </channel>
 </rss>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
       <description>Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s getting started guide.
 Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like</description>
     </item>
     
   </channel>
+<<<<<<< HEAD
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 </rss>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80

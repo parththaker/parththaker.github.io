@@ -9,11 +9,14 @@
     <copyright>&amp;copy; 2016 Parth Thaker</copyright>
     <lastBuildDate>Wed, 21 Jun 2017 00:00:00 +0000</lastBuildDate>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <atom:link href="/home/" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     
 	<atom:link href="https://parththaker.github.io/home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -47,5 +50,9 @@ Previously, I was holding the position of Systems Engineer at Netradyne. I was w
     </item>
     
   </channel>
+<<<<<<< HEAD
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 </rss>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80

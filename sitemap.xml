@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
@@ -229,6 +230,8 @@
   
 </urlset>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -382,5 +385,9 @@
     <priority>0</priority>
   </url>
   
+<<<<<<< HEAD
+</urlset>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 </urlset>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80

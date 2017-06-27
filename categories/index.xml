@@ -8,15 +8,22 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2016 Parth Thaker</copyright>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <atom:link href="/categories/" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     
 	<atom:link href="https://parththaker.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
+<<<<<<< HEAD
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 </rss>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80

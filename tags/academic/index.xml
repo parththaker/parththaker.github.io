@@ -9,7 +9,13 @@
     <copyright>&amp;copy; 2016 Parth Thaker</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <atom:link href="/tags/academic/" rel="self" type="application/rss+xml" />
+=======
+    
+	<atom:link href="https://parththaker.github.io/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
 =======
     
 	<atom:link href="https://parththaker.github.io/tags/academic/index.xml" rel="self" type="application/rss+xml" />
@@ -22,6 +28,7 @@
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/chebyshev/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -70,12 +77,17 @@ $$T_n(x) = cos(n cos^{-1}(x))$$&lt;/p&gt;
 &lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
 </description>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
       <description>Though I myself am doubtful about a lot of explanations here. I&amp;rsquo;ll remember and explain whatever I can.
 Lets first start with the basics, The chebyshev polynomial of degree $n$ is dentoed by $T_n(x)$ and given by the formula,
 $$ \begin{equation}T_n(x) = cos(n cos^{-1}(x))\end{equation}$$
 They form the recursive realtion given by, $$T_n(x) = cos(n cos^{-1}(x))$$
 $$T_{n+1} (x) = 2 x T_n(x) - T_{n-1}$$
 Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
+<<<<<<< HEAD
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
@@ -85,6 +97,7 @@ Extrema of Chebyshev polynomial $T_n$ are given in the form of,</description>
       <pubDate>Wed, 20 Apr 2016 12:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/getting-started/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -273,6 +286,11 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
 Key features:
  Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Easy to customize  Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>The Academic framework enables you to easily create a beautifully simple personal or academic website using the Hugo static site generator.
+Key features:
+ Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Easy to customize  Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -281,6 +299,7 @@ Key features:
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/widgets/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>
 
@@ -344,6 +363,10 @@ Key features:
       <description>Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:
  About/biography Selected publications Recent publications Recent news/blog posts Projects Selected talks Recent talks Contact Custom widget (demonstrated with the teaching example)  The example site that you copied to create your site uses all the different types of widget (except talks), so you can generally just delete the widgets you don&amp;rsquo;t need and customize the parameters of the widgets you wish to keep.</description>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
+      <description>Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:
+ About/biography Selected publications Recent publications Recent news/blog posts Projects Selected talks Recent talks Contact Custom widget (demonstrated with the teaching example)  The example site that you copied to create your site uses all the different types of widget (except talks), so you can generally just delete the widgets you don&amp;rsquo;t need and customize the parameters of the widgets you wish to keep.</description>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
     </item>
     
     <item>
@@ -352,6 +375,7 @@ Key features:
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
       <guid>https://parththaker.github.io/post/managing-content/</guid>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;https://parththaker.github.io/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
 
@@ -497,9 +521,15 @@ Below is an automatically generated list of all my blog posts!
   </channel>
 </rss>
 =======
+=======
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
       <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;{{&amp;lt; ref &amp;quot;post/writing-markdown-latex.md&amp;quot; &amp;gt;}}&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>
+<<<<<<< HEAD
+</rss>
+>>>>>>> ec304cd638469462741457443dac468d1cd8ff80
+=======
 </rss>
 >>>>>>> ec304cd638469462741457443dac468d1cd8ff80
