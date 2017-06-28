@@ -29,15 +29,15 @@
 
 &lt;h2 id=&#34;having-proper-rights-to-pull-from-git&#34;&gt;Having proper rights to pull from git&lt;/h2&gt;
 
-&lt;p&gt;When you are dealing with multiple accounts, there is &lt;a href=&#34;http://mherman.org/blog/2013/09/16/managing-multiple-github-accounts/#.WFKRwHV948o&#34; target=&#34;_blank&#34;&gt;this nice post&lt;/a&gt; which gives the instructions as to how to go about it.&lt;/p&gt;
+&lt;p&gt;When you are dealing with multiple accounts, there is &lt;a href=&#34;http://mherman.org/blog/2013/09/16/managing-multiple-github-accounts/#.WFKRwHV948o&#34; target=&#34;_blank&#34;&gt; this nice post &lt;/a&gt; which gives the instructions as to how to go about it.&lt;/p&gt;
 
-&lt;p&gt;Here the basic essence of the whole procedure is that one has to be careful as to which SSH key is being associated with the github account. This is being precisely taretted in the above indicated post.&lt;/p&gt;
+&lt;p&gt;Here the basic essence of the whole procedure is that one has to be careful as to which SSH key is being associated with the github account. This is being precisely targeted in the above indicated post.&lt;/p&gt;
 
 &lt;h2 id=&#34;having-proper-rights-to-push-to-git&#34;&gt;Having proper rights to push to git&lt;/h2&gt;
 
-&lt;p&gt;Now the first question which comes to mind is, &amp;ldquo;Why isnt the last setup sufficient for resolving this?&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Now the first question which comes to mind is, &amp;ldquo;Why isn&amp;rsquo;t the last setup sufficient for resolving this?&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;That would have been the case (not requiring futher compications) if only one user can work on a single SSH key. You can have a single SSH key being used by different usernames on different github project. Hence the question arises, &amp;ldquo;Which is the correct username for the current commit push?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;That would have been the case (not requiring further complications) if only one user can work on a single SSH key. You can have a single SSH key being used by different user-names on different github project. Hence the question arises, &amp;ldquo;Which is the correct user-name for the current commit push?&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;Thus, in conclusion, one should set up local config setting for each project using,&lt;/p&gt;
 
