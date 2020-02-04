@@ -1,120 +1,93 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Parth Thaker</title>
+    <title>Tags | Parth Thaker</title>
     <link>https://parththaker.github.io/tags/</link>
-    <description>Recent content in Tags on Parth Thaker</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2017 Parth Thaker</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/" rel="self" type="application/rss+xml" />
+      <atom:link href="https://parththaker.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Parth Thaker</copyright><lastBuildDate>Tue, 01 May 2018 12:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Tags</title>
+      <link>https://parththaker.github.io/tags/</link>
+    </image>
     
     <item>
-      <title>Content tagged as &#39;Academic&#39;</title>
-      <link>https://parththaker.github.io/tags/academic/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://parththaker.github.io/tags/academic/</guid>
-      <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
-</description>
+      <title>projected gradient descent</title>
+      <link>https://parththaker.github.io/tags/projected-gradient-descent/</link>
+      <pubDate>Tue, 01 May 2018 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/tags/projected-gradient-descent/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Audio Sink</title>
+      <title>audio sink</title>
       <link>https://parththaker.github.io/tags/audio-sink/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/audio-sink/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Chebyshev</title>
+      <title>chebyshev</title>
       <link>https://parththaker.github.io/tags/chebyshev/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/chebyshev/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Deep Learning</title>
-      <link>https://parththaker.github.io/tags/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://parththaker.github.io/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Demo</title>
-      <link>https://parththaker.github.io/tags/demo/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://parththaker.github.io/tags/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github</title>
+      <title>github</title>
       <link>https://parththaker.github.io/tags/github/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Linux Dc&#43;&#43;</title>
+      <title>linux DC&#43;&#43;</title>
       <link>https://parththaker.github.io/tags/linux-dc&#43;&#43;/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/linux-dc&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Missing Downloads</title>
+      <title>missing downloads</title>
       <link>https://parththaker.github.io/tags/missing-downloads/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/missing-downloads/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Multiple Accounts</title>
+      <title>multiple accounts</title>
       <link>https://parththaker.github.io/tags/multiple-accounts/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/multiple-accounts/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Noise Generation</title>
+      <title>noise generation</title>
       <link>https://parththaker.github.io/tags/noise-generation/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/noise-generation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Numerical</title>
+      <title>numerical</title>
       <link>https://parththaker.github.io/tags/numerical/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/numerical/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Polynomials</title>
+      <title>polynomials</title>
       <link>https://parththaker.github.io/tags/polynomials/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/tags/polynomials/</guid>
       <description></description>
     </item>

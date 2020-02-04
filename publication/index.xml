@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publications on Parth Thaker</title>
+    <title>Publications | Parth Thaker</title>
     <link>https://parththaker.github.io/publication/</link>
-    <description>Recent content in Publications on Parth Thaker</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2017 Parth Thaker</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/publication/" rel="self" type="application/rss+xml" />
+      <atom:link href="https://parththaker.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Parth Thaker</copyright><lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Publications</title>
+      <link>https://parththaker.github.io/publication/</link>
+    </image>
+    
+    <item>
+      <title>On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems</title>
+      <link>https://parththaker.github.io/publication/thaker-isit-2020/</link>
+      <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/publication/thaker-isit-2020/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Selected Topics in Constrained Optimization</title>
       <link>https://parththaker.github.io/publication/thaker-dual-thesis-2016/</link>
       <pubDate>Thu, 20 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/publication/thaker-dual-thesis-2016/</guid>
       <description></description>
     </item>
@@ -23,7 +32,6 @@
       <title>When to arrive in a congested system : Achieving Equilibrium via Learning Algorithm</title>
       <link>https://parththaker.github.io/publication/thaker-rawnet-2017/</link>
       <pubDate>Thu, 20 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://parththaker.github.io/publication/thaker-rawnet-2017/</guid>
       <description></description>
     </item>
