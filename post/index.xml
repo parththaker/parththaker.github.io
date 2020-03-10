@@ -276,5 +276,37 @@ git config --global user.name &amp;quot;username&amp;quot;
 </description>
     </item>
     
+    <item>
+      <title>Model for learning in class</title>
+      <link>https://parththaker.github.io/post/parallel-bsc/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/post/parallel-bsc/</guid>
+      <description>&lt;p&gt;Currently, I am taking a class on Information Theory by Prof. lalitha Sankar while inching forward with my Ph.D. at ASU.&lt;/p&gt;
+&lt;p&gt;She gave the following question from the famous Thomas &amp;amp; Clover book as a homework question:&lt;/p&gt;
+&lt;p&gt;Calculate the capacity of the following channel with the probability transistion matrix,&lt;/p&gt;
+&lt;p&gt;$$\begin{bmatrix}p &amp;amp; 1-p &amp;amp; 0 &amp;amp; 0\\ 1-p &amp;amp; p &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; q &amp;amp; 1-q\\ 0 &amp;amp; 0 &amp;amp; 1-q &amp;amp; q \end{bmatrix}$$&lt;/p&gt;
+&lt;p&gt;On a first naive look, my mind tilted towards, &amp;ldquo;Well, you got two channels. Just use the one with best performance&amp;rdquo;. Intuitive it may seem, this is incorrect.
+You have 4 input channels at your disposal and using just 2 of them (corresponding to the best channel) would lead you to under-utilizing the system and hence there should be a better way.&lt;/p&gt;
+&lt;p&gt;It seems the correct answer is to use the channel according to the ratio: $\frac{2^{-H(p)}}{2^{-H(p)} +2^{-H(q)}}$, where $H(\alpha)$ would denote the entropy of Bernoulli($\alpha$).&lt;/p&gt;
+&lt;p&gt;This got me thinking of a possibility of using this model to analyse the behaviour in the classroom. Consider that you are sitting in a class and the BSC channels model the following :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;First BSC channel&lt;/strong&gt; : Denotes the intensity of the material being taught in class &amp;ndash; By this I mean, for a person having full knowledge of measure theory might find an introductory class on Probability a bit easy.
+Thus the person would have parameter $p\approx \frac{1}{2}$, which indicates the corresponds that channel being noisy $\leftrightarrow$ easy class. This would also mean that a look at the material taught by the prof once every 10 minutes would give him a complete picture of what is happening in class.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Second BSC channel&lt;/strong&gt; : Models his success with other pursuits in classroom &amp;ndash; For me it would be thinking of strategies in board games or working on a different problem. For some others it might be chatting on phone, etc.
+Thus parameter $q$ models how clearly one can think of that other task being performed while in classroom.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If this is the case, then surprising result comes out of the question posed in the homework assignment &amp;ndash; It is information theoritically suboptimal to completely focus on the content being taught in class or completely zone out in your own world.&lt;/p&gt;
+&lt;p&gt;There is an ideal ratio in which both needs to be pursued during your classroom time.&lt;/p&gt;
+&lt;p&gt;So, now you have an argument if prof catches you being zoned out in class.&lt;/p&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2017 
+&lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Released under the 
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt;
+ license.&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
