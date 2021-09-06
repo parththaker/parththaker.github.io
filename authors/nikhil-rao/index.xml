@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nikhil Rao | Parth Thaker</title>
+    <link>https://parththaker.github.io/authors/nikhil-rao/</link>
+      <atom:link href="https://parththaker.github.io/authors/nikhil-rao/index.xml" rel="self" type="application/rss+xml" />
+    <description>Nikhil Rao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Nikhil Rao</title>
+      <link>https://parththaker.github.io/authors/nikhil-rao/</link>
+    </image>
+    
+    <item>
+      <title>Pure Exploration in Multi armed Bandits with Graph Side Information</title>
+      <link>https://parththaker.github.io/publication/thaker-graph-bandits-2021/</link>
+      <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/publication/thaker-graph-bandits-2021/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

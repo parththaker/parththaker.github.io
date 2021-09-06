@@ -5,12 +5,20 @@
     <link>https://parththaker.github.io/publication/</link>
       <atom:link href="https://parththaker.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Parth Thaker</copyright><lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Publications</title>
       <link>https://parththaker.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Pure Exploration in Multi armed Bandits with Graph Side Information</title>
+      <link>https://parththaker.github.io/publication/thaker-graph-bandits-2021/</link>
+      <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/publication/thaker-graph-bandits-2021/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems</title>
