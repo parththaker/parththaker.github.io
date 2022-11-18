@@ -5,7 +5,7 @@
     <link>https://parththaker.github.io/tags/education/</link>
       <atom:link href="https://parththaker.github.io/tags/education/index.xml" rel="self" type="application/rss+xml" />
     <description>education</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Tue, 01 Sep 2020 12:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>education</title>
@@ -13,27 +13,45 @@
     </image>
     
     <item>
-      <title>Model for learning in class</title>
+      <title>Optimal strategy for classroom behaviour</title>
       <link>https://parththaker.github.io/post/parallel-bsc/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2020 12:00:00 +0000</pubDate>
       <guid>https://parththaker.github.io/post/parallel-bsc/</guid>
-      <description>&lt;p&gt;Currently, I am taking a class on Information Theory by Prof. lalitha Sankar while inching forward with my Ph.D. at ASU.&lt;/p&gt;
-&lt;p&gt;She gave the following question from the famous Thomas &amp;amp; Clover book as a homework question:&lt;/p&gt;
+      <description>&lt;p&gt;During the course of attending Information Theory by Prof. Lalitha Sankar, I encountered the following question from Thomas &amp;amp; Clover in one of the homeworks:&lt;/p&gt;
 &lt;p&gt;Calculate the capacity of the following channel with the probability transistion matrix,&lt;/p&gt;
 &lt;p&gt;$$\begin{bmatrix}p &amp;amp; 1-p &amp;amp; 0 &amp;amp; 0\\ 1-p &amp;amp; p &amp;amp; 0 &amp;amp; 0\\ 0 &amp;amp; 0 &amp;amp; q &amp;amp; 1-q\\ 0 &amp;amp; 0 &amp;amp; 1-q &amp;amp; q \end{bmatrix}$$&lt;/p&gt;
-&lt;p&gt;On a first naive look, my mind tilted towards, &amp;ldquo;Well, you got two channels. Just use the one with best performance&amp;rdquo;. Intuitive it may seem, this is incorrect.
-You have 4 input channels at your disposal and using just 2 of them (corresponding to the best channel) would lead you to under-utilizing the system and hence there should be a better way.&lt;/p&gt;
-&lt;p&gt;It seems the correct answer is to use the channel according to the ratio: $\frac{2^{-H(p)}}{2^{-H(p)} +2^{-H(q)}}$, where $H(\alpha)$ would denote the entropy of Bernoulli($\alpha$).&lt;/p&gt;
-&lt;p&gt;This got me thinking of a possibility of using this model to analyse the behaviour in the classroom. Consider that you are sitting in a class and the BSC channels model the following :&lt;/p&gt;
+&lt;p&gt;Mind&amp;rsquo;s muscle memory kicked in as the math derivation lead to the conclusion that optimal strategy is to use the channel according to the ratio: $\frac{2^{-H(p)}}{2^{-H(p)} +2^{-H(q)}}$, where $H(\alpha)$ would denote the entropy of Bernoulli($\alpha$).&lt;/p&gt;
+&lt;p&gt;A few moment of stagnant staring at the problem got me thinking of a potential use case.&lt;/p&gt;
+&lt;p&gt;A student is attending a lecture and the BSC channels model the following&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;First BSC channel&lt;/strong&gt; : Denotes the intensity of the material being taught in class &amp;ndash; By this I mean, for a person having full knowledge of measure theory might find an introductory class on Probability a bit easy.
-Thus the person would have parameter $p\approx \frac{1}{2}$, which indicates the corresponds that channel being noisy $\leftrightarrow$ easy class. This would also mean that a look at the material taught by the prof once every 10 minutes would give him a complete picture of what is happening in class.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Second BSC channel&lt;/strong&gt; : Models his success with other pursuits in classroom &amp;ndash; For me it would be thinking of strategies in board games or working on a different problem. For some others it might be chatting on phone, etc.
-Thus parameter $q$ models how clearly one can think of that other task being performed while in classroom.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;First BSC channel&lt;/strong&gt; : Denotes the capability of the student for understanding the material taught in the lecture. Let $X$ denote the event that the student is attentive to what is being taught in the lecture or not and $Y$ model whether the student understood the concept or not.
+$\mathbb{P}(Y|X)$ denotes the probability matrix of the outcomes.
+In order for the channel to behave as a Bernoulli($\alpha$), we make the following assumptions:
+&lt;ul&gt;
+&lt;li&gt;If the student is in tune with the teaching style of the lecturer, then $p\approx 1$ (a perfect learner). $\mathbb{P}(Y=1 | X=1) \approx 1$ i.e. given complete attention, student understands it completely. On the other hand, given no attention student doesnt gain anything hence $P(Y=0 | X=0)\approx 1$&lt;/li&gt;
+&lt;li&gt;If the student is completely oblivious to the lecturer&amp;rsquo;s teaching patterns and is attending the course because his grad advisor forced his hand, then we model it as a Bernoulli($\frac{1}{2}$). This is because whether the student is attentive or not, the conclusion is that the student is not understanding the course content.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;If this is the case, then surprising result comes out of the question posed in the homework assignment &amp;ndash; It is information theoritically suboptimal to completely focus on the content being taught in class or completely zone out in your own world.&lt;/p&gt;
-&lt;p&gt;There is an ideal ratio in which both needs to be pursued during your classroom time.&lt;/p&gt;
-&lt;p&gt;So, now you have an argument if prof catches you being zoned out in class.&lt;/p&gt;
+&lt;!--the of the material being taught in class -- By this I mean, for a person having full knowledge of measure theory might find an introductory class on Probability a bit easy. 
+Thus the person would have parameter $p\approx \frac{1}{2}$, which indicates the corresponds that channel being noisy $\leftrightarrow$ easy class. This would also mean that a look at the material taught by the prof once every 10 minutes would give him a complete picture of what is happening in class. 
+--&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Second BSC channel&lt;/strong&gt; : Denotes the capability of student in alternate pursuits in classroom &amp;ndash;
+&lt;ul&gt;
+&lt;li&gt;Thinking of research project the student is working on (this is me)&lt;/li&gt;
+&lt;li&gt;Thinking of strategies in board games (also me. 
+&lt;a href=&#34;https://boardgamegeek.com/boardgame/120677/terra-mystica&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Terra Mystica&lt;/a&gt;
+!!!)&lt;/li&gt;
+&lt;li&gt;Chatting on phone, replying to mails, twitter ,etc.
+The parameter $q$ models how clearly one can think of that other task being performed while in classroom.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If we consider this model then the surprising conclusion of this homework problem comes to :&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;It is information theoritically suboptimal to completely focus on the content being taught in class&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There is an ideal ratio in which both needs to be pursued during your classroom time. So, the next time you have are caught distracted in class you have an argument to make.&lt;/p&gt;
+&lt;p&gt;Though you cant completely zone out as well, since that is also a suboptimal strategy :)&lt;/p&gt;
 &lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 &lt;p&gt;Copyright 2017 
 &lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;

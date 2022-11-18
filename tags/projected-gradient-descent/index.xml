@@ -5,7 +5,7 @@
     <link>https://parththaker.github.io/tags/projected-gradient-descent/</link>
       <atom:link href="https://parththaker.github.io/tags/projected-gradient-descent/index.xml" rel="self" type="application/rss+xml" />
     <description>projected gradient descent</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Tue, 01 May 2018 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Tue, 01 May 2018 12:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>projected gradient descent</title>
@@ -13,43 +13,56 @@
     </image>
     
     <item>
-      <title>Skippings in projected gradient descent</title>
+      <title>Projected gradient descent with skipping</title>
       <link>https://parththaker.github.io/post/skipping-projection/</link>
       <pubDate>Tue, 01 May 2018 12:00:00 +0000</pubDate>
       <guid>https://parththaker.github.io/post/skipping-projection/</guid>
-      <description>&lt;p&gt;I was sitting in a guest lecture of 
+      <description>&lt;p&gt;One of the major benefits (among million others) of attending an elite university like IIT Madras is the various avenues it provides to get a glimspe into a world which you never knew of. Pursuing research and the thought of PhD was one such world which was brought within my grasp by IITM.&lt;/p&gt;
+&lt;p&gt;I was fortunate enough to attend one of the guest lecture by 
 &lt;a href=&#34;http://people.cs.umass.edu/~mahadeva/Site/About_Me.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Sridhar Mahadevan&lt;/a&gt;
-, University of Massachusetts, when he visited my undergrad university IIT Madras.
-He was talking about his (at that time) 
+, University of Massachusetts, during his visit to IIT Madras.
+He was going to discuss about his recent work (at that time) 
 &lt;a href=&#34;https://arxiv.org/pdf/1405.6757v1.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recent work&lt;/a&gt;
- with his student Ian Gemp.
-He was stating the introduction of variational inequalities to a relatively clueless audience, introducing the age old extragradient methods, etc.&lt;/p&gt;
-&lt;p&gt;In the middle of the session, he said something which pinged my interest.
-He was explaining about how 
+ with his student 
+&lt;a href=&#34;https://imgemp.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ian Gemp&lt;/a&gt;
+.
+The plan of the talk (atleast to me) seemed to be : Start with variational inequalities and proceed to extragradient methods and state the results they worked out.&lt;/p&gt;
+&lt;p&gt;In the middle of the seminar, he said about a curious finding which pinged my interest.
+They had applied a logic based on 
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Runge-Kutta methods&lt;/a&gt;
- method, used in Reinforcement learning , was applied to their problem. This method seems to go on being faster and faster as we had more skippings/more terms per update were being considered.
-This was followed by a question &amp;ldquo;So how far can we keep including these terms?&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;This seemed sort of surreal to me. A system which just keeps accelerating towards perfection ? This needed more investigation.&lt;/p&gt;
-&lt;h2 id=&#34;glimpse-of-ruunge_kutta&#34;&gt;Glimpse of Ruunge_kutta&lt;/h2&gt;
-&lt;p&gt;Runge-Kutta methods have been used to find approximate solutions in Ordinary Differential Equations.&lt;/p&gt;
-&lt;p&gt;A General Runge-Kutta Gradient descent update looks like,&lt;/p&gt;
-&lt;p&gt;$$\begin{equation}k_1 = \alpha  \nabla F(x_k)\end{equation}$$
-$$\begin{equation}k_2 = \alpha \nabla F(x_k - a_{21}k_1)\end{equation}$$
-$$\begin{equation}k_3 = \alpha \nabla F(x_k - a_{31}k_1 - a_{32}k_2)\end{equation}$$&lt;/p&gt;
-&lt;p&gt;So for general term,&lt;/p&gt;
-&lt;p&gt;$$\begin{equation}k_s = \alpha \nabla F(x_k - a_{s1}k_1 - a_{s2}k_2 - \dots - a_{s,s-1}k_{s-1})\end{equation}$$&lt;/p&gt;
-&lt;p&gt;The next iterate $x_k$ in the sequence of the algorithm as,&lt;/p&gt;
-&lt;p&gt;$$\begin{equation}x_{k+1} = x_{k} - \sum_{i=1}^sb_i k_i\end{equation}$$&lt;/p&gt;
+ to their problem and noticed that system kept converging faster and faster as the order of R-K method was increased.
+This was followed by a question by him,&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;So how much acceleration can we possibly obtain by including more and more terms?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This phenomenon irked me. According to my firm belief, there is &lt;strong&gt;always&lt;/strong&gt; a trade-off. A system which just keeps providing improved one-step convergence without consequence? Something was definitely off.&lt;/p&gt;
+&lt;!--
+## Glimpse of Runge-kutta
+
+Runge-Kutta methods have been used to find approximate solutions in Ordinary Differential Equations.
+
+A General Runge-Kutta Gradient descent update looks like,
+
+$$\begin{equation}k_1 = \alpha  \nabla F(x_k)\end{equation}$$
+$$\begin{equation}k_2 = \alpha \nabla F(x_k - a\_{21}k_1)\end{equation}$$
+$$\begin{equation}k_3 = \alpha \nabla F(x_k - a\_{31}k_1 - a\_{32}k_2)\end{equation}$$
+
+So for general term,
+
+$$\begin{equation}k_s = \alpha \nabla F(x_k - a\_{s1}k_1 - a\_{s2}k_2 - \dots - a\_{s,s-1}k\_{s-1})\end{equation}$$
+
+The next iterate $x_k$ in the sequence of the algorithm as,
+
+$$\begin{equation}x\_{k+1} = x\_{k} - \sum\_{i=1}^sb_i k_i\end{equation}$$
+--&gt;
+&lt;p&gt;My lifelong passion has been the theory behind optimization methods. Hence, I tried replicating similar situation (some would argue its exactly the same on some plane of thought) in constrained optimization using projected gradient descent.&lt;/p&gt;
+&lt;p&gt;Before diving deep into the exact question, a brief primer on the setup,&lt;/p&gt;
 &lt;h2 id=&#34;constrained-convex-optimization&#34;&gt;Constrained Convex Optimization&lt;/h2&gt;
-&lt;p&gt;A simple constrained Optimization problem can be stated as,
+&lt;p&gt;A simple constrained optimization problem of optimizing a convex function $f(x)$ over the set $x\in\chi$ can be stated as,
 $$\begin{equation}
 \min\ \ \ f(x)\ \ \ \  \text{over}\ \ \ \  x\in \chi
 \end{equation}$$&lt;/p&gt;
-&lt;p&gt;where $f(x)$ is a doubly differentiable convex function. The normal gradient descent considering the steepest descent criteria would involve the following update equation,&lt;/p&gt;
-&lt;p&gt;$$\begin{equation}
-x_{k+1} = x_{k} - \eta\nabla f(x_k)
-\end{equation}$$&lt;/p&gt;
-&lt;p&gt;Since the next iterative point $x_{k+1}$ needs to be in the constrained set $\chi$, we have the projection step as,&lt;/p&gt;
+&lt;p&gt;where assume that $f(x)$ is a doubly differentiable.&lt;/p&gt;
+&lt;p&gt;One of the go-to approach to solving the above problem is through projected gradient descent.
+The next iterate $x_{k+1}$ can we written as,&lt;/p&gt;
 &lt;p&gt;$$\begin{equation}
 x_{k+1} = P_{\chi}(x_{k} - \eta\nabla f(x_k))
 \end{equation}$$&lt;/p&gt;
@@ -57,11 +70,7 @@ x_{k+1} = P_{\chi}(x_{k} - \eta\nabla f(x_k))
 $$\begin{equation}
 P_{\chi}(x) = \arg\min_{y\in \chi}||x-y||^2
 \end{equation}$$&lt;/p&gt;
-&lt;h3 id=&#34;what-problem-are-we-looking-at-here&#34;&gt;What problem are we looking at here?&lt;/h3&gt;
-&lt;p&gt;In many constrained optimization problems, one of the major computation issues with projected gradient descent is computing the projection of a candidate variable $x_k$.
-Hence, I am trying to reduce the total number of Projection computations required for the algorithm to converge.&lt;/p&gt;
-&lt;h2 id=&#34;solution&#34;&gt;Solution?&lt;/h2&gt;
-&lt;p&gt;Taking the motivation from Runge-Kutta logic, consider the following iterations where we take projections on alternate steps as shown below. (I am calling it 2-step skip projection),
+&lt;p&gt;Taking the que from Prof. Sridhar, consider the following iterations where we take projections on alternate steps as shown below. (I am calling it 2-step skip projection),
 $$\begin{equation}
 y_{k+1} = x_{k} - \eta_1\nabla f(x_{k})\end{equation}$$&lt;/p&gt;
 &lt;p&gt;$$\begin{equation}
@@ -73,41 +82,48 @@ y_{k+1} = x_{k} - \eta_1\nabla f(x_{k})\end{equation}$$&lt;/p&gt;
 z_{k+1} = y_{k+1} - \eta_2\nabla f(y_{k+1})\end{equation}$$&lt;/p&gt;
 &lt;p&gt;$$\begin{equation}
 x_{k+1} = P_{\chi}(z_{k+1}-\eta_3\nabla f(z_{k+1}))\end{equation}$$&lt;/p&gt;
-&lt;p&gt;We can keep increasing the number of skips. Plotting for a simple example,&lt;/p&gt;
+&lt;p&gt;Further, we can keep increasing the number of skips to obtain any $k$-skip projected gradient descent.&lt;/p&gt;
+&lt;p&gt;Below is the error plot of these $k$-skip projected gradient descent for a simple example, where $error(k) = \log (f(Pr(x_k)) - f(x^*))$,&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/sk_proj_overview.png&#34; alt=&#34; Overview &#34;&gt;&lt;/p&gt;
-&lt;p&gt;Here the each point in the graph represents the $error(k) = \log (f(Pr(x_k)) - f(x^*))$.&lt;/p&gt;
+&lt;h2 id=&#34;initial-thoughts&#34;&gt;Initial thoughts&lt;/h2&gt;
+&lt;p&gt;On first look, this experimental evidence confirms Prof.Sridhar&amp;rsquo;s claims!! More skipping just provides better one-step convergence.&lt;/p&gt;
+&lt;p&gt;But where is the trade-off? Lets look closely as to &lt;em&gt;where&lt;/em&gt; the different $k$-skip algorithms are converging.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/sk_proj_zoom.png&#34; alt=&#34; Zoom &#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;the-two-extremes&#34;&gt;The two extremes&lt;/h2&gt;
-&lt;p&gt;The two extreme can be thought of as follows:&lt;/p&gt;
+&lt;p&gt;Note after enlarging the tail of the graphs, we can notice at all the distinct $k$-skip algorithms have &lt;em&gt;distinct&lt;/em&gt; convergence point.
+And moreover, the more order of skip -&amp;gt; the farther away from the optimal solution (here optimal solution is the convergence point of standard projected gradient descent)&lt;/p&gt;
+&lt;p&gt;Why are we observing this?&lt;/p&gt;
+&lt;h2 id=&#34;the-two-extreme-behaviour&#34;&gt;The two extreme behaviour&lt;/h2&gt;
+&lt;p&gt;We can consider the following high level view. Considering skipping with projected gradient descent, there are two extreme behaviour which can be thought of as follows:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Standard Projected gradient descent&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard Projected gradient descent&lt;/strong&gt; :&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;$$\begin{equation}
 x_{k+1} = P_{\chi}(x_{k} - \eta\nabla f(x_k))
 \end{equation}$$&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;Infinite step look ahead gradient descent&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This extreme case of this skipping will be when we are projecting only after we reach the optimal point
+&lt;li&gt;&lt;strong&gt;Infinite-step look-ahead gradient descent projection&lt;/strong&gt; :
+The extreme case of $k$-skip algorithms will be when we are projecting only after we reach the optimal point
 $$\begin{equation}
 y = \arg\min f(x)
-\end{equation}$$&lt;/p&gt;
+\end{equation}$$&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;$$\begin{equation}
 x^* = P_{\chi}(y)
-\end{equation}$$&lt;/p&gt;
-&lt;p&gt;The problem with this being, the fixed point of both these cases ned not be the same and therein problem lies.&lt;/p&gt;
-&lt;p&gt;But this need not be the same as the fixed point of the iterative scheme,
-$$\begin{equation}
-x_{k+1} = P_{\chi}(x_{k} - \eta\nabla f(x_k))
-\end{equation}$$&lt;/p&gt;
-&lt;p&gt;Thus the error between this two schemes is what we are seeing in the Figure 2.&lt;/p&gt;
+\end{equation}$$
+As noted in the sample simulations, the issue here is the difference in the fixed points in both these cases.&lt;/p&gt;
+&lt;p&gt;This provides a good intuition for the behaviour witnessed in tail-end of Figure 2.&lt;/p&gt;
 &lt;h2 id=&#34;possibly-workaround&#34;&gt;Possibly Workaround&lt;/h2&gt;
-&lt;p&gt;We can make $\eta$(stepsize) step dependent like $\frac{1}{k}$ which follows $\sum \eta_k = \infty$ and $\sum \eta^2 &amp;lt; \infty$ which will again ensure that $error \rightarrow 0$ as $k \rightarrow \infty$.\&lt;br&gt;
-Using the same logic, I simulated it with the same functions as  previous plots. Results are as follows,&lt;/p&gt;
+&lt;p&gt;One easy and quick workaround to make sure that all the $k$-skip algorithms converge to the &lt;em&gt;same&lt;/em&gt; point is to have decaying stepsizes i.e., we can make step-size (\eta) decay as $\frac{1}{t}$ which follows $\sum \eta_t = \infty$ and $\sum \eta_t^2 &amp;lt; \infty$.&lt;/p&gt;
+&lt;p&gt;Simulating the same setup with the new step-size routine, we obtain the following tail behaviour,&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/sk_proj_decay.png&#34; alt=&#34; Zoom &#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;drawbacks&#34;&gt;Drawbacks&lt;/h2&gt;
-&lt;p&gt;Even if this approach shows some change in the number of projections required, but this change wont be significant enough for a factor reduction.
-There are no significant changes in the convergence rate of this new proposed algorithm, and hence I dont think there is much hope for the idea to form a good enough innovation.&lt;/p&gt;
+&lt;h2 id=&#34;benefits&#34;&gt;Benefits&lt;/h2&gt;
+&lt;p&gt;In constrained optimization, one of the major computation issues concerning projected gradient descent is the projection step. Using the $k$-skip projected gradient descent reduces the total number of projections required by a multiplicative factor.&lt;/p&gt;
+&lt;!--
+## Drawbacks
+
+Even if this approach shows some change in the number of projections required, but this change wont be significant enough for a factor reduction.
+There are no significant changes in the convergence rate of this new proposed algorithm, and hence I dont think there is much hope for the idea to form a good enough innovation.
+--&gt;
 &lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 &lt;p&gt;Copyright 2017 
 &lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;

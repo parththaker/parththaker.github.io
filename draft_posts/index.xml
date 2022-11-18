@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Draft_posts | Parth Thaker</title>
+    <link>https://parththaker.github.io/draft_posts/</link>
+      <atom:link href="https://parththaker.github.io/draft_posts/index.xml" rel="self" type="application/rss+xml" />
+    <description>Draft_posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Tue, 01 Aug 2017 12:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Draft_posts</title>
+      <link>https://parththaker.github.io/draft_posts/</link>
+    </image>
+    
+    <item>
+      <title>Experimentation with audio sink</title>
+      <link>https://parththaker.github.io/draft_posts/working-with-speaker-port/</link>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/draft_posts/working-with-speaker-port/</guid>
+      <description>&lt;p&gt;First I tried experimenting , first good/cool thing I found was this command :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /dev/urandom | padsp tee /dev/audio &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OR&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /dev/urandom | padsp tee /dev/dsp &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both produces white noise in speakers.&lt;/p&gt;
+&lt;p&gt;On good/sad thing is it sends to the audio sink you have&amp;hellip; If the comp is on speaker mode&amp;hellip; the noise will be in your speakers&lt;/p&gt;
+&lt;p&gt;If there are headphones, it will be your headphones..&lt;/p&gt;
+&lt;p&gt;But on trying to do something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat &amp;lt;somefile&amp;gt;.mp3 | padsp tee /dev/audio &amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Unsurprisingly it didn&amp;rsquo;t work. Reason : My speculation, .mp3 is a coding format and it might not have suited the format in which /dev/audio wanted it&amp;hellip;&lt;/p&gt;
+&lt;p&gt;On to next cool thing (found a lot of them while tweaking things) is the program called mpg123. It is used as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mpg123 &amp;lt;somefile&amp;gt;.mp3 | /dev/pcsp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;/dev/pcsp&lt;/code&gt; basically is your speaker. &lt;code&gt;mpg123&lt;/code&gt; decodes .mp3 file into raw streaming data which is piped (&amp;lsquo;|&amp;rsquo;) to speakers&lt;/p&gt;
+&lt;p&gt;A good thing about speakers is that it can overlap all noises no locking system as to who can write and stuff. Nice one&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Ok.. So we got a way in which we can run raw data streams into speakers. Now how about capturing what is being run to the speakers. In other words snooping on the /dev/pcsp (I am not sure /dev/pcsp is the right place to snoop.)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;arecord -f cd -t raw
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above command starts recording whatever is heard on the speakers. Now to pipe it to a music file we use the &amp;lsquo;oggenc&amp;rsquo; package. So finally its&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;arecord -f cd -t raw | oggenc - -r -o file.ogg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will create a music file in the current directory which is capturing all of the sound played in your speakers.&lt;/p&gt;
+&lt;p&gt;So where are we right now. We have a way to play to a speaker, we have a way to record from a speaker. Now the remaining is to make a connection.&lt;/p&gt;
+&lt;p&gt;Supporting articles :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://debian-administration.org/article/145/use_and_abuse_of_pipes_with_audio_data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://debian-administration.org/article/145/use_and_abuse_of_pipes_with_audio_data&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This article deals with piping raw data to files of 0 byte size (FIFO files) and then playing it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://debian-administration.org/article/58/Netcat_The_TCP/IP_Swiss_army_knife&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://debian-administration.org/article/58/Netcat_The_TCP/IP_Swiss_army_knife&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This article deals with using &lt;code&gt;netcat&lt;/code&gt; for listening and sending data on ports.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2017 
+&lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Released under the 
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt;
+ license.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux DC&#43;&#43; problem</title>
+      <link>https://parththaker.github.io/draft_posts/caution-linux-dc/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/draft_posts/caution-linux-dc/</guid>
+      <description>&lt;p&gt;Linux DC++ is a quite popular File sharing application used on the Linux OS. It looks something like this …&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/linuxdc.png&#34; alt=&#34;LinuxDC++&#34;&gt;&lt;/p&gt;
+&lt;p&gt;One of the major benefits which I saw with Linux DC++ compared to its alternatives like Eiskalt DC++ is that Linux DC++ consumes a relatively smaller amount of RAM and doesn&amp;rsquo;t lag the system which I found to be a big drawback for Eiskalt DC++&lt;/p&gt;
+&lt;p&gt;Anyway, there was one erratic behavior which I was quite irritated about in Linux DC++. At some random time on some random you are peacefully downloading stuff from DC and then suddenly the entire downloads directory is missing.&lt;/p&gt;
+&lt;p&gt;You already have space constraints in your system and then the downloads folder with some very &lt;em&gt;ahem ahem&lt;/em&gt; important files just go away and worse … the space is not even empty.&lt;/p&gt;
+&lt;p&gt;So I started looking up the bug, and viola found it.&lt;/p&gt;
+&lt;p&gt;You can find all your stuff in folders within ~/.dc++/FileLists/. There will be a lot of folders with very weird names and all of your deleted stuff will be inside there. Just have to bring them out using the mv command.&lt;/p&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2017 
+&lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Released under the 
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt;
+ license.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Managing multiple github accounts</title>
+      <link>https://parththaker.github.io/draft_posts/github-managing-multiple-accounts/</link>
+      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/draft_posts/github-managing-multiple-accounts/</guid>
+      <description>&lt;p&gt;When you are dealing with multiple github accounts you have to be careful of two things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Having proper rights to pull from git&lt;/li&gt;
+&lt;li&gt;Having proper rights to push to git&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It may seem as to the solution to both the problems should be the same, but they are slightly different. Lets look at both the points :&lt;/p&gt;
+&lt;h2 id=&#34;having-proper-rights-to-pull-from-git&#34;&gt;Having proper rights to pull from git&lt;/h2&gt;
+&lt;p&gt;When you are dealing with multiple accounts, there is 
+&lt;a href=&#34;http://mherman.org/blog/2013/09/16/managing-multiple-github-accounts/#.WFKRwHV948o&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; this nice post &lt;/a&gt;
+ which gives the instructions as to how to go about it.&lt;/p&gt;
+&lt;p&gt;Here the basic essence of the whole procedure is that one has to be careful as to which SSH key is being associated with the github account. This is being precisely targeted in the above indicated post.&lt;/p&gt;
+&lt;h2 id=&#34;having-proper-rights-to-push-to-git&#34;&gt;Having proper rights to push to git&lt;/h2&gt;
+&lt;p&gt;Now the first question which comes to mind is, &amp;ldquo;Why isn&amp;rsquo;t the last setup sufficient for resolving this?&amp;quot;.&lt;/p&gt;
+&lt;p&gt;That would have been the case (not requiring further complications) if only one user can work on a single SSH key. You can have a single SSH key being used by different user-names on different github project. Hence the question arises, &amp;ldquo;Which is the correct user-name for the current commit push?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Thus, in conclusion, one should set up local config setting for each project using,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config user.email &amp;quot;accountname@domain.com&amp;quot;
+git config user.name &amp;quot;username&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can as well use the above commands with the global flag to set it common for all the projects as follows&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.email &amp;quot;accountname@domain.com&amp;quot;
+git config --global user.name &amp;quot;username&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will set the credentials for user.email and user.name as a backup option when the local setting are not present. However I would discourage the use of the global flag. A logical thought experiment is below:&lt;/p&gt;
+&lt;p&gt;Lets consider you start a new project with a username which is different from what is set using the global flag. Now in case you forget to setup the local credentials and push your changes then the changes are being pushed with a undesirable username and email.&lt;/p&gt;
+&lt;p&gt;If on the other hand, the global user.email and user.name settings are not present, git throws error during pushing that you have not setup the local settings and thus cannot push, which will remind you to setup the credentials which you want to push the changes by.&lt;/p&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2017 
+&lt;a href=&#34;https://parththaker.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parth Thaker&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Released under the 
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt;
+ license.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

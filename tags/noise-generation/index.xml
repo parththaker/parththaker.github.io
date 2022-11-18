@@ -5,7 +5,7 @@
     <link>https://parththaker.github.io/tags/noise-generation/</link>
       <atom:link href="https://parththaker.github.io/tags/noise-generation/index.xml" rel="self" type="application/rss+xml" />
     <description>noise generation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Tue, 01 Aug 2017 12:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>noise generation</title>
@@ -14,9 +14,9 @@
     
     <item>
       <title>Experimentation with audio sink</title>
-      <link>https://parththaker.github.io/post/working-with-speaker-port/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/post/working-with-speaker-port/</guid>
+      <link>https://parththaker.github.io/draft_posts/working-with-speaker-port/</link>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/draft_posts/working-with-speaker-port/</guid>
       <description>&lt;p&gt;First I tried experimenting , first good/cool thing I found was this command :&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cat /dev/urandom | padsp tee /dev/audio &amp;gt; /dev/null
 &lt;/code&gt;&lt;/pre&gt;

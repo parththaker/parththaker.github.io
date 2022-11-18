@@ -5,7 +5,7 @@
     <link>https://parththaker.github.io/tags/missing-downloads/</link>
       <atom:link href="https://parththaker.github.io/tags/missing-downloads/index.xml" rel="self" type="application/rss+xml" />
     <description>missing downloads</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Sat, 01 Jul 2017 12:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>missing downloads</title>
@@ -14,9 +14,9 @@
     
     <item>
       <title>Linux DC&#43;&#43; problem</title>
-      <link>https://parththaker.github.io/post/caution-linux-dc/</link>
+      <link>https://parththaker.github.io/draft_posts/caution-linux-dc/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/post/caution-linux-dc/</guid>
+      <guid>https://parththaker.github.io/draft_posts/caution-linux-dc/</guid>
       <description>&lt;p&gt;Linux DC++ is a quite popular File sharing application used on the Linux OS. It looks something like this …&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/linuxdc.png&#34; alt=&#34;LinuxDC++&#34;&gt;&lt;/p&gt;
 &lt;p&gt;One of the major benefits which I saw with Linux DC++ compared to its alternatives like Eiskalt DC++ is that Linux DC++ consumes a relatively smaller amount of RAM and doesn&amp;rsquo;t lag the system which I found to be a big drawback for Eiskalt DC++&lt;/p&gt;

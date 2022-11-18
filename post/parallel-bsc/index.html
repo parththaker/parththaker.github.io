@@ -234,15 +234,15 @@
   
   <meta property="og:site_name" content="Parth Thaker">
   <meta property="og:url" content="https://parththaker.github.io/post/parallel-bsc/">
-  <meta property="og:title" content="Model for learning in class | Parth Thaker">
+  <meta property="og:title" content="Optimal strategy for classroom behaviour | Parth Thaker">
   <meta property="og:description" content="A take on implication of information theoritic capacity on learning in classroom
 "><meta property="og:image" content="img/map[gravatar:%!s(bool=false) shape:circle]">
   <meta property="twitter:image" content="img/map[gravatar:%!s(bool=false) shape:circle]"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2017-07-01T12:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-09-01T12:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2017-07-01T12:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2020-09-01T12:00:00&#43;00:00">
   
 
   
@@ -270,10 +270,10 @@
     "@type": "WebPage",
     "@id": "https://parththaker.github.io/post/parallel-bsc/"
   },
-  "headline": "Model for learning in class",
+  "headline": "Optimal strategy for classroom behaviour",
   
-  "datePublished": "2017-07-01T12:00:00Z",
-  "dateModified": "2017-07-01T12:00:00Z",
+  "datePublished": "2020-09-01T12:00:00Z",
+  "dateModified": "2020-09-01T12:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -306,7 +306,7 @@
 
 
 
-  <title>Model for learning in class | Parth Thaker</title>
+  <title>Optimal strategy for classroom behaviour | Parth Thaker</title>
 
 </head>
 
@@ -454,6 +454,35 @@
         
         
         
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
 
         <li class="nav-item">
           <a class="nav-link " href="/files/ParthThaker_CV.pdf"><span>CV</span></a>
@@ -510,7 +539,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Model for learning in class</h1>
+  <h1>Optimal strategy for classroom behaviour</h1>
 
   
 
@@ -529,7 +558,7 @@
     
       
     
-    Jul 1, 2017
+    Sep 1, 2020
   </span>
   
 
@@ -574,23 +603,41 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Currently, I am taking a class on Information Theory by Prof. lalitha Sankar while inching forward with my Ph.D. at ASU.</p>
-<p>She gave the following question from the famous Thomas &amp; Clover book as a homework question:</p>
+      <p>During the course of attending Information Theory by Prof. Lalitha Sankar, I encountered the following question from Thomas &amp; Clover in one of the homeworks:</p>
 <p>Calculate the capacity of the following channel with the probability transistion matrix,</p>
 <p>$$\begin{bmatrix}p &amp; 1-p &amp; 0 &amp; 0\\ 1-p &amp; p &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; q &amp; 1-q\\ 0 &amp; 0 &amp; 1-q &amp; q \end{bmatrix}$$</p>
-<p>On a first naive look, my mind tilted towards, &ldquo;Well, you got two channels. Just use the one with best performance&rdquo;. Intuitive it may seem, this is incorrect.
-You have 4 input channels at your disposal and using just 2 of them (corresponding to the best channel) would lead you to under-utilizing the system and hence there should be a better way.</p>
-<p>It seems the correct answer is to use the channel according to the ratio: $\frac{2^{-H(p)}}{2^{-H(p)} +2^{-H(q)}}$, where $H(\alpha)$ would denote the entropy of Bernoulli($\alpha$).</p>
-<p>This got me thinking of a possibility of using this model to analyse the behaviour in the classroom. Consider that you are sitting in a class and the BSC channels model the following :</p>
+<p>Mind&rsquo;s muscle memory kicked in as the math derivation lead to the conclusion that optimal strategy is to use the channel according to the ratio: $\frac{2^{-H(p)}}{2^{-H(p)} +2^{-H(q)}}$, where $H(\alpha)$ would denote the entropy of Bernoulli($\alpha$).</p>
+<p>A few moment of stagnant staring at the problem got me thinking of a potential use case.</p>
+<p>A student is attending a lecture and the BSC channels model the following</p>
 <ol>
-<li><strong>First BSC channel</strong> : Denotes the intensity of the material being taught in class &ndash; By this I mean, for a person having full knowledge of measure theory might find an introductory class on Probability a bit easy.
-Thus the person would have parameter $p\approx \frac{1}{2}$, which indicates the corresponds that channel being noisy $\leftrightarrow$ easy class. This would also mean that a look at the material taught by the prof once every 10 minutes would give him a complete picture of what is happening in class.</li>
-<li><strong>Second BSC channel</strong> : Models his success with other pursuits in classroom &ndash; For me it would be thinking of strategies in board games or working on a different problem. For some others it might be chatting on phone, etc.
-Thus parameter $q$ models how clearly one can think of that other task being performed while in classroom.</li>
+<li><strong>First BSC channel</strong> : Denotes the capability of the student for understanding the material taught in the lecture. Let $X$ denote the event that the student is attentive to what is being taught in the lecture or not and $Y$ model whether the student understood the concept or not.
+$\mathbb{P}(Y|X)$ denotes the probability matrix of the outcomes.
+In order for the channel to behave as a Bernoulli($\alpha$), we make the following assumptions:
+<ul>
+<li>If the student is in tune with the teaching style of the lecturer, then $p\approx 1$ (a perfect learner). $\mathbb{P}(Y=1 | X=1) \approx 1$ i.e. given complete attention, student understands it completely. On the other hand, given no attention student doesnt gain anything hence $P(Y=0 | X=0)\approx 1$</li>
+<li>If the student is completely oblivious to the lecturer&rsquo;s teaching patterns and is attending the course because his grad advisor forced his hand, then we model it as a Bernoulli($\frac{1}{2}$). This is because whether the student is attentive or not, the conclusion is that the student is not understanding the course content.</li>
+</ul>
+</li>
 </ol>
-<p>If this is the case, then surprising result comes out of the question posed in the homework assignment &ndash; It is information theoritically suboptimal to completely focus on the content being taught in class or completely zone out in your own world.</p>
-<p>There is an ideal ratio in which both needs to be pursued during your classroom time.</p>
-<p>So, now you have an argument if prof catches you being zoned out in class.</p>
+<!--the of the material being taught in class -- By this I mean, for a person having full knowledge of measure theory might find an introductory class on Probability a bit easy. 
+Thus the person would have parameter $p\approx \frac{1}{2}$, which indicates the corresponds that channel being noisy $\leftrightarrow$ easy class. This would also mean that a look at the material taught by the prof once every 10 minutes would give him a complete picture of what is happening in class. 
+-->
+<ol start="2">
+<li><strong>Second BSC channel</strong> : Denotes the capability of student in alternate pursuits in classroom &ndash;
+<ul>
+<li>Thinking of research project the student is working on (this is me)</li>
+<li>Thinking of strategies in board games (also me. 
+<a href="https://boardgamegeek.com/boardgame/120677/terra-mystica" target="_blank" rel="noopener">Terra Mystica</a>
+!!!)</li>
+<li>Chatting on phone, replying to mails, twitter ,etc.
+The parameter $q$ models how clearly one can think of that other task being performed while in classroom.</li>
+</ul>
+</li>
+</ol>
+<p>If we consider this model then the surprising conclusion of this homework problem comes to :</p>
+<p><em>It is information theoritically suboptimal to completely focus on the content being taught in class</em></p>
+<p>There is an ideal ratio in which both needs to be pursued during your classroom time. So, the next time you have are caught distracted in class you have an argument to make.</p>
+<p>Though you cant completely zone out as well, since that is also a suboptimal strategy :)</p>
 <h2 id="license">License</h2>
 <p>Copyright 2017 
 <a href="https://parththaker.github.io/" target="_blank" rel="noopener">Parth Thaker</a>
@@ -630,7 +677,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://parththaker.github.io/post/parallel-bsc/&amp;text=Model%20for%20learning%20in%20class" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://parththaker.github.io/post/parallel-bsc/&amp;text=Optimal%20strategy%20for%20classroom%20behaviour" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -643,7 +690,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://parththaker.github.io/post/parallel-bsc/&amp;t=Model%20for%20learning%20in%20class" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://parththaker.github.io/post/parallel-bsc/&amp;t=Optimal%20strategy%20for%20classroom%20behaviour" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -656,7 +703,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="mailto:?subject=Model%20for%20learning%20in%20class&amp;body=https://parththaker.github.io/post/parallel-bsc/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Optimal%20strategy%20for%20classroom%20behaviour&amp;body=https://parththaker.github.io/post/parallel-bsc/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -669,7 +716,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://parththaker.github.io/post/parallel-bsc/&amp;title=Model%20for%20learning%20in%20class" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://parththaker.github.io/post/parallel-bsc/&amp;title=Optimal%20strategy%20for%20classroom%20behaviour" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -682,7 +729,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Model%20for%20learning%20in%20class%20https://parththaker.github.io/post/parallel-bsc/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Optimal%20strategy%20for%20classroom%20behaviour%20https://parththaker.github.io/post/parallel-bsc/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -695,7 +742,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://parththaker.github.io/post/parallel-bsc/&amp;title=Model%20for%20learning%20in%20class" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://parththaker.github.io/post/parallel-bsc/&amp;title=Optimal%20strategy%20for%20classroom%20behaviour" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -935,7 +982,7 @@ Thus parameter $q$ models how clearly one can think of that other task being per
   
 
   <p class="powered-by">
-    © 2021 Parth Thaker &middot; 
+    © 2022 Parth Thaker &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

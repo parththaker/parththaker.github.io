@@ -5,12 +5,36 @@
     <link>https://parththaker.github.io/tags/</link>
       <atom:link href="https://parththaker.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021 Parth Thaker</copyright><lastBuildDate>Tue, 01 May 2018 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2022 Parth Thaker</copyright><lastBuildDate>Tue, 01 Sep 2020 12:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Tags</title>
       <link>https://parththaker.github.io/tags/</link>
     </image>
+    
+    <item>
+      <title>BSC channel</title>
+      <link>https://parththaker.github.io/tags/bsc-channel/</link>
+      <pubDate>Tue, 01 Sep 2020 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/tags/bsc-channel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>education</title>
+      <link>https://parththaker.github.io/tags/education/</link>
+      <pubDate>Tue, 01 Sep 2020 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/tags/education/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Information theory</title>
+      <link>https://parththaker.github.io/tags/information-theory/</link>
+      <pubDate>Tue, 01 Sep 2020 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/tags/information-theory/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>projected gradient descent</title>
@@ -23,32 +47,16 @@
     <item>
       <title>audio sink</title>
       <link>https://parththaker.github.io/tags/audio-sink/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       <guid>https://parththaker.github.io/tags/audio-sink/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>BSC channel</title>
-      <link>https://parththaker.github.io/tags/bsc-channel/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/bsc-channel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>chebyshev</title>
-      <link>https://parththaker.github.io/tags/chebyshev/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/chebyshev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>education</title>
-      <link>https://parththaker.github.io/tags/education/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/education/</guid>
+      <title>noise generation</title>
+      <link>https://parththaker.github.io/tags/noise-generation/</link>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
+      <guid>https://parththaker.github.io/tags/noise-generation/</guid>
       <description></description>
     </item>
     
@@ -57,14 +65,6 @@
       <link>https://parththaker.github.io/tags/github/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       <guid>https://parththaker.github.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Information theory</title>
-      <link>https://parththaker.github.io/tags/information-theory/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/information-theory/</guid>
       <description></description>
     </item>
     
@@ -89,30 +89,6 @@
       <link>https://parththaker.github.io/tags/multiple-accounts/</link>
       <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
       <guid>https://parththaker.github.io/tags/multiple-accounts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>noise generation</title>
-      <link>https://parththaker.github.io/tags/noise-generation/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/noise-generation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>numerical</title>
-      <link>https://parththaker.github.io/tags/numerical/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/numerical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>polynomials</title>
-      <link>https://parththaker.github.io/tags/polynomials/</link>
-      <pubDate>Sat, 01 Jul 2017 12:00:00 +0000</pubDate>
-      <guid>https://parththaker.github.io/tags/polynomials/</guid>
       <description></description>
     </item>
     
