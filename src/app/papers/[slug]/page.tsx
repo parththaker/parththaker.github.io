@@ -165,7 +165,7 @@ export default async function PaperPage({ params }: Props) {
 
         {/* Main Content */}
         <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200">
-          <div className="prose prose-slate max-w-none prose-headings:gradient-text prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+          <div className="prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
             <div dangerouslySetInnerHTML={{ __html: paper.content }} />
           </div>
         </div>
