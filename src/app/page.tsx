@@ -426,31 +426,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Get Started Section */}
-          <div className="mt-16 text-center">
-            <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold gradient-text mb-6">Markdown-Powered Content</h3>
-              <p className="text-slate-700 mb-6 text-lg">
-                This website automatically renders content from markdown files. Simply add your content and watch it come to life.
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
-                  <h4 className="font-semibold text-blue-800 mb-2">Papers</h4>
-                  <p className="text-slate-600 text-sm">
-                    Add <code className="bg-blue-200 px-2 py-1 rounded text-blue-800">.md</code> files to{' '}
-                    <code className="bg-blue-200 px-2 py-1 rounded text-blue-800">content/papers/</code>
-                  </p>
-                </div>
-                <div className="p-4 rounded-xl bg-orange-50 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Blog Posts</h4>
-                  <p className="text-slate-600 text-sm">
-                    Add <code className="bg-orange-200 px-2 py-1 rounded text-orange-800">.md</code> files to{' '}
-                    <code className="bg-orange-200 px-2 py-1 rounded text-orange-800">content/blogs/</code>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
