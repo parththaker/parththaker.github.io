@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "highlight.js/styles/github.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -191,4 +192,53 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600;
+}
+
+/* Enhanced markdown rendering */
+.prose {
+  @apply max-w-none;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-50 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold mb-6 mt-8;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold mb-4 mt-8;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold mb-4 mt-6;
+}
+
+.prose h4 {
+  @apply text-xl font-semibold mb-3 mt-4;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply mb-4 ml-6 list-disc;
+}
+
+.prose ol {
+  @apply mb-4 ml-6 list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
 }

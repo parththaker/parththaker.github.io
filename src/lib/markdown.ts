@@ -2,8 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
-import remarkHtml from 'remark-html'
 import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
+import remarkRehype from 'remark-rehype'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeStringify from 'rehype-stringify'
 
 const contentDirectory = path.join(process.cwd(), 'content')
 
@@ -46,7 +49,10 @@ export async function getContentBySlug(
     
     const processedContent = await remark()
       .use(remarkGfm)
-      .use(remarkHtml, { sanitize: false })
+      .use(remarkBreaks)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeHighlight)
+      .use(rehypeStringify, { allowDangerousHtml: true })
       .process(content)
     
     return {

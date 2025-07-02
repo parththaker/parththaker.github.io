@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 }
 
 export default async function PaperPage({ params }: Props) {
-  const paper = await getContentBySlug('papers', params.slug)
+  const { slug } = await params
+  const paper = await getContentBySlug('papers', slug)
   
   if (!paper) {
     notFound()

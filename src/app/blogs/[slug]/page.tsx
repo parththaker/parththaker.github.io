@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPage({ params }: Props) {
-  const blog = await getContentBySlug('blogs', params.slug)
+  const { slug } = await params
+  const blog = await getContentBySlug('blogs', slug)
   
   if (!blog) {
     notFound()
