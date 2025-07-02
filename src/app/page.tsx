@@ -148,19 +148,19 @@ export default function Home() {
                 
                 <div className="space-y-4">
                   <p className="text-2xl text-slate-600 font-medium">
-                    Ph.D. Student in Electrical Engineering
+                    AI Research Scientist
                   </p>
                   <p className="text-lg text-slate-500">
-                    Arizona State University
+                    Intuitive Surgical | Ph.D. in Electrical Engineering
                   </p>
                 </div>
                 
                 <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
                 
                 <p className="text-xl text-slate-700 leading-relaxed max-w-2xl">
-                  Working with <span className="font-semibold text-blue-600">Prof. Gautam Dasarathy</span> on fascinating problems at the intersection of 
-                  <span className="font-semibold"> Graph Theory and Optimization</span>. 
-                  Exploring new frontiers in research and sharing insights along the way.
+                  <span className="font-semibold text-green-600">AI Research Scientist</span> at <span className="font-semibold text-blue-600">Intuitive Surgical</span>, 
+                  where I craft secure and privacy-safe LLM workflows that make humans more productive (and occasionally wonder if the robots will thank me later 🤖). 
+                  From document-whispering chatbots to security-paranoid AI analyzers, I'm building the future of developer productivity—one algorithm at a time.
                 </p>
               </div>
 
@@ -200,26 +200,66 @@ export default function Home() {
             {/* Education */}
             <div className="space-y-6">
               <h2 className="text-3xl font-bold gradient-text">Education</h2>
-              <div className="space-y-4">
-                {[
-                  { degree: "Ph.D. Electrical Engineering", school: "Arizona State University", year: "2017 - Present", status: "current" },
-                  { degree: "M.Tech Communication", school: "IIT Madras", year: "2016", status: "completed" },
-                  { degree: "B.Tech Electrical Engineering", school: "IIT Madras", year: "2015", status: "completed" }
-                ].map((edu, index) => (
-                  <div 
-                    key={index}
-                    className="network-card p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-slate-800">{edu.degree}</h3>
-                        <p className="text-blue-600 font-medium">{edu.school}</p>
-                        <p className="text-slate-500 text-sm">{edu.year}</p>
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-blue-500 to-indigo-500"></div>
+                
+                <div className="space-y-8">
+                  {[
+                    { 
+                      degree: "Ph.D. Electrical Engineering", 
+                      school: "Arizona State University", 
+                      year: "May 2024", 
+                      desc: "Dissertation on Graph Theory and Optimization under Prof. Gautam Dasarathy",
+                      location: "Phoenix, AZ",
+                      type: "doctorate"
+                    },
+                    { 
+                      degree: "M.Tech Communication", 
+                      school: "IIT Madras", 
+                      year: "2016", 
+                      desc: "Specialized in communication systems and signal processing",
+                      location: "Chennai, India",
+                      type: "masters"
+                    },
+                    { 
+                      degree: "B.Tech Electrical Engineering", 
+                      school: "IIT Madras", 
+                      year: "2015", 
+                      desc: "Foundation in electrical engineering and mathematical optimization",
+                      location: "Chennai, India",
+                      type: "bachelors"
+                    }
+                  ].map((edu, index) => (
+                    <div key={index} className="relative flex items-start gap-6">
+                      {/* Timeline node */}
+                      <div className={`relative z-10 w-4 h-4 rounded-full border-4 border-white shadow-lg ${
+                        edu.type === 'doctorate' ? 'bg-green-500' :
+                        edu.type === 'masters' ? 'bg-blue-500' : 'bg-indigo-500'
+                      }`}></div>
+                      
+                      {/* Education card */}
+                      <div className="flex-1 network-card p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200">
+                        <div className="space-y-3">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <h3 className="font-bold text-slate-800 text-lg">{edu.degree}</h3>
+                              <p className="text-blue-600 font-semibold">{edu.school}</p>
+                              <p className="text-slate-500 text-sm">{edu.location}</p>
+                            </div>
+                            <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                              edu.type === 'doctorate' ? 'bg-green-100 text-green-700' :
+                              edu.type === 'masters' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700'
+                            }`}>
+                              {edu.year}
+                            </div>
+                          </div>
+                          <p className="text-slate-700 leading-relaxed">{edu.desc}</p>
+                        </div>
                       </div>
-                      <div className={`w-3 h-3 rounded-full ${edu.status === 'current' ? 'bg-green-500 animate-pulse' : 'bg-blue-500'}`}></div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -232,6 +272,14 @@ export default function Home() {
                 
                 <div className="space-y-8">
                   {[
+                    { 
+                      role: "AI Research Scientist", 
+                      company: "Intuitive Surgical", 
+                      year: "Jul 2024 - Present", 
+                      desc: "Developing secure and privacy-safe LLM workflows for enhanced worker productivity. Built document + image chatbots, security analyzers for LLM models, and LLM + CI/CD integration tools for developer productivity.",
+                      location: "Sunnyvale, CA",
+                      type: "current"
+                    },
                     { 
                       role: "Summer Intern - Algorithms", 
                       company: "Mitsubishi Electric Research Labs", 
@@ -276,6 +324,7 @@ export default function Home() {
                     <div key={index} className="relative flex items-start gap-6">
                       {/* Timeline node */}
                       <div className={`relative z-10 w-4 h-4 rounded-full border-4 border-white shadow-lg ${
+                        exp.type === 'current' ? 'bg-green-500' :
                         exp.type === 'research' ? 'bg-purple-500' :
                         exp.type === 'fulltime' ? 'bg-blue-500' : 'bg-indigo-500'
                       }`}></div>
@@ -290,6 +339,7 @@ export default function Home() {
                               <p className="text-slate-500 text-sm">{exp.location}</p>
                             </div>
                             <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                              exp.type === 'current' ? 'bg-green-100 text-green-700' :
                               exp.type === 'research' ? 'bg-purple-100 text-purple-700' :
                               exp.type === 'fulltime' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700'
                             }`}>
