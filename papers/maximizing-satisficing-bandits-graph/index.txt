@@ -1,0 +1,77 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+5:I[9665,[],"OutletBoundary"]
+8:I[4911,[],"AsyncMetadataOutlet"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/_next/static/media/39b0e861c537f507-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6801a04e29283989.css","style"]
+:HL["/_next/static/css/d6332be129627da4.css","style"]
+0:{"P":null,"b":"SzUKX5IZk5eleZ0gPV_-H","p":"","c":["","papers","maximizing-satisficing-bandits-graph",""],"i":false,"f":[[["",{"children":["papers",{"children":[["slug","maximizing-satisficing-bandits-graph","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6801a04e29283989.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d6332be129627da4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_e8ce0c __variable_96cdd1 antialiased font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["papers",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","maximizing-satisficing-bandits-graph","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6","$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","qNilmLghUs896JMeq1u7-v",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:"$Sreact.suspense"
+10:I[4911,[],"AsyncMetadata"]
+d:["$","div",null,{"hidden":true,"children":["$","$f",null,{"fallback":null,"children":["$","$L10",null,{"promise":"$@11"}]}]}]
+7:null
+12:I[8694,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+13:I[449,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+14:I[6874,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],""]
+15:Td35,<!-- # Maximizing and Satisficing in Multi-armed Bandits with Graph Information -->
+<h2>Problem Motivation</h2>
+<p>In modern applications, decision-makers often face a tremendously large number of options where obtaining even one observation per option may be prohibitively costly. Traditional pure exploration algorithms become ineffective in such scenarios. However, one often has access to similarity relationships among the options that can be leveraged to improve exploration efficiency.</p>
+<h2>Key Contributions</h2>
+<h3>1. Problem Formulation</h3>
+<ul>
+<li><strong>Graph-based Multi-armed Bandits</strong>: Arm similarities captured by a graph structure</li>
+<li><strong>Smooth Signal Assumption</strong>: Rewards represented as smooth signals on the graph</li>
+<li><strong>Dual Problem Types</strong>:
+<ul>
+<li><strong>Maximizing Problem</strong>: Finding the arm with maximum reward</li>
+<li><strong>Satisficing Problem</strong>: Finding an arm with sufficiently high reward</li>
+</ul>
+</li>
+</ul>
+<h3>2. Novel Algorithms</h3>
+<h4>GRUB (GRaph-based UcB)</h4>
+<ul>
+<li>Leverages graph structure for efficient exploration</li>
+<li>Incorporates graph information into Upper Confidence Bound framework</li>
+<li>Designed for the maximizing problem</li>
+</ul>
+<h4>ζ-GRUB</h4>
+<ul>
+<li>Extension for the satisficing problem</li>
+<li>Aims to find arms with rewards above a threshold ζ</li>
+<li>Balances exploration with practical sufficiency criteria</li>
+</ul>
+<h3>3. Theoretical Analysis</h3>
+<ul>
+<li><strong>Performance Characterization</strong>: Explicit theoretical analysis showing how graph side information improves performance</li>
+<li><strong>Lower Bounds</strong>: Proved fundamental limits on data requirements</li>
+<li><strong>Near-Optimality</strong>: Demonstrated that proposed algorithms achieve near-optimal performance for a large class of problems</li>
+</ul>
+<h3>4. Experimental Validation</h3>
+<p>The authors complement their theoretical contributions with experimental results demonstrating the practical benefits of incorporating graph side information in bandit problems.</p>
+<h2>Technical Innovation</h2>
+<p>The paper's core innovation lies in recognizing that similarity structures between arms can be formalized through graph representations, where:</p>
+<ul>
+<li><strong>Nodes</strong> represent arms/options</li>
+<li><strong>Edges</strong> capture similarity relationships</li>
+<li><strong>Graph smoothness</strong> ensures that similar arms have similar expected rewards</li>
+</ul>
+<p>This graph-theoretic approach enables more efficient exploration by allowing information from one arm to inform decisions about similar arms, dramatically reducing the sample complexity in large-scale problems.</p>
+<h2>Impact and Applications</h2>
+<p>This work has significant implications for:</p>
+<ul>
+<li><strong>Recommendation Systems</strong>: Leveraging user/item similarity graphs</li>
+<li><strong>Clinical Trials</strong>: Using patient similarity networks for treatment selection</li>
+<li><strong>Online Advertising</strong>: Exploiting advertiser/audience similarity structures</li>
+<li><strong>Resource Allocation</strong>: Utilizing dependency graphs in distributed systems</li>
+</ul>
+<p>The theoretical framework provides a principled approach to incorporating prior knowledge about option relationships into sequential decision-making processes.</p>4:["$","div",null,{"className":"min-h-screen relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50","children":[["$","$L12",null,{}],["$","$L13",null,{}],["$","nav",null,{"className":"relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0","children":["$","div",null,{"className":"max-w-7xl mx-auto px-6 py-4","children":["$","div",null,{"className":"flex justify-between items-center","children":[["$","$L14",null,{"href":"/","className":"text-2xl font-bold gradient-text","children":"Parth K. Thaker"}],["$","div",null,{"className":"flex gap-8","children":[["$","$L14",null,{"href":"/papers","className":"relative group","children":[["$","span",null,{"className":"text-blue-600 font-medium","children":"Papers"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500"}]]}],["$","$L14",null,{"href":"/blogs","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-orange-600 transition-colors duration-300 font-medium","children":"Blog"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"}]]}],["$","$L14",null,{"href":"/hobbies","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium","children":"Hobbies"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"}]]}]]}]]}]}]}],["$","div",null,{"className":"relative z-10 max-w-5xl mx-auto px-6 py-12","children":[["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":["$","div",null,{"className":"space-y-6","children":["$","div",null,{"children":[["$","h1",null,{"className":"text-4xl font-bold gradient-text mb-4","children":"Maximizing and Satisficing in Multi-armed Bandits with Graph Information"}],["$","div",null,{"className":"flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm","children":[["$","div",null,{"className":"text-slate-500","children":"P Thaker, M Malu, N Rao et al."}],["$","div",null,{"className":"text-slate-500","children":"November 2022"}],["$","div",null,{"className":"text-slate-500","children":"NeurIPS 2022"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-6","children":[["$","span","Multi-armed Bandits",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Multi-armed Bandits"}],["$","span","Graph Theory",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Graph Theory"}],["$","span","Pure Exploration",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Pure Exploration"}],["$","span","Optimization",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Optimization"}],["$","span","Machine Learning",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Machine Learning"}]]}],["$","div",null,{"className":"flex flex-wrap gap-4 pt-4 border-t border-slate-200","children":[["$","a",null,{"href":"https://arxiv.org/abs/2108.01152","className":"flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"w-2 h-2 bg-blue-500 rounded-full"}],"arXiv: ","2108.01152"]}],"$undefined","$undefined","$undefined","$undefined","$undefined"]}]]}]}]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"Abstract"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"We consider the pure exploration problem in stochastic multi-armed bandits where the similarities between the arms are captured by a graph and the rewards may be represented as a smooth signal on this graph. We specifically examine the problem of finding the arm with the maximum reward (maximizing problem) or one with a sufficiently high reward (satisficing problem) under this model. We propose novel algorithms called GRaph-based UcB (GRUB) and ζ-GRUB for these problems and provide a theoretical characterization of their performance which specifically elicits the benefit of the graph side information. We also prove a lower bound on the data requirement, showing a large class of problems where these algorithms are near-optimal. We complement our theory with experimental results that show the benefit of capitalizing on such side information."}]]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"What Excited Me"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"This paper brilliantly tackles one of the most pressing challenges in modern decision-making: how do you efficiently explore when faced with an overwhelming number of options? What excites me most is the elegant fusion of graph theory with bandit algorithms. The key insight that similarity relationships between options can be leveraged through graph structure is both mathematically beautiful and practically powerful. The distinction between maximizing (finding the absolute best) and satisficing (finding something good enough) problems reflects real-world decision-making scenarios perfectly. The theoretical guarantees showing near-optimality combined with the practical algorithms make this work both rigorous and applicable. It's the kind of research that bridges pure mathematics with real-world impact - exactly what gets me excited about the intersection of optimization and machine learning!"}]]}],"$undefined","$undefined",["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200","children":["$","div",null,{"className":"prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline","children":["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$15"}}]}]}]]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+9:{"metadata":[["$","title","0",{"children":"Parth K. Thaker - Research Portfolio"}],["$","meta","1",{"name":"description","content":"Ph.D. Student in Electrical Engineering at Arizona State University. Research in Graph Theory, Optimization, and Bandit Learning."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+11:{"metadata":"$9:metadata","error":null,"digest":"$undefined"}

@@ -1,0 +1,105 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+5:I[9665,[],"OutletBoundary"]
+8:I[4911,[],"AsyncMetadataOutlet"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/_next/static/media/39b0e861c537f507-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6801a04e29283989.css","style"]
+:HL["/_next/static/css/d6332be129627da4.css","style"]
+0:{"P":null,"b":"SzUKX5IZk5eleZ0gPV_-H","p":"","c":["","papers","bandit-based-multi-agent-search-noisy-observations",""],"i":false,"f":[[["",{"children":["papers",{"children":[["slug","bandit-based-multi-agent-search-noisy-observations","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6801a04e29283989.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d6332be129627da4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_e8ce0c __variable_96cdd1 antialiased font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["papers",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","bandit-based-multi-agent-search-noisy-observations","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6","$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","PMaMSpK3cl1NbiaBtEVKRv",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:"$Sreact.suspense"
+10:I[4911,[],"AsyncMetadata"]
+d:["$","div",null,{"hidden":true,"children":["$","$f",null,{"fallback":null,"children":["$","$L10",null,{"promise":"$@11"}]}]}]
+7:null
+12:I[8694,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+13:I[449,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+14:I[6874,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],""]
+15:T14ee,<!-- # Bandit-based multi-agent search under noisy observations -->
+<h2>Problem Motivation</h2>
+<p>Autonomous search missions using teams of multiple agents face several critical challenges:</p>
+<ol>
+<li><strong>Time Efficiency</strong>: Minimizing the time to identify interesting areas in large search environments</li>
+<li><strong>Resource Constraints</strong>: Managing costs and energy usage during agent movement and sensing</li>
+<li><strong>Sensor Limitations</strong>: Dealing with noise from low-cost, lightweight sensors typically used in autonomous systems</li>
+<li><strong>Coordination Complexity</strong>: Developing tractable coordination strategies that scale with team size</li>
+</ol>
+<h2>Technical Approach</h2>
+<h3>Thresholding Multi-Armed Bandits Framework</h3>
+<p>The paper leverages the <strong>thresholding multi-armed bandits</strong> paradigm, which is particularly well-suited for search applications because:</p>
+<ul>
+<li><strong>Goal-Oriented</strong>: Instead of finding the single best location, agents seek areas above a quality threshold</li>
+<li><strong>Practical</strong>: Reflects real-world search objectives where "good enough" locations are valuable</li>
+<li><strong>Efficient</strong>: Reduces sample complexity compared to pure exploration approaches</li>
+</ul>
+<h3>Multi-Agent Coordination Strategy</h3>
+<p>The proposed algorithm addresses coordination through:</p>
+<ul>
+<li><strong>Data-Driven Decisions</strong>: Uses observed data to guide agent movements and sensing actions</li>
+<li><strong>Distributed Intelligence</strong>: Enables agents to make autonomous decisions while maintaining coordination</li>
+<li><strong>Noise Resilience</strong>: Incorporates uncertainty quantification to handle sensor noise</li>
+</ul>
+<h2>Key Theoretical Contributions</h2>
+<h3>1. Finite Upper Bounds</h3>
+<p>The algorithm provides <strong>guaranteed finite upper bounds</strong> on:</p>
+<ul>
+<li><strong>Total search completion time</strong></li>
+<li><strong>Time to label all interesting cells</strong></li>
+<li><strong>Economic costs incurred during the search</strong></li>
+</ul>
+<h3>2. Performance Guarantees</h3>
+<ul>
+<li><strong>Tractable Coordination</strong>: Polynomial-time coordination strategies that scale with team size</li>
+<li><strong>Noise Robustness</strong>: Provable performance even under noisy sensor observations</li>
+<li><strong>Resource Efficiency</strong>: Bounds on energy consumption and movement costs</li>
+</ul>
+<h2>Algorithmic Innovation</h2>
+<h3>Multi-Agent Bandit Framework</h3>
+<ul>
+<li><strong>Parallel Exploration</strong>: Multiple agents simultaneously explore different regions</li>
+<li><strong>Information Sharing</strong>: Agents leverage shared observations to improve collective performance</li>
+<li><strong>Adaptive Allocation</strong>: Dynamic assignment of agents to promising search areas</li>
+</ul>
+<h3>Noise Handling</h3>
+<ul>
+<li><strong>Uncertainty Quantification</strong>: Explicit modeling of sensor noise and observation uncertainty</li>
+<li><strong>Robust Decision Making</strong>: Algorithms that maintain performance under noisy conditions</li>
+<li><strong>Confidence-Based Actions</strong>: Decisions based on confidence intervals rather than point estimates</li>
+</ul>
+<h2>Applications and Impact</h2>
+<h3>Autonomous Robotics</h3>
+<ul>
+<li><strong>Search and Rescue</strong>: Coordinated teams searching for survivors or targets</li>
+<li><strong>Environmental Monitoring</strong>: Multi-robot systems monitoring pollution, wildlife, or weather</li>
+<li><strong>Exploration Missions</strong>: Planetary rovers or underwater vehicles exploring unknown terrain</li>
+</ul>
+<h3>Practical Advantages</h3>
+<ul>
+<li><strong>Low-Cost Sensors</strong>: Algorithm designed for real-world sensor limitations</li>
+<li><strong>Energy Efficiency</strong>: Explicit consideration of movement and sensing costs</li>
+<li><strong>Scalable Teams</strong>: Coordination strategies that work with varying team sizes</li>
+</ul>
+<h2>Technical Significance</h2>
+<p>This work bridges several important research areas:</p>
+<ul>
+<li><strong>Multi-Armed Bandits</strong>: Extending bandit theory to multi-agent scenarios</li>
+<li><strong>Autonomous Systems</strong>: Providing theoretical foundations for practical deployment</li>
+<li><strong>Distributed Decision Making</strong>: Developing coordination mechanisms with performance guarantees</li>
+</ul>
+<h2>Real-World Relevance</h2>
+<p>The emphasis on <strong>noisy observations</strong> and <strong>cost constraints</strong> makes this work particularly relevant for practical deployment. Unlike many theoretical works that assume perfect sensors and unlimited resources, this paper explicitly addresses the limitations that autonomous systems face in real environments.</p>
+<p>The <strong>finite upper bounds</strong> are crucial for mission planning and safety-critical applications where teams need guarantees on search completion times and resource usage.</p>
+<h2>Future Directions</h2>
+<p>This framework opens several avenues for future research:</p>
+<ul>
+<li>Extension to dynamic environments where interesting areas may change over time</li>
+<li>Integration with path planning and obstacle avoidance for realistic deployment scenarios</li>
+<li>Adaptation to heterogeneous teams with agents having different sensing capabilities</li>
+</ul>4:["$","div",null,{"className":"min-h-screen relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50","children":[["$","$L12",null,{}],["$","$L13",null,{}],["$","nav",null,{"className":"relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0","children":["$","div",null,{"className":"max-w-7xl mx-auto px-6 py-4","children":["$","div",null,{"className":"flex justify-between items-center","children":[["$","$L14",null,{"href":"/","className":"text-2xl font-bold gradient-text","children":"Parth K. Thaker"}],["$","div",null,{"className":"flex gap-8","children":[["$","$L14",null,{"href":"/papers","className":"relative group","children":[["$","span",null,{"className":"text-blue-600 font-medium","children":"Papers"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500"}]]}],["$","$L14",null,{"href":"/blogs","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-orange-600 transition-colors duration-300 font-medium","children":"Blog"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"}]]}],["$","$L14",null,{"href":"/hobbies","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium","children":"Hobbies"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"}]]}]]}]]}]}]}],["$","div",null,{"className":"relative z-10 max-w-5xl mx-auto px-6 py-12","children":[["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":["$","div",null,{"className":"space-y-6","children":["$","div",null,{"children":[["$","h1",null,{"className":"text-4xl font-bold gradient-text mb-4","children":"Bandit-based multi-agent search under noisy observations"}],["$","div",null,{"className":"flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm","children":[["$","div",null,{"className":"text-slate-500","children":"P Thaker, S Di Cairano, A P Vinod"}],["$","div",null,{"className":"text-slate-500","children":"June 2023"}],["$","div",null,{"className":"text-slate-500","children":"IFAC 2023"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-6","children":[["$","span","Multi-armed Bandits",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Multi-armed Bandits"}],["$","span","Multi-agent Systems",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Multi-agent Systems"}],["$","span","Autonomous Search",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Autonomous Search"}],["$","span","Robotics",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Robotics"}],["$","span","Noise Robustness",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Noise Robustness"}]]}],["$","div",null,{"className":"flex flex-wrap gap-4 pt-4 border-t border-slate-200","children":["$undefined",["$","a",null,{"href":"https://doi.org/10.1016/j.ifacol.2023.10.1377","className":"flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"w-2 h-2 bg-blue-500 rounded-full"}],"DOI"]}],"$undefined","$undefined","$undefined","$undefined"]}]]}]}]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"Abstract"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"We address autonomous search using teams of multiple agents, requiring tractable coordination strategies that can lower the time to identify interesting areas in the search environment, lower the costs/energy usage by the search agents during movement and sensing, and be resilient to the noise present in the sensed data due to the use of low-cost and low-weight sensors. We propose a data-driven, multi-agent search algorithm to achieve these goals using the framework of thresholding multi-armed bandits. The algorithm includes finite upper bounds on the time taken to complete the search, on the time taken to label all interesting cells, and on the economic costs incurred during the search."}]]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"What Excited Me"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"This paper hits the sweet spot between theory and practice that I absolutely love! What excites me most is how it tackles real-world constraints that make autonomous systems actually deployable - noisy sensors, energy budgets, and coordination overhead. The genius lies in translating the classical multi-armed bandit framework to handle multiple agents simultaneously searching under uncertainty. The thresholding approach is particularly clever because it reflects how search missions actually work: you don't need to find the absolute best locations, just ones that are 'good enough' above some threshold. The finite upper bounds on search time and costs are what make this practical - real autonomous systems need guarantees, not just asymptotic optimality. It's the kind of work that bridges the gap between beautiful mathematical theory and messy real-world robotics!"}]]}],"$undefined","$undefined",["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200","children":["$","div",null,{"className":"prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline","children":["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$15"}}]}]}]]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+9:{"metadata":[["$","title","0",{"children":"Parth K. Thaker - Research Portfolio"}],["$","meta","1",{"name":"description","content":"Ph.D. Student in Electrical Engineering at Arizona State University. Research in Graph Theory, Optimization, and Bandit Learning."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+11:{"metadata":"$9:metadata","error":null,"digest":"$undefined"}

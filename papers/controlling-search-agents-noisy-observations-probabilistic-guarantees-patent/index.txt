@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+5:I[9665,[],"OutletBoundary"]
+8:I[4911,[],"AsyncMetadataOutlet"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/_next/static/media/39b0e861c537f507-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6801a04e29283989.css","style"]
+:HL["/_next/static/css/d6332be129627da4.css","style"]
+0:{"P":null,"b":"SzUKX5IZk5eleZ0gPV_-H","p":"","c":["","papers","controlling-search-agents-noisy-observations-probabilistic-guarantees-patent",""],"i":false,"f":[[["",{"children":["papers",{"children":[["slug","controlling-search-agents-noisy-observations-probabilistic-guarantees-patent","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6801a04e29283989.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d6332be129627da4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_e8ce0c __variable_96cdd1 antialiased font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["papers",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","controlling-search-agents-noisy-observations-probabilistic-guarantees-patent","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6","$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","DtnLkv7eakzaqtR8QybUdv",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:"$Sreact.suspense"
+10:I[4911,[],"AsyncMetadata"]
+d:["$","div",null,{"hidden":true,"children":["$","$f",null,{"fallback":null,"children":["$","$L10",null,{"promise":"$@11"}]}]}]
+7:null
+12:I[8694,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+13:I[449,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+14:I[6874,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],""]
+15:T241d,<h1>Controlling Search Agents to Perform Search with Noisy Observations and Probabilistic Guarantees</h1>
+<p><strong>US Patent Application 20240427327A1</strong><br>
+<strong>Published: December 26, 2024</strong><br>
+<strong>Assignee: Mitsubishi Electric Research Laboratories, Inc.</strong></p>
+<h2>Patent Overview</h2>
+<p>This invention addresses a critical need in autonomous systems: deploying teams of search agents that can operate reliably in real-world environments characterized by sensor noise, uncertainty, and resource constraints while providing mathematical guarantees on performance.</p>
+<h2>Core Innovation: Multi-Level Multi-Armed Bandit Search (MMBS)</h2>
+<p>The patent introduces the <strong>Multi-level Multi-Armed Bandit Search (MMBS) method</strong>, a revolutionary approach that combines:</p>
+<ul>
+<li><strong>Path-level decision making</strong> for fuel-efficient agent coordination</li>
+<li><strong>Region-level classification</strong> for precise target identification</li>
+<li><strong>Probabilistic guarantees</strong> for mission-critical applications</li>
+</ul>
+<h3>Key Technical Problem Solved</h3>
+<p>Traditional autonomous monitoring systems face fundamental limitations:</p>
+<ul>
+<li><strong>High economic costs</strong> from inefficient movement and sensing</li>
+<li><strong>No finite-time guarantees</strong> on search performance</li>
+<li><strong>Inability to handle noisy sensors</strong> from low-cost, lightweight equipment</li>
+<li><strong>Lack of coordination</strong> between multiple agents under physical constraints</li>
+</ul>
+<h2>Patent Claims and System Architecture</h2>
+<h3>1. Control System Architecture</h3>
+<p>The patent claims a complete control system featuring:</p>
+<ul>
+<li><strong>Transceiver</strong> for wireless/wired communication with search agents</li>
+<li><strong>Memory</strong> storing executable MMBS method instructions</li>
+<li><strong>Processor</strong> executing iterative MMBS until termination conditions are met</li>
+</ul>
+<h3>2. Multi-Level Multi-Armed Bandit Search (MMBS) Method</h3>
+<p>The core innovation includes two levels of decision-making:</p>
+<ul>
+<li><strong>Level 1</strong>: Individual probabilistic classifications of regions based on measurements</li>
+<li><strong>Level 2</strong>: Path selection based on aggregated confidence bounds across regions</li>
+</ul>
+<h3>3. Path Planning and Constraints</h3>
+<p>The system generates feasible paths that:</p>
+<ul>
+<li><strong>Start/end at pre-designated regions</strong> (charging stations, service stations)</li>
+<li><strong>Respect fuel/energy constraints</strong> with maximum path lengths</li>
+<li><strong>Avoid restricted regions</strong> (obstacles, no-fly zones)</li>
+<li><strong>Cover the entire search environment</strong> systematically</li>
+</ul>
+<h3>4. Confidence Bound Management</h3>
+<p>The system maintains and updates:</p>
+<ul>
+<li><strong>Upper and lower confidence bounds</strong> for each region's classification</li>
+<li><strong>Concentration inequalities</strong> (e.g., Hoeffding bounds) for mathematical rigor</li>
+<li><strong>Aggregation functions</strong> (sum, average, max, min) for path evaluation</li>
+<li><strong>Termination criteria</strong> when all regions are classified</li>
+</ul>
+<h2>Patent Applications and Examples</h2>
+<h3>Agricultural Applications</h3>
+<ul>
+<li><strong>Ready-to-harvest tree detection</strong>: Determining optimal harvesting times for orchards</li>
+<li><strong>Crop health monitoring</strong>: Identifying diseased or stressed vegetation areas</li>
+<li><strong>Yield estimation</strong>: Automated assessment of agricultural productivity</li>
+</ul>
+<h3>Search and Rescue Operations</h3>
+<ul>
+<li><strong>Disaster response</strong>: Finding humans trapped on rooftops after flooding</li>
+<li><strong>Survivor detection</strong>: Coordinated teams searching for people in disaster zones</li>
+<li><strong>Emergency resource allocation</strong>: Identifying areas requiring immediate attention</li>
+</ul>
+<h3>Infrastructure and Environmental Monitoring</h3>
+<ul>
+<li><strong>Traffic monitoring</strong>: Determining congested areas in urban environments</li>
+<li><strong>Environmental assessment</strong>: Tracking pollution or environmental changes</li>
+<li><strong>Wildlife monitoring</strong>: Coordinating observations across large habitats</li>
+<li><strong>Disaster management</strong>: Rapid assessment of damage and resource needs</li>
+</ul>
+<h3>Agent Types and Platforms</h3>
+<p>The patent covers diverse autonomous agents:</p>
+<ul>
+<li><strong>Aerial vehicles</strong>: Drones and UAVs for overhead surveillance</li>
+<li><strong>Ground vehicles</strong>: Mobile robots for terrestrial exploration</li>
+<li><strong>Water surface vehicles</strong>: Autonomous boats for marine applications</li>
+<li><strong>Underwater vehicles</strong>: Submersibles for aquatic environments</li>
+</ul>
+<h2>Technical Advantages and Innovation</h2>
+<h3>1. Finite-Time Guarantees</h3>
+<p>Unlike traditional approaches, this system provides:</p>
+<ul>
+<li><strong>Upper bounds on search completion time</strong></li>
+<li><strong>Upper bounds on time to identify all interesting regions</strong></li>
+<li><strong>Upper bounds on economic costs during search</strong></li>
+<li><strong>Probabilistic performance guarantees</strong> with user-specified confidence levels</li>
+</ul>
+<h3>2. Overcoming Traditional Limitations</h3>
+<p>The patent addresses key problems in existing methods:</p>
+<ul>
+<li><strong>Branch-and-bound methods</strong>: Assumed knowledge of target probability distributions</li>
+<li><strong>Collaborative sensor networks</strong>: Required Gaussian distribution assumptions</li>
+<li><strong>Multi-arm bandit methods</strong>: Needed prior knowledge of total interesting regions</li>
+<li><strong>Label-then-move search</strong>: Ignored online data for location decisions</li>
+</ul>
+<h3>3. Practical Deployment Features</h3>
+<ul>
+<li><strong>Low-cost sensor compatibility</strong>: Designed for noisy, lightweight sensors</li>
+<li><strong>Energy efficiency</strong>: Explicit consideration of fuel/battery constraints</li>
+<li><strong>Physical constraint handling</strong>: Accounts for agent dynamics and movement limitations</li>
+<li><strong>Scalable coordination</strong>: Efficient operation with varying team sizes</li>
+</ul>
+<h2>Commercial and Strategic Value</h2>
+<h3>Patent Protection Advantages</h3>
+<p>This patent provides:</p>
+<ul>
+<li><strong>20-year protection</strong> for the MMBS method and system architecture</li>
+<li><strong>Broad claims coverage</strong> spanning multiple agent types and applications</li>
+<li><strong>Defensive IP portfolio</strong> protection against competitors</li>
+<li><strong>Licensing revenue potential</strong> for technology transfer</li>
+</ul>
+<h3>Market Applications</h3>
+<p>The protected technology enables:</p>
+<ul>
+<li><strong>Commercial drone services</strong> for agriculture and inspection</li>
+<li><strong>Emergency response systems</strong> for government agencies</li>
+<li><strong>Environmental monitoring</strong> for research institutions</li>
+<li><strong>Military and defense applications</strong> for autonomous surveillance</li>
+</ul>
+<h2>Implementation Considerations</h2>
+<h3>Hardware Requirements</h3>
+<ul>
+<li><strong>Computing platforms</strong>: Edge devices, embedded systems, cloud integration</li>
+<li><strong>Sensor suites</strong>: Cameras, LIDAR, environmental sensors, communication modules</li>
+<li><strong>Mobility platforms</strong>: Drones, ground robots, autonomous vehicles, marine vessels</li>
+</ul>
+<h3>Software Architecture</h3>
+<ul>
+<li><strong>Real-time systems</strong>: Low-latency decision making and coordination</li>
+<li><strong>Distributed computing</strong>: Scalable algorithms for large agent teams</li>
+<li><strong>Machine learning integration</strong>: Adaptive algorithms that improve with experience</li>
+</ul>
+<h2>Market Impact</h2>
+<h3>Commercial Applications</h3>
+<p>The patented technology could enable:</p>
+<ul>
+<li><strong>Service robotics</strong>: Professional cleaning, security, delivery services</li>
+<li><strong>Agricultural automation</strong>: Precision farming and crop monitoring</li>
+<li><strong>Smart city systems</strong>: Traffic monitoring, environmental sensing, emergency response</li>
+</ul>
+<h3>Economic Value</h3>
+<p>Patent protection facilitates:</p>
+<ul>
+<li><strong>Technology commercialization</strong> through startups and licensing</li>
+<li><strong>Job creation</strong> in robotics and autonomous systems industries</li>
+<li><strong>Productivity gains</strong> across multiple economic sectors</li>
+</ul>
+<h2>Future Extensions</h2>
+<p>The base patent could spawn continuation patents covering:</p>
+<ul>
+<li><strong>Specialized applications</strong> for specific industries</li>
+<li><strong>Hardware implementations</strong> for particular platforms</li>
+<li><strong>Algorithm variants</strong> for different performance trade-offs</li>
+<li><strong>System integration</strong> with existing infrastructure</li>
+</ul>
+<p>This patent would represent a significant step toward making autonomous multi-agent systems practical for real-world deployment, bridging the gap between academic research and commercial applications.</p>4:["$","div",null,{"className":"min-h-screen relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50","children":[["$","$L12",null,{}],["$","$L13",null,{}],["$","nav",null,{"className":"relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0","children":["$","div",null,{"className":"max-w-7xl mx-auto px-6 py-4","children":["$","div",null,{"className":"flex justify-between items-center","children":[["$","$L14",null,{"href":"/","className":"text-2xl font-bold gradient-text","children":"Parth K. Thaker"}],["$","div",null,{"className":"flex gap-8","children":[["$","$L14",null,{"href":"/papers","className":"relative group","children":[["$","span",null,{"className":"text-blue-600 font-medium","children":"Papers"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500"}]]}],["$","$L14",null,{"href":"/blogs","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-orange-600 transition-colors duration-300 font-medium","children":"Blog"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"}]]}],["$","$L14",null,{"href":"/hobbies","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium","children":"Hobbies"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"}]]}]]}]]}]}]}],["$","div",null,{"className":"relative z-10 max-w-5xl mx-auto px-6 py-12","children":[["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":["$","div",null,{"className":"space-y-6","children":["$","div",null,{"children":[["$","h1",null,{"className":"text-4xl font-bold gradient-text mb-4","children":"Controlling Search Agents to Perform Search with Noisy Observations and Probabilistic Guarantees"}],["$","div",null,{"className":"flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm","children":[["$","div",null,{"className":"text-slate-500","children":"P Thaker (Mitsubishi Electric Research Laboratories)"}],["$","div",null,{"className":"text-slate-500","children":"December 2024"}],["$","div",null,{"className":"text-slate-500","children":"US Patent Application"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-6","children":[["$","span","Patents",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Patents"}],["$","span","Multi-armed Bandits",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Multi-armed Bandits"}],["$","span","Multi-agent Systems",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Multi-agent Systems"}],["$","span","Autonomous Search",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Autonomous Search"}],["$","span","Probabilistic Guarantees",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Probabilistic Guarantees"}],["$","span","MMBS",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"MMBS"}]]}],["$","div",null,{"className":"flex flex-wrap gap-4 pt-4 border-t border-slate-200","children":["$undefined",["$","a",null,{"href":"https://doi.org/US20240427327A1","className":"flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"w-2 h-2 bg-blue-500 rounded-full"}],"DOI"]}],"$undefined","$undefined","$undefined","$undefined"]}]]}]}]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"Abstract"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"A control system and a method for controlling search agents to perform search with noisy observations and probabilistic guarantees is provided. The control system collects confidence bounds of a probabilistic classification of at least one region within at least one path of a set of paths. The control system compares aggregations of the confidence bounds of the probabilistic classifications of each path of the set of paths based on the collected confidence bounds, a first path of a set of paths is selected, for visit by a first search agent based on the comparison. The control system commands the first search agent to visit the selected first path to collect measurements associated with each region within the selected first path. The control system updates the confidence bounds of the probabilistic classifications of each region within the selected first path based on the measurements associated with the corresponding regions."}]]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"What Excited Me"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"This patent represents the culmination of my research journey - transforming theoretical multi-armed bandit algorithms into a practical, legally protected system for real-world deployment! What excites me most is how it bridges the gap between beautiful mathematical theory and messy real-world constraints. The Multi-level Multi-armed Bandit Search (MMBS) method is a masterpiece of engineering that addresses fuel constraints, noisy sensors, and coordination overhead - all the things that make lab algorithms fail in practice. The fact that we can provide probabilistic guarantees while handling path constraints and energy limitations is revolutionary. This isn't just another academic paper; it's intellectual property that can actually enable autonomous search-and-rescue, environmental monitoring, and exploration missions. The patent protects a complete system that transforms how we think about multi-agent coordination under uncertainty!"}]]}],"$undefined","$undefined",["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200","children":["$","div",null,{"className":"prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline","children":["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$15"}}]}]}]]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+9:{"metadata":[["$","title","0",{"children":"Parth K. Thaker - Research Portfolio"}],["$","meta","1",{"name":"description","content":"Ph.D. Student in Electrical Engineering at Arizona State University. Research in Graph Theory, Optimization, and Bandit Learning."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+11:{"metadata":"$9:metadata","error":null,"digest":"$undefined"}

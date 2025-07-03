@@ -1,0 +1,154 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+5:I[9665,[],"OutletBoundary"]
+8:I[4911,[],"AsyncMetadataOutlet"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/_next/static/media/39b0e861c537f507-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6801a04e29283989.css","style"]
+:HL["/_next/static/css/d6332be129627da4.css","style"]
+0:{"P":null,"b":"SzUKX5IZk5eleZ0gPV_-H","p":"","c":["","papers","when-to-arrive-congested-system-equilibrium-learning",""],"i":false,"f":[[["",{"children":["papers",{"children":[["slug","when-to-arrive-congested-system-equilibrium-learning","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6801a04e29283989.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d6332be129627da4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_e8ce0c __variable_96cdd1 antialiased font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["papers",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","when-to-arrive-congested-system-equilibrium-learning","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6","$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","DTOn1s4DctUROrJatoyfmv",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:"$Sreact.suspense"
+10:I[4911,[],"AsyncMetadata"]
+d:["$","div",null,{"hidden":true,"children":["$","$f",null,{"fallback":null,"children":["$","$L10",null,{"promise":"$@11"}]}]}]
+7:null
+12:I[8694,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+13:I[449,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],"default"]
+14:I[6874,["729","static/chunks/729-0ae0020d02b338de.js","63","static/chunks/63-604b46d13fd30a34.js","248","static/chunks/app/papers/%5Bslug%5D/page-7d3e6ccfb45e5478.js"],""]
+15:T1de5,<!-- # When to arrive in a congested system: Achieving equilibrium via learning algorithm -->
+<h2>Problem Formulation</h2>
+<h3>Strategic Congestion Game</h3>
+<p>The paper addresses a fundamental strategic problem in resource allocation where:</p>
+<ul>
+<li><strong>Multiple players</strong> compete for access to a shared resource</li>
+<li><strong>Intermittent availability</strong>: Server alternates between ON and OFF periods</li>
+<li><strong>Sensing costs</strong>: Players incur costs to determine server state</li>
+<li><strong>Congestion effects</strong>: Payoffs decrease with the number of simultaneous users</li>
+</ul>
+<h3>Real-World Motivation</h3>
+<p>This framework captures numerous practical scenarios:</p>
+<ul>
+<li><strong>WiFi sensing</strong>: Devices competing to detect and connect to available networks</li>
+<li><strong>Social media</strong>: Users timing posts to maximize attention and engagement</li>
+<li><strong>Network access</strong>: Clients competing for limited bandwidth or processing resources</li>
+<li><strong>Market timing</strong>: Traders seeking optimal entry points in volatile markets</li>
+</ul>
+<h2>Mathematical Framework</h2>
+<h3>Player Objectives</h3>
+<p>Each player faces a fundamental trade-off:</p>
+<ul>
+<li><strong>Early arrival</strong>: Higher chance of accessing the resource when it becomes available</li>
+<li><strong>Congestion avoidance</strong>: Fewer competitors means higher individual payoffs</li>
+<li><strong>Cost minimization</strong>: Reducing the frequency and expense of sensing operations</li>
+</ul>
+<h3>Payoff Structure</h3>
+<ul>
+<li><strong>Inverse relationship</strong>: Payoff ∝ 1/(number of simultaneous players)</li>
+<li><strong>Timing sensitivity</strong>: Rewards for early detection of ON periods</li>
+<li><strong>Cost considerations</strong>: Sensing frequency affects overall utility</li>
+</ul>
+<h2>Learning Algorithm Design</h2>
+<h3>Distributed Randomized Learning</h3>
+<p>The proposed algorithm features:</p>
+<ul>
+<li><strong>No central coordination</strong>: Each player operates independently</li>
+<li><strong>Randomized sampling</strong>: Stochastic timing decisions to avoid predictable patterns</li>
+<li><strong>Adaptive behavior</strong>: Learning from past experiences and outcomes</li>
+<li><strong>Cost-aware optimization</strong>: Balancing sensing frequency with expected rewards</li>
+</ul>
+<h3>Key Algorithmic Properties</h3>
+<ul>
+<li><strong>Convergence guarantee</strong>: Provably converges to a unique fixed point</li>
+<li><strong>Distributed implementation</strong>: No need for communication between players</li>
+<li><strong>Robust to player entry/exit</strong>: Handles dynamic player populations</li>
+<li><strong>Computationally efficient</strong>: Simple update rules suitable for real-time deployment</li>
+</ul>
+<h2>Theoretical Contributions</h2>
+<h3>1. Nash Equilibrium Characterization</h3>
+<ul>
+<li><strong>Unique fixed point</strong>: Proved existence and uniqueness of equilibrium</li>
+<li><strong>Strategic stability</strong>: No player has incentive to unilaterally deviate</li>
+<li><strong>Global optimality</strong>: Fixed point achieves desirable system-wide properties</li>
+</ul>
+<h3>2. Convergence Analysis</h3>
+<ul>
+<li><strong>Theoretical guarantees</strong>: Mathematical proof of algorithm convergence</li>
+<li><strong>Rate of convergence</strong>: Analysis of how quickly equilibrium is reached</li>
+<li><strong>Stability properties</strong>: Robustness to small perturbations and noise</li>
+</ul>
+<h3>3. Selfish Tradeoffs</h3>
+<ul>
+<li><strong>Individual rationality</strong>: Each player optimizes their own utility</li>
+<li><strong>Social efficiency</strong>: Analysis of system-wide performance at equilibrium</li>
+<li><strong>Price of anarchy</strong>: Comparison between selfish and socially optimal outcomes</li>
+</ul>
+<h2>Applications and Impact</h2>
+<h3>1. Competitive WiFi Sensing</h3>
+<ul>
+<li><strong>Device coordination</strong>: Smart phones and IoT devices optimizing network discovery</li>
+<li><strong>Energy efficiency</strong>: Minimizing battery drain from frequent scanning</li>
+<li><strong>Network load balancing</strong>: Distributing connection attempts across time</li>
+</ul>
+<h3>2. Social Network Dynamics</h3>
+<ul>
+<li><strong>Optimal posting times</strong>: Users learning when to share content for maximum engagement</li>
+<li><strong>Attention economy</strong>: Competition for limited user attention spans</li>
+<li><strong>Platform optimization</strong>: Understanding user behavior patterns</li>
+</ul>
+<h3>3. Resource Allocation Systems</h3>
+<ul>
+<li><strong>Server access</strong>: Clients timing requests to avoid congestion</li>
+<li><strong>Computing resources</strong>: Distributed systems optimizing resource utilization</li>
+<li><strong>Service queues</strong>: Strategic arrival timing in queueing systems</li>
+</ul>
+<h2>Technical Innovation</h2>
+<h3>Game-Theoretic Learning</h3>
+<ul>
+<li><strong>Strategic learning</strong>: Players learn optimal strategies in competitive environments</li>
+<li><strong>Equilibrium seeking</strong>: Algorithm design that naturally leads to stable outcomes</li>
+<li><strong>Distributed decision making</strong>: No central planner required</li>
+</ul>
+<h3>Algorithmic Design Principles</h3>
+<ul>
+<li><strong>Simplicity</strong>: Easy-to-implement update rules</li>
+<li><strong>Robustness</strong>: Performance maintained under various conditions</li>
+<li><strong>Scalability</strong>: Handles large numbers of players efficiently</li>
+</ul>
+<h2>Broader Implications</h2>
+<h3>Strategic Machine Learning</h3>
+<p>This work contributes to the growing field of <strong>strategic machine learning</strong> where:</p>
+<ul>
+<li>Learning algorithms must account for strategic behavior of participants</li>
+<li>Equilibrium analysis becomes crucial for understanding system behavior</li>
+<li>Game theory provides tools for algorithm design and analysis</li>
+</ul>
+<h3>Multi-Agent Systems</h3>
+<p>The research provides insights for:</p>
+<ul>
+<li><strong>Coordination without communication</strong>: Achieving global objectives through local actions</li>
+<li><strong>Emergent behavior</strong>: How simple individual rules lead to complex system dynamics</li>
+<li><strong>Robust distributed algorithms</strong>: Systems that work despite individual player strategies</li>
+</ul>
+<h2>Connection to Later Research</h2>
+<p>This early work established foundations for several research directions:</p>
+<ul>
+<li><strong>Multi-agent learning</strong>: Later explored in multi-agent search and bandit problems</li>
+<li><strong>Strategic behavior</strong>: Understanding how agents optimize in competitive environments</li>
+<li><strong>Distributed optimization</strong>: Algorithms that converge without central coordination</li>
+</ul>
+<p>The emphasis on <strong>practical applications</strong> and <strong>real-world constraints</strong> (costs, intermittent availability) foreshadows the practical focus evident in later research on autonomous systems and robotics.</p>
+<h2>Mathematical Elegance</h2>
+<p>The beauty of this work lies in its mathematical structure:</p>
+<ul>
+<li><strong>Clean formulation</strong>: Complex real-world problems reduced to tractable mathematical models</li>
+<li><strong>Convergence guarantees</strong>: Rigorous theoretical analysis supporting practical algorithms</li>
+<li><strong>Universal principles</strong>: Framework applicable across diverse application domains</li>
+</ul>
+<p>This research demonstrates how fundamental theoretical insights in game theory and learning can address practical problems in distributed systems and strategic decision-making.</p>4:["$","div",null,{"className":"min-h-screen relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50","children":[["$","$L12",null,{}],["$","$L13",null,{}],["$","nav",null,{"className":"relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0","children":["$","div",null,{"className":"max-w-7xl mx-auto px-6 py-4","children":["$","div",null,{"className":"flex justify-between items-center","children":[["$","$L14",null,{"href":"/","className":"text-2xl font-bold gradient-text","children":"Parth K. Thaker"}],["$","div",null,{"className":"flex gap-8","children":[["$","$L14",null,{"href":"/papers","className":"relative group","children":[["$","span",null,{"className":"text-blue-600 font-medium","children":"Papers"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500"}]]}],["$","$L14",null,{"href":"/blogs","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-orange-600 transition-colors duration-300 font-medium","children":"Blog"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"}]]}],["$","$L14",null,{"href":"/hobbies","className":"relative group","children":[["$","span",null,{"className":"text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium","children":"Hobbies"}],["$","div",null,{"className":"absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"}]]}]]}]]}]}]}],["$","div",null,{"className":"relative z-10 max-w-5xl mx-auto px-6 py-12","children":[["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":["$","div",null,{"className":"space-y-6","children":["$","div",null,{"children":[["$","h1",null,{"className":"text-4xl font-bold gradient-text mb-4","children":"When to arrive in a congested system: Achieving equilibrium via learning algorithm"}],["$","div",null,{"className":"flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm","children":[["$","div",null,{"className":"text-slate-500","children":"P Thaker"}],["$","div",null,{"className":"text-slate-500","children":"December 2016"}],["$","div",null,{"className":"text-slate-500","children":"IEEE ISIT 2017"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-6","children":[["$","span","Game Theory",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Game Theory"}],["$","span","Learning Algorithms",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Learning Algorithms"}],["$","span","Nash Equilibrium",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Nash Equilibrium"}],["$","span","Resource Allocation",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Resource Allocation"}],["$","span","Congestion Control",{"className":"px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium","children":"Congestion Control"}]]}],["$","div",null,{"className":"flex flex-wrap gap-4 pt-4 border-t border-slate-200","children":["$undefined",["$","a",null,{"href":"https://doi.org/10.1109/ISIT.2017.8007066","className":"flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"w-2 h-2 bg-blue-500 rounded-full"}],"DOI"]}],"$undefined","$undefined","$undefined","$undefined"]}]]}]}]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"Abstract"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"We consider a strategic problem where multiple players compete to access a shared server platform that operates intermittently, switching between ON and OFF periods. Each player incurs costs to sample the server state and receives payoffs inversely proportional to the number of simultaneously connected players. We propose a distributed randomized learning algorithm that enables players to minimize sensing costs while converging to a unique fixed point that constitutes a Nash equilibrium. The work addresses applications in competitive WiFi sensing and competition for user attention in social networks."}]]}],["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8","children":[["$","h2",null,{"className":"text-2xl font-bold gradient-text mb-4","children":"What Excited Me"}],["$","p",null,{"className":"text-slate-700 leading-relaxed text-lg","children":"This early work showcases the foundations of my fascination with strategic learning in competitive environments! What excites me most is how it captures the fundamental tension between exploration and competition - players want to find opportunities quickly but don't want to compete with too many others once they find them. The intermittent server model is brilliant because it reflects so many real-world scenarios: WiFi hotspots, social media posting times, even stock market opportunities. The distributed learning algorithm is particularly clever because each player learns independently yet the system converges to a globally stable solution. It's game theory meets machine learning in a way that's both mathematically elegant and practically relevant. This work laid the groundwork for my later interest in multi-agent systems and strategic decision-making under uncertainty!"}]]}],"$undefined","$undefined",["$","div",null,{"className":"network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200","children":["$","div",null,{"className":"prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline","children":["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$15"}}]}]}]]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+9:{"metadata":[["$","title","0",{"children":"Parth K. Thaker - Research Portfolio"}],["$","meta","1",{"name":"description","content":"Ph.D. Student in Electrical Engineering at Arizona State University. Research in Graph Theory, Optimization, and Bandit Learning."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+11:{"metadata":"$9:metadata","error":null,"digest":"$undefined"}
