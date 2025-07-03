@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     images: ['/profile_photo.png'],
   },
   verification: {
-    google: 'google-site-verification-code-here',
+    google: 'vR0MHUqGDsFvNBkYnX5muEopmvKabsrcthb-7WDj6nI',
   },
 };
 

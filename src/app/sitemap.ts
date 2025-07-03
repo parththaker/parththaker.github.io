@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getAllContent } from '@/lib/markdown'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://parththaker.github.io'
   
@@ -39,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic paper routes
   const paperRoutes = papers.map((paper) => ({
     url: `${baseUrl}/papers/${paper.slug}`,
-    lastModified: new Date(paper.date || new Date()),
+    lastModified: new Date((paper.metadata as any).date || new Date()),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
@@ -47,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic blog routes
   const blogRoutes = blogs.map((blog) => ({
     url: `${baseUrl}/blogs/${blog.slug}`,
-    lastModified: new Date(blog.date || new Date()),
+    lastModified: new Date((blog.metadata as any).date || new Date()),
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }))
