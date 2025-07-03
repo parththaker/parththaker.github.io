@@ -7,9 +7,18 @@ venue: "ISIT 2020"
 tags: ["Optimization", "Nonconvex Optimization", "Sample Complexity", "Phase Retrieval", "Signal Processing"]
 abstract: "We consider the problem of recovering a complex vector from quadratic measurements, known as quadratic feasibility, which encompasses the well known phase retrieval problem and has applications in power system state estimation and x-ray crystallography. While the quadratic feasibility problem is generally NP-hard and may be unidentifiable, we establish conditions under which this problem becomes identifiable, particularly when the matrices are Hermitian matrices sampled from a complex Gaussian distribution. We explore a nonconvex optimization formulation and establish features of the optimization landscape that enables gradient algorithms with arbitrary initialization to converge to a globally optimal point with high probability. Our results also reveal sample complexity requirements for successfully identifying a feasible solution."
 excitement: "This paper tackles one of the most fundamental challenges in computational mathematics: recovering complex signals from nonlinear measurements. What excites me most is the elegant theoretical analysis that transforms a seemingly intractable NP-hard problem into something we can actually solve with guarantees! The beauty lies in how the optimization landscape analysis reveals hidden geometric structures that make gradient descent work despite the nonconvex nature of the problem. The connection between sample complexity and optimization landscape is particularly fascinating - it's like discovering that the hardness of a problem isn't just about the algorithm you choose, but about having the right amount of data to make the landscape 'nice' enough for simple algorithms to succeed. The applications spanning from power systems to crystallography show how fundamental mathematical insights can have broad real-world impact."
+# title: "My Research Paper"
+# authors: "Parth K. Thaker"
+# date: "2024-01-01"
+# arxivId: "2401.12345"
+# doi: "10.1234/example"
+# videoUrl: "https://youtube.com/watch?v=..."
+# posterUrl: "https://example.com/poster.pdf"
+# slideUrl: "https://example.com/slides.pdf"
+# conferenceUrl: "https://conference.com/paper123"
 ---
 
-# On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems
+<!-- # On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems -->
 
 ## Problem Formulation
 

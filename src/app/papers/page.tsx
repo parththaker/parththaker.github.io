@@ -1,7 +1,22 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllContent, PaperMetadata } from '@/lib/markdown'
 import NetworkBackground from '@/components/NetworkBackground'
 import CursorTracker from '@/components/CursorTracker'
+
+export const metadata: Metadata = {
+  title: 'Research Papers - Parth K. Thaker',
+  description: 'Research papers by Parth K. Thaker on graph theory, nonconvex optimization, bandit learning, and machine learning. Published work from ASU and industry research.',
+  alternates: {
+    canonical: '/papers',
+  },
+  openGraph: {
+    title: 'Research Papers - Parth K. Thaker',
+    description: 'Research papers by Parth K. Thaker on graph theory, nonconvex optimization, bandit learning, and machine learning. Published work from ASU and industry research.',
+    url: 'https://parththaker.github.io/papers',
+    type: 'website',
+  },
+}
 
 export default function PapersPage() {
   const papers = getAllContent('papers')
@@ -29,6 +44,12 @@ export default function PapersPage() {
                   Blog
                 </span>
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"></div>
+              </Link>
+              <Link href="/hobbies" className="relative group">
+                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
+                  Hobbies
+                </span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
               </Link>
             </div>
           </div>
@@ -66,7 +87,7 @@ export default function PapersPage() {
             {papers.map((paper, index) => {
               const metadata = paper.metadata as PaperMetadata
               return (
-                <div 
+                <article 
                   key={paper.slug} 
                   className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 hover:shadow-xl transition-all duration-300"
                   style={{animationDelay: `${index * 0.1}s`}}
@@ -81,20 +102,24 @@ export default function PapersPage() {
                           </h2>
                         </Link>
                         
-                        <div className="grid md:grid-cols-3 gap-4 mb-4 text-sm">
-                          <div>
-                            <span className="font-medium text-slate-600">Authors:</span>
-                            <p className="text-slate-800">{metadata.authors}</p>
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm">
+                          <div className="text-slate-500">
+                            {(() => {
+                              const authors = metadata.authors.split(', ')
+                              if (authors.length > 3) {
+                                return authors.slice(0, 3).join(', ') + ' et al.'
+                              }
+                              return metadata.authors
+                            })()}
                           </div>
-                          <div>
-                            <span className="font-medium text-slate-600">Date:</span>
-                            <p className="text-slate-800">{new Date(metadata.date).toLocaleDateString()}</p>
+                          <div className="text-slate-500">
+                            {new Date(metadata.date).toLocaleDateString('en-US', { 
+                              month: 'long', 
+                              year: 'numeric' 
+                            })}
                           </div>
                           {metadata.venue && (
-                            <div>
-                              <span className="font-medium text-slate-600">Venue:</span>
-                              <p className="text-slate-800">{metadata.venue}</p>
-                            </div>
+                            <div className="text-slate-500">{metadata.venue}</div>
                           )}
                         </div>
                       </div>
@@ -123,6 +148,7 @@ export default function PapersPage() {
                             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View paper ${metadata.title} on arXiv`}
                           >
                             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                             arXiv: {metadata.arxivId}
@@ -134,6 +160,7 @@ export default function PapersPage() {
                             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View paper ${metadata.title} DOI`}
                           >
                             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                             DOI
@@ -144,13 +171,14 @@ export default function PapersPage() {
                       <Link 
                         href={`/papers/${paper.slug}`}
                         className="group flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-lg"
+                        aria-label={`Read more about ${metadata.title}`}
                       >
                         <span className="font-medium">Read More</span>
                         <div className="w-4 h-4 group-hover:translate-x-1 transition-transform">→</div>
                       </Link>
                     </div>
                   </div>
-                </div>
+                </article>
               )
             })}
           </div>

@@ -32,6 +32,12 @@ export default function Home() {
                 </span>
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"></div>
               </Link>
+              <Link href="/hobbies" className="relative group">
+                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
+                  Hobbies
+                </span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
+              </Link>
             </div>
           </div>
         </div>
@@ -73,7 +79,7 @@ export default function Home() {
                     <div className="w-full h-full rounded-full overflow-hidden bg-white shadow-inner">
                       <Image
                         src="/profile_photo.png"
-                        alt="Parth K. Thaker"
+                        alt="Parth K. Thaker - AI Research Engineer at Intuitive Surgical, Ph.D. in Electrical Engineering"
                         width={224}
                         height={224}
                         className="w-full h-full object-cover"
@@ -99,7 +105,7 @@ export default function Home() {
                   </a>
                   
                   <a 
-                    href="https://www.linkedin.com/in/parth-thaker/" 
+                    href="https://www.linkedin.com/in/parththaker1/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200 hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
@@ -141,14 +147,12 @@ export default function Home() {
             <div className="lg:col-span-3 space-y-8">
               <div className="space-y-6">
                 <h1 className="text-6xl lg:text-7xl font-bold gradient-text leading-tight">
-                  Parth K.
-                  <br />
-                  <span className="text-slate-600">Thaker</span>
+                  Parth K. Thaker
                 </h1>
                 
                 <div className="space-y-4">
                   <p className="text-2xl text-slate-600 font-medium">
-                    AI Research Scientist
+                    AI Research Engineer
                   </p>
                   <p className="text-lg text-slate-500">
                     Intuitive Surgical | Ph.D. in Electrical Engineering
@@ -158,9 +162,9 @@ export default function Home() {
                 <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
                 
                 <p className="text-xl text-slate-700 leading-relaxed max-w-2xl">
-                  <span className="font-semibold text-green-600">AI Research Scientist</span> at <span className="font-semibold text-blue-600">Intuitive Surgical</span>, 
+                  <span className="font-semibold text-green-600">AI Research Engineer</span> at <span className="font-semibold text-blue-600">Intuitive Surgical</span>, 
                   where I craft secure and privacy-safe LLM workflows that make humans more productive (and occasionally wonder if the robots will thank me later 🤖). 
-                  From document-whispering chatbots to security-paranoid AI analyzers, I'm building the future of developer productivity—one algorithm at a time.
+                  From document-whispering chatbots to security-paranoid AI analyzers, I&apos;m building the future of developer productivity—one algorithm at a time.
                 </p>
               </div>
 
@@ -173,7 +177,7 @@ export default function Home() {
                     { name: "Graph Theory", desc: "Mathematical foundations and algorithmic applications" },
                     { name: "Bandit Learning", desc: "Sequential decision making under uncertainty" },
                     { name: "Reinforcement Learning", desc: "Learning optimal policies through interaction" }
-                  ].map((interest, index) => (
+                  ].map((interest) => (
                     <div 
                       key={interest.name}
                       className="p-4 rounded-lg bg-white/60 backdrop-blur-sm border border-slate-200 hover:bg-white/80 hover:shadow-md transition-all duration-300"
@@ -273,7 +277,7 @@ export default function Home() {
                 <div className="space-y-8">
                   {[
                     { 
-                      role: "AI Research Scientist", 
+                      role: "AI Research Engineer", 
                       company: "Intuitive Surgical", 
                       year: "Jul 2024 - Present", 
                       desc: "Developing secure and privacy-safe LLM workflows for enhanced worker productivity. Built document + image chatbots, security analyzers for LLM models, and LLM + CI/CD integration tools for developer productivity.",

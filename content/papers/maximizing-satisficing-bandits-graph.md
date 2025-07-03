@@ -7,9 +7,18 @@ venue: "NeurIPS 2022"
 tags: ["Multi-armed Bandits", "Graph Theory", "Pure Exploration", "Optimization", "Machine Learning"]
 abstract: "We consider the pure exploration problem in stochastic multi-armed bandits where the similarities between the arms are captured by a graph and the rewards may be represented as a smooth signal on this graph. We specifically examine the problem of finding the arm with the maximum reward (maximizing problem) or one with a sufficiently high reward (satisficing problem) under this model. We propose novel algorithms called GRaph-based UcB (GRUB) and ζ-GRUB for these problems and provide a theoretical characterization of their performance which specifically elicits the benefit of the graph side information. We also prove a lower bound on the data requirement, showing a large class of problems where these algorithms are near-optimal. We complement our theory with experimental results that show the benefit of capitalizing on such side information."
 excitement: "This paper brilliantly tackles one of the most pressing challenges in modern decision-making: how do you efficiently explore when faced with an overwhelming number of options? What excites me most is the elegant fusion of graph theory with bandit algorithms. The key insight that similarity relationships between options can be leveraged through graph structure is both mathematically beautiful and practically powerful. The distinction between maximizing (finding the absolute best) and satisficing (finding something good enough) problems reflects real-world decision-making scenarios perfectly. The theoretical guarantees showing near-optimality combined with the practical algorithms make this work both rigorous and applicable. It's the kind of research that bridges pure mathematics with real-world impact - exactly what gets me excited about the intersection of optimization and machine learning!"
+# title: "My Research Paper"
+# authors: "Parth K. Thaker"
+# date: "2024-01-01"
+# arxivId: "2401.12345"
+# doi: "10.1234/example"
+# videoUrl: "https://youtube.com/watch?v=..."
+# posterUrl: "https://example.com/poster.pdf"
+# slideUrl: "https://example.com/slides.pdf"
+# conferenceUrl: "https://conference.com/paper123"
 ---
 
-# Maximizing and Satisficing in Multi-armed Bandits with Graph Information
+<!-- # Maximizing and Satisficing in Multi-armed Bandits with Graph Information -->
 
 ## Problem Motivation
 

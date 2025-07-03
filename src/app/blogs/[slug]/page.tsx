@@ -5,7 +5,7 @@ import NetworkBackground from '@/components/NetworkBackground'
 import CursorTracker from '@/components/CursorTracker'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -46,6 +46,12 @@ export default async function BlogPage({ params }: Props) {
                   Blog
                 </span>
                 <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-red-500"></div>
+              </Link>
+              <Link href="/hobbies" className="relative group">
+                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
+                  Hobbies
+                </span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
               </Link>
             </div>
           </div>

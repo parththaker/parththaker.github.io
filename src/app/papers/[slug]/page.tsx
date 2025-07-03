@@ -6,7 +6,7 @@ import NetworkBackground from '@/components/NetworkBackground'
 import CursorTracker from '@/components/CursorTracker'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -48,6 +48,12 @@ export default async function PaperPage({ params }: Props) {
                 </span>
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"></div>
               </Link>
+              <Link href="/hobbies" className="relative group">
+                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
+                  Hobbies
+                </span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
+              </Link>
             </div>
           </div>
         </div>
@@ -60,20 +66,24 @@ export default async function PaperPage({ params }: Props) {
             <div>
               <h1 className="text-4xl font-bold gradient-text mb-4">{metadata.title}</h1>
               
-              <div className="grid md:grid-cols-3 gap-4 mb-6 text-sm">
-                <div>
-                  <span className="font-medium text-slate-600">Authors:</span>
-                  <p className="text-slate-800">{metadata.authors}</p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm">
+                <div className="text-slate-500">
+                  {(() => {
+                    const authors = metadata.authors.split(', ')
+                    if (authors.length > 3) {
+                      return authors.slice(0, 3).join(', ') + ' et al.'
+                    }
+                    return metadata.authors
+                  })()}
                 </div>
-                <div>
-                  <span className="font-medium text-slate-600">Date:</span>
-                  <p className="text-slate-800">{new Date(metadata.date).toLocaleDateString()}</p>
+                <div className="text-slate-500">
+                  {new Date(metadata.date).toLocaleDateString('en-US', { 
+                    month: 'long', 
+                    year: 'numeric' 
+                  })}
                 </div>
                 {metadata.venue && (
-                  <div>
-                    <span className="font-medium text-slate-600">Venue:</span>
-                    <p className="text-slate-800">{metadata.venue}</p>
-                  </div>
+                  <div className="text-slate-500">{metadata.venue}</div>
                 )}
               </div>
               
@@ -88,7 +98,7 @@ export default async function PaperPage({ params }: Props) {
                 ))}
               </div>
               
-              <div className="flex gap-6 pt-4 border-t border-slate-200">
+              <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-200">
                 {metadata.arxivId && (
                   <a 
                     href={`https://arxiv.org/abs/${metadata.arxivId}`}
@@ -109,6 +119,50 @@ export default async function PaperPage({ params }: Props) {
                   >
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     DOI
+                  </a>
+                )}
+                {metadata.videoUrl && (
+                  <a 
+                    href={metadata.videoUrl}
+                    className="flex items-center gap-2 text-red-600 hover:text-red-700 font-medium transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    Video
+                  </a>
+                )}
+                {metadata.posterUrl && (
+                  <a 
+                    href={metadata.posterUrl}
+                    className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Poster
+                  </a>
+                )}
+                {metadata.slideUrl && (
+                  <a 
+                    href={metadata.slideUrl}
+                    className="flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    Slides
+                  </a>
+                )}
+                {metadata.conferenceUrl && (
+                  <a 
+                    href={metadata.conferenceUrl}
+                    className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    Conference
                   </a>
                 )}
               </div>

@@ -12,7 +12,7 @@ interface Node {
 
 export default function NetworkBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number>(0)
   const nodesRef = useRef<Node[]>([])
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function NetworkBackground() {
       // Draw connections
       ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)'
       ctx.lineWidth = 1
-      nodes.forEach((node, i) => {
+      nodes.forEach((node) => {
         node.connections.forEach(targetIndex => {
           if (targetIndex < nodes.length) {
             const target = nodes[targetIndex]

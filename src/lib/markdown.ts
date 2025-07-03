@@ -4,7 +4,9 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
+import remarkMath from 'remark-math'
 import remarkRehype from 'remark-rehype'
+import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
 
@@ -17,6 +19,10 @@ export interface PaperMetadata {
   arxivId?: string
   doi?: string
   venue?: string
+  videoUrl?: string
+  posterUrl?: string
+  slideUrl?: string
+  conferenceUrl?: string
   tags: string[]
   abstract: string
   excitement: string
@@ -50,7 +56,9 @@ export async function getContentBySlug(
     const processedContent = await remark()
       .use(remarkGfm)
       .use(remarkBreaks)
+      .use(remarkMath)
       .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeKatex)
       .use(rehypeHighlight)
       .use(rehypeStringify, { allowDangerousHtml: true })
       .process(content)
@@ -60,7 +68,7 @@ export async function getContentBySlug(
       content: processedContent.toString(),
       metadata: data as PaperMetadata | BlogMetadata
     }
-  } catch (error) {
+  } catch {
     return null
   }
 }
