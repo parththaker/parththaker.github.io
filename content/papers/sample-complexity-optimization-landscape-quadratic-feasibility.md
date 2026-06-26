@@ -36,6 +36,7 @@ oneLiner: >-
   Proves identifiability and sample-complexity bounds for recovering a complex
   vector from quadratic measurements, and shows the nonconvex landscape lets
   gradient descent converge globally from arbitrary initialization.
+featured: true
 ---
 
 <!-- # On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems -->

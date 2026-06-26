@@ -262,6 +262,33 @@
 .prose .katex-display { @apply overflow-x-auto overflow-y-hidden py-2; }
 
 /* =================================================== REDUCED MOTION */
+/* Section eyebrow / overline — left-edge scan anchors (F-pattern) */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--brand);
+}
+
+/* Grayscale venue wordmarks that brighten on hover */
+.venue-mark {
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+.venue-mark:hover {
+  opacity: 1;
+  color: var(--foreground);
+}
+
+/* Hero scroll cue */
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+.scroll-cue { animation: bob 1.8s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

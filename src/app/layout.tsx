@@ -3,7 +3,7 @@ import { Inter, Crimson_Pro, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
-import NetworkBackground from "@/components/NetworkBackground";
+import ConditionalNetwork from "@/components/ConditionalNetwork";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -162,7 +162,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col font-sans">
-        <NetworkBackground />
+        <ConditionalNetwork />
         <SiteNav />
         <main className="relative z-10 flex-1">{children}</main>
         <SiteFooter />

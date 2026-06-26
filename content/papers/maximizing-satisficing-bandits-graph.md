@@ -36,6 +36,7 @@ oneLiner: >-
   graph over arms to find the best arm, or one above a threshold, with far fewer
   samples than standard UCB.
 codeUrl: 'https://github.com/parththaker/Bandits-GRUB'
+featured: true
 ---
 
 <!-- # Maximizing and Satisficing in Multi-armed Bandits with Graph Information -->
