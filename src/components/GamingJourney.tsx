@@ -60,10 +60,10 @@ export default function GamingJourney() {
   return (
     <div className="py-20">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-bold text-slate-800 mb-6">
-          The Strategic <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Evolution</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          The Strategic <span className="text-gradient">Evolution</span>
         </h2>
-        <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           From chess lessons with Dad to Terra Mystica mastery - a journey through the worlds that shaped my strategic thinking
         </p>
       </div>
@@ -86,11 +86,21 @@ export default function GamingJourney() {
               </div>
 
               {/* Content card */}
-              <div 
+              <div
+                role="button"
+                tabIndex={0}
+                aria-label={`Expand: ${step.title}`}
+                aria-expanded={expandedStep === index}
                 className={`flex-1 cursor-pointer transition-all duration-500 ${
                   expandedStep === index ? 'transform scale-105' : 'hover:transform hover:scale-102'
                 }`}
                 onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === ' ') e.preventDefault()
+                    setExpandedStep(expandedStep === index ? null : index)
+                  }
+                }}
               >
                 <div className={`
                   relative bg-gradient-to-br ${step.bgColor} backdrop-blur-sm 
@@ -102,22 +112,22 @@ export default function GamingJourney() {
                   
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <div className="text-sm font-medium text-slate-600 mb-2">{step.age}</div>
-                      <h3 className="text-2xl font-bold text-slate-800 mb-2">{step.title}</h3>
+                      <div className="text-sm font-medium text-brand mb-2">{step.age}</div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">{step.title}</h3>
                     </div>
-                    <div className="text-slate-600 text-sm">
+                    <div className="text-muted-foreground text-sm">
                       {expandedStep === index ? '← Click to collapse' : 'Click to expand →'}
                     </div>
                   </div>
-                  
-                  <p className="text-slate-700 text-lg leading-relaxed mb-4">
+
+                  <p className="text-foreground/80 text-lg leading-relaxed mb-4">
                     {step.description}
                   </p>
 
                   {/* Expanded content */}
                   {expandedStep === index && (
-                    <div className="mt-6 pt-6 border-t border-slate-300/50">
-                      <p className="text-slate-700 text-lg leading-relaxed italic">
+                    <div className="mt-6 pt-6 border-t border-border">
+                      <p className="text-foreground/80 text-lg leading-relaxed italic">
                         {step.fullStory}
                       </p>
                     </div>
@@ -134,7 +144,7 @@ export default function GamingJourney() {
 
       {/* Fun fact callout */}
       <div className="mt-16 text-center">
-        <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-amber-200/80 to-orange-200/80 backdrop-blur-sm border border-amber-300/50 rounded-2xl px-8 py-4">
+        <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-amber-200 to-orange-200 backdrop-blur-sm border border-amber-300/50 rounded-2xl px-8 py-4">
           <span className="text-3xl">🏆</span>
           <div className="text-left">
             <div className="text-slate-800 font-bold">Fun Fact</div>
@@ -144,7 +154,7 @@ export default function GamingJourney() {
             href="https://www.youtube.com/watch?v=vNj7M6bjSeA&t=1s" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-amber-700 hover:text-amber-600 transition-colors font-medium"
+            className="text-amber-900 hover:text-amber-600 transition-colors font-medium underline"
           >
             Watch the match →
           </a>

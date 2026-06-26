@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GameData {
   name: string
@@ -181,14 +181,27 @@ export default function GameShelf() {
     return 'text-red-600 bg-red-50'
   }
 
+  useEffect(() => {
+    if (!selectedGame) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedGame(null)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [selectedGame])
+
   return (
     <div className="space-y-8">
       {/* Shelf Header */}
       <div className="text-center">
-        <h2 className="text-5xl font-bold text-slate-800 mb-6">
-          The <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Collection</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          The <span className="text-gradient">Collection</span>
         </h2>
-        <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           Each spine represents countless hours of strategic thinking, memorable victories, and lessons learned from defeats. 
           Click any game to dive deeper into what makes it special.
         </p>
@@ -206,6 +219,9 @@ export default function GameShelf() {
             {boardGames.map((game, index) => (
               <div
                 key={game.name}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open details for ${game.name}`}
                 className={`
                   relative cursor-pointer transition-all duration-300 ease-out
                   ${hoveredGame === game.name ? 'transform -translate-y-4 shadow-2xl scale-105 z-20' : 'shadow-lg'}
@@ -226,6 +242,16 @@ export default function GameShelf() {
                   } else {
                     // Open game details modal
                     setSelectedGame(game)
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === ' ') e.preventDefault()
+                    if (e.shiftKey || e.ctrlKey || e.metaKey) {
+                      window.open(`https://boardgamegeek.com/boardgame/${game.bgg_id}`, '_blank')
+                    } else {
+                      setSelectedGame(game)
+                    }
                   }
                 }}
               >
@@ -296,8 +322,17 @@ export default function GameShelf() {
 
       {/* Game Details Modal */}
       {selectedGame && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedGame(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedGame.name}
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={`bg-gradient-to-r ${selectedGame.spine_color} p-6 rounded-t-2xl ${selectedGame.text_color}`}>
               <div className="flex justify-between items-start">
                 <div>
@@ -310,10 +345,12 @@ export default function GameShelf() {
                   </div>
                 </div>
                 <button
+                  type="button"
+                  aria-label="Close"
                   onClick={() => setSelectedGame(null)}
                   className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
                 >
-                  <span className="text-white text-lg">×</span>
+                  <span className="text-white text-lg" aria-hidden="true">×</span>
                 </button>
               </div>
             </div>

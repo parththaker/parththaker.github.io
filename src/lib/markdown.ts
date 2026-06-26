@@ -139,6 +139,9 @@ export async function getContentBySlug<T extends ContentMetadata = ContentMetada
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
+    // Mirror the list/slug filtering so templates and drafts never resolve.
+    if (slug.startsWith('_') || data.draft === true) return null
+
     return {
       slug,
       content: await renderMarkdown(content),

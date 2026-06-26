@@ -62,6 +62,10 @@ export default function FunFact() {
   ]
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
     const interval = setInterval(() => {
       setCurrentFact((prev) => (prev + 1) % funFacts.length)
     }, 4000)
@@ -72,10 +76,10 @@ export default function FunFact() {
   return (
     <div className="py-16">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-slate-800 mb-4">
-          Did You <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Know?</span>
+        <h2 className="text-4xl font-bold text-foreground mb-4">
+          Did You <span className="text-gradient">Know?</span>
         </h2>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Some quirky facts and memorable moments from my board gaming journey
         </p>
       </div>
@@ -120,11 +124,14 @@ export default function FunFact() {
           {funFacts.map((_, index) => (
             <button
               key={index}
+              type="button"
+              aria-label={`Show fun fact ${index + 1}`}
+              aria-current={currentFact === index}
               onClick={() => setCurrentFact(index)}
               className={`
                 w-3 h-3 rounded-full transition-all duration-300
-                ${currentFact === index 
-                  ? 'bg-orange-500 scale-125' 
+                ${currentFact === index
+                  ? 'bg-orange-500 scale-125'
                   : 'bg-orange-200 hover:bg-orange-300'}
               `}
             />
@@ -134,22 +141,22 @@ export default function FunFact() {
 
       {/* Quick Stats Row */}
       <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-        <div className="text-center p-6 bg-gradient-to-br from-amber-100/80 to-orange-100/80 rounded-2xl border border-amber-200/50">
+        <div className="text-center p-6 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl border border-amber-200/50">
           <div className="text-3xl mb-2">🎲</div>
           <div className="text-2xl font-bold text-amber-800">15+</div>
           <div className="text-sm text-slate-600">Different Games Mastered</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-green-100/80 to-emerald-100/80 rounded-2xl border border-green-200/50">
+        <div className="text-center p-6 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl border border-green-200/50">
           <div className="text-3xl mb-2">👥</div>
           <div className="text-2xl font-bold text-green-800">50+</div>
           <div className="text-sm text-slate-600">Friends Converted</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 rounded-2xl border border-blue-200/50">
+        <div className="text-center p-6 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl border border-blue-200/50">
           <div className="text-3xl mb-2">⏱️</div>
           <div className="text-2xl font-bold text-blue-800">5+</div>
           <div className="text-sm text-slate-600">Games Always Running</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-purple-100/80 to-violet-100/80 rounded-2xl border border-purple-200/50">
+        <div className="text-center p-6 bg-gradient-to-br from-purple-100 to-violet-100 rounded-2xl border border-purple-200/50">
           <div className="text-3xl mb-2">🏛️</div>
           <div className="text-2xl font-bold text-purple-800">80%</div>
           <div className="text-sm text-slate-600">Terra Mystica Win Rate</div>

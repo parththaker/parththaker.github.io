@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     siteName: "Parth K. Thaker",
     images: [
       {
-        url: "/profile_photo.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Parth K. Thaker - AI Research Engineer",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     description:
       "AI Research Engineer at Intuitive Surgical. Ph.D. in Electrical Engineering from ASU. Specializing in nonconvex optimization, graph theory, bandit learning, and secure LLM workflows.",
     creator: "@ParthKThaker",
-    images: ["/profile_photo.png"],
+    images: ["/og.png"],
   },
   verification: {
     google: "vR0MHUqGDsFvNBkYnX5muEopmvKabsrcthb-7WDj6nI",

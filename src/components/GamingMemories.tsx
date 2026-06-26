@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface GameMemory {
@@ -109,13 +109,26 @@ export default function GamingMemories() {
     }
   ]
 
+  useEffect(() => {
+    if (!selectedMemory) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedMemory(null)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [selectedMemory])
+
   return (
     <div className="py-20">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-bold text-slate-800 mb-6">
-          Gaming <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Chronicles</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          Gaming <span className="text-gradient">Chronicles</span>
         </h2>
-        <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           A photographic journey through epic battles, tragic defeats, and the friends who made it all worthwhile. 
           Each photo tells a story of strategy, laughter, and the occasional existential crisis over cow cards.
         </p>
@@ -126,6 +139,9 @@ export default function GamingMemories() {
         {memories.map((memory, index) => (
           <div
             key={index}
+            role="button"
+            tabIndex={0}
+            aria-label={`View memory: ${memory.title}`}
             className={`
               relative group cursor-pointer transition-all duration-500 ease-out
               ${hoveredMemory === memory.image ? 'transform scale-105 z-20' : ''}
@@ -137,6 +153,12 @@ export default function GamingMemories() {
             onMouseEnter={() => setHoveredMemory(memory.image)}
             onMouseLeave={() => setHoveredMemory(null)}
             onClick={() => setSelectedMemory(memory)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === ' ') e.preventDefault()
+                setSelectedMemory(memory)
+              }
+            }}
           >
             {/* Photo container */}
             <div className="relative bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500">
@@ -185,8 +207,17 @@ export default function GamingMemories() {
 
       {/* Memory detail modal */}
       {selectedMemory && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-white/10">
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedMemory(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedMemory.title}
+            className="bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal header with image */}
             <div className="relative">
               <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
@@ -200,10 +231,12 @@ export default function GamingMemories() {
                 
                 {/* Close button */}
                 <button
+                  type="button"
+                  aria-label="Close"
                   onClick={() => setSelectedMemory(null)}
                   className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center transition-colors text-white text-xl font-bold backdrop-blur-sm"
                 >
-                  ×
+                  <span aria-hidden="true">×</span>
                 </button>
 
                 {/* Title overlay */}

@@ -8,15 +8,18 @@ export default function RotatingText({ items }: { items: string[] }) {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let swap: ReturnType<typeof setTimeout>
     const cycle = setInterval(() => {
       setShow(false)
-      const swap = setTimeout(() => {
+      swap = setTimeout(() => {
         setIndex((i) => (i + 1) % items.length)
         setShow(true)
       }, 280)
-      return () => clearTimeout(swap)
     }, 2600)
-    return () => clearInterval(cycle)
+    return () => {
+      clearInterval(cycle)
+      clearTimeout(swap)
+    }
   }, [items.length])
 
   return (

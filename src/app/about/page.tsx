@@ -23,18 +23,11 @@ const EDUCATION = [
     note: 'Graph theory and optimization, advised by Prof. Gautam Dasarathy.',
   },
   {
-    degree: 'M.Tech, Communication Systems',
+    degree: 'B.Tech + M.Tech (Dual Degree), Electrical Engineering',
     org: 'IIT Madras',
     when: '2016',
     where: 'Chennai, India',
-    note: 'Communication systems and signal processing.',
-  },
-  {
-    degree: 'B.Tech, Electrical Engineering',
-    org: 'IIT Madras',
-    when: '2015',
-    where: 'Chennai, India',
-    note: 'Foundations in electrical engineering and mathematical optimization.',
+    note: 'Five-year integrated dual degree; specialization in communication systems and signal processing.',
   },
 ]
 
@@ -83,7 +76,7 @@ const SKILLS = [
   },
   {
     group: 'Applied & engineering',
-    items: ['LLMs & RAG', 'Privacy-preserving ML', 'Python', 'Cloud platforms', 'CI/CD tooling'],
+    items: ['LLMs & RAG', 'Secure LLM deployment', 'Python', 'Cloud platforms', 'CI/CD tooling'],
   },
 ]
 

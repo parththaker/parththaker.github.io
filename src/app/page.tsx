@@ -51,8 +51,8 @@ export default function Home() {
               <RotatingText items={FOCUS} />
             </p>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-muted-foreground">
-              I turn a Ph.D.&apos;s worth of optimization and bandit theory into secure, applied
-              LLM systems that ship. Currently building privacy-safe LLM workflows at Intuitive
+              I apply optimization and bandit theory from my Ph.D. to building secure, applied
+              LLM systems. Currently working on privacy-safe LLM workflows at Intuitive
               Surgical; previously research on graph-based bandits and nonconvex optimization at
               ASU, MERL, and IISc.
             </p>
@@ -94,13 +94,13 @@ export default function Home() {
           <div className="lg:col-span-2">
             <div className="relative mx-auto w-fit">
               <div className="brand-glow absolute -inset-6 -z-10 rounded-full opacity-70" />
-              <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-xl">
+              <div className="relative mx-auto aspect-[4/5] w-[260px] overflow-hidden rounded-2xl border border-border bg-card shadow-xl sm:w-[320px]">
                 <Image
                   src="/profile_photo.png"
                   alt="Parth K. Thaker — AI Research Engineer"
-                  width={340}
-                  height={340}
-                  className="h-auto w-[280px] object-cover sm:w-[340px]"
+                  fill
+                  sizes="(max-width: 640px) 260px, 320px"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
@@ -127,7 +127,7 @@ export default function Home() {
           title="Selected research"
           href="/papers"
           linkLabel="All papers"
-          subtitle="Optimization, bandits, and graph theory — with the real code where it exists."
+          subtitle="Optimization, bandits, and graph theory — several with open-source code."
         >
           <div className="grid gap-5 md:grid-cols-3">
             {papers.map((p, i) => {
