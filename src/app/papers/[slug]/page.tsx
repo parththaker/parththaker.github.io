@@ -1,230 +1,151 @@
 import { notFound } from 'next/navigation'
-import { getContentBySlug, getAllSlugs, PaperMetadata } from '@/lib/markdown'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import NetworkBackground from '@/components/NetworkBackground'
-import CursorTracker from '@/components/CursorTracker'
+import { ArrowLeft, ExternalLink, FileText, Github, Presentation, Video } from 'lucide-react'
+import { getContentBySlug, getAllSlugs, PaperMetadata } from '@/lib/markdown'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllSlugs('papers')
-  return slugs.map((slug) => ({ slug }))
+  return getAllSlugs('papers').map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const paper = await getContentBySlug<PaperMetadata>('papers', slug)
+  if (!paper) return {}
+  const m = paper.metadata
+  return {
+    title: `${m.title} - Parth K. Thaker`,
+    description: m.oneLiner ?? m.abstract.slice(0, 160),
+    alternates: { canonical: `/papers/${slug}` },
+    openGraph: { title: m.title, description: m.oneLiner ?? m.abstract.slice(0, 160), type: 'article' },
+  }
 }
 
 export default async function PaperPage({ params }: Props) {
   const { slug } = await params
-  const paper = await getContentBySlug('papers', slug)
-  
-  if (!paper) {
-    notFound()
-  }
-  
-  const metadata = paper.metadata as PaperMetadata
-  
+  const paper = await getContentBySlug<PaperMetadata>('papers', slug)
+  if (!paper) notFound()
+
+  const m = paper.metadata
+  const note = m.insight ?? m.excitement
+
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <CursorTracker />
-      <NetworkBackground />
-      
-      <nav className="relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold gradient-text">
-              Parth K. Thaker
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/papers" className="relative group">
-                <span className="text-blue-600 font-medium">
-                  Papers
-                </span>
-                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
-              </Link>
-              <Link href="/blogs" className="relative group">
-                <span className="text-slate-700 hover:text-orange-600 transition-colors duration-300 font-medium">
-                  Blog
-                </span>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full transition-all duration-300"></div>
-              </Link>
-              <Link href="/hobbies" className="relative group">
-                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
-                  Hobbies
-                </span>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
-        {/* Paper Header */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-          <div className="space-y-6">
-            <div>
-              <h1 className="text-4xl font-bold gradient-text mb-4">{metadata.title}</h1>
-              
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-sm">
-                <div className="text-slate-500">
-                  {(() => {
-                    const authors = metadata.authors.split(', ')
-                    if (authors.length > 3) {
-                      return authors.slice(0, 3).join(', ') + ' et al.'
-                    }
-                    return metadata.authors
-                  })()}
-                </div>
-                <div className="text-slate-500">
-                  {new Date(metadata.date).toLocaleDateString('en-US', { 
-                    month: 'long', 
-                    year: 'numeric' 
-                  })}
-                </div>
-                {metadata.venue && (
-                  <div className="text-slate-500">{metadata.venue}</div>
-                )}
-              </div>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {metadata.tags.map((tag) => (
-                  <span 
-                    key={tag}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 rounded-full text-sm font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-200">
-                {metadata.arxivId && (
-                  <a 
-                    href={`https://arxiv.org/abs/${metadata.arxivId}`}
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    arXiv: {metadata.arxivId}
-                  </a>
-                )}
-                {metadata.doi && (
-                  <a 
-                    href={`https://doi.org/${metadata.doi}`}
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    DOI
-                  </a>
-                )}
-                {metadata.videoUrl && (
-                  <a 
-                    href={metadata.videoUrl}
-                    className="flex items-center gap-2 text-red-600 hover:text-red-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    Video
-                  </a>
-                )}
-                {metadata.posterUrl && (
-                  <a 
-                    href={metadata.posterUrl}
-                    className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    Poster
-                  </a>
-                )}
-                {metadata.slideUrl && (
-                  <a 
-                    href={metadata.slideUrl}
-                    className="flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    Slides
-                  </a>
-                )}
-                {metadata.conferenceUrl && (
-                  <a 
-                    href={metadata.conferenceUrl}
-                    className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    Conference
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+    <article className="mx-auto max-w-3xl px-6 py-12">
+      <Link href="/papers" className="link-underline mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+        <ArrowLeft className="h-3.5 w-3.5" /> Research
+      </Link>
 
-        {/* Abstract */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-          <h2 className="text-2xl font-bold gradient-text mb-4">Abstract</h2>
-          <p className="text-slate-700 leading-relaxed text-lg">{metadata.abstract}</p>
+      <header>
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+          {m.venue && <span className="chip">{m.venue}</span>}
+          <span>
+            {new Date(m.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+          </span>
         </div>
+        <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{m.title}</h1>
+        <p className="mt-3 text-muted-foreground">{m.authors}</p>
 
-        {/* What Excited Me */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-          <h2 className="text-2xl font-bold gradient-text mb-4">What Excited Me</h2>
-          <p className="text-slate-700 leading-relaxed text-lg">{metadata.excitement}</p>
-        </div>
-
-        {metadata.images && metadata.images.length > 0 && (
-          <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-            <h2 className="text-2xl font-bold gradient-text mb-6">Figures</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {metadata.images.map((image, index) => (
-                <div key={index} className="relative aspect-video rounded-xl overflow-hidden border border-slate-200">
-                  <Image
-                    src={`/content/images/${image}`}
-                    alt={`Figure ${index + 1}`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-            </div>
+        {m.tags?.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-1.5">
+            {m.tags.map((t) => (
+              <span key={t} className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                {t}
+              </span>
+            ))}
           </div>
         )}
 
-        {metadata.simulations && metadata.simulations.length > 0 && (
-          <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-            <h2 className="text-2xl font-bold gradient-text mb-6">Simulations</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {metadata.simulations.map((sim, index) => (
-                <div key={index} className="relative aspect-video rounded-xl overflow-hidden border border-slate-200">
-                  <Image
-                    src={`/simulations/${sim}`}
-                    alt={`Simulation ${index + 1}`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Main Content */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200">
-          <div className="prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
-            <div dangerouslySetInnerHTML={{ __html: paper.content }} />
-          </div>
+        <div className="mt-6 flex flex-wrap gap-2.5">
+          {m.arxivId && (
+            <LinkBtn href={`https://arxiv.org/abs/${m.arxivId}`} icon={<FileText className="h-4 w-4" />}>
+              arXiv
+            </LinkBtn>
+          )}
+          {m.doi && (
+            <LinkBtn href={`https://doi.org/${m.doi}`} icon={<ExternalLink className="h-4 w-4" />}>
+              DOI
+            </LinkBtn>
+          )}
+          {m.codeUrl && (
+            <LinkBtn href={m.codeUrl} icon={<Github className="h-4 w-4" />}>
+              Code
+            </LinkBtn>
+          )}
+          {m.videoUrl && (
+            <LinkBtn href={m.videoUrl} icon={<Video className="h-4 w-4" />}>
+              Video
+            </LinkBtn>
+          )}
+          {m.slideUrl && (
+            <LinkBtn href={m.slideUrl} icon={<Presentation className="h-4 w-4" />}>
+              Slides
+            </LinkBtn>
+          )}
+          {m.posterUrl && (
+            <LinkBtn href={m.posterUrl} icon={<FileText className="h-4 w-4" />}>
+              Poster
+            </LinkBtn>
+          )}
         </div>
-      </div>
-    </div>
+      </header>
+
+      {note && (
+        <div className="mt-10 rounded-2xl border border-brand/25 bg-brand/[0.06] p-6">
+          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand">
+            Why this mattered
+          </div>
+          <p className="leading-relaxed text-foreground/90">{note}</p>
+        </div>
+      )}
+
+      <section className="mt-10">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Abstract</h2>
+        <p className="mt-3 leading-relaxed text-foreground/85">{m.abstract}</p>
+      </section>
+
+      {m.images && m.images.length > 0 && (
+        <section className="mt-10 grid gap-5 sm:grid-cols-2">
+          {m.images.map((image, i) => (
+            <div key={i} className="relative aspect-video overflow-hidden rounded-xl border border-border">
+              <Image src={`/content/images/${image}`} alt={`Figure ${i + 1}`} fill className="object-contain" />
+            </div>
+          ))}
+        </section>
+      )}
+
+      {m.simulations && m.simulations.length > 0 && (
+        <section className="mt-10 grid gap-5 sm:grid-cols-2">
+          {m.simulations.map((sim, i) => (
+            <div key={i} className="relative aspect-video overflow-hidden rounded-xl border border-border">
+              <Image src={`/simulations/${sim}`} alt={`Simulation ${i + 1}`} fill className="object-contain" />
+            </div>
+          ))}
+        </section>
+      )}
+
+      <div className="prose mt-12" dangerouslySetInnerHTML={{ __html: paper.content }} />
+    </article>
+  )
+}
+
+function LinkBtn({
+  href,
+  icon,
+  children,
+}: {
+  href: string
+  icon: React.ReactNode
+  children: React.ReactNode
+}) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="btn btn-ghost px-4 py-2 text-sm">
+      {icon}
+      {children}
+    </a>
   )
 }

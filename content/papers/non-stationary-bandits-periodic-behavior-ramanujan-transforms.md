@@ -1,20 +1,41 @@
 ---
-title: "Non-Stationary Bandits with Periodic Behavior: Harnessing Ramanujan Periodicity Transforms to Conquer Time-Varying Challenges"
-authors: "P Thaker, V Gattani, V Tirukkonda, P Saidi, G Dasarathy"
-date: "2024-04-19"
-venue: "ICASSP 2024"
-tags: ["Non-stationary Bandits", "Ramanujan Transforms", "Signal Processing", "Periodic Behavior", "Time-varying Systems"]
-abstract: "We address the challenging problem of non-stationary multi-armed bandits where the reward distributions change over time in a periodic manner. Traditional approaches struggle with time-varying environments due to the exploration-exploitation trade-off becoming more complex when the optimal actions shift cyclically. We propose a novel framework that harnesses Ramanujan Periodicity Transforms to detect and exploit periodic patterns in reward structures. Our approach leverages the mathematical elegance of Ramanujan sums to efficiently identify co-resonant frequencies in the time-varying reward signals, enabling more effective adaptation to periodic non-stationarity. The method provides theoretical guarantees on regret bounds while demonstrating superior empirical performance on both synthetic and real-world datasets with periodic reward patterns."
-excitement: "This paper represents the perfect fusion of classical number theory and modern machine learning that absolutely thrills me! The idea of using Ramanujan Periodicity Transforms for non-stationary bandits is pure genius - it's like discovering that 100-year-old mathematics holds the key to solving cutting-edge AI problems. What excites me most is how Ramanujan sums, originally developed for number theory, turn out to be the perfect tool for detecting periodicities in time-varying reward structures. The elegance is breathtaking: instead of brute-force learning that rewards change, we use mathematical insights about co-resonant frequencies to efficiently identify when and how the environment shifts. It's the kind of interdisciplinary breakthrough that shows how fundamental mathematics continues to unlock new possibilities in machine learning. Plus, the practical implications for real-world systems with cyclical patterns - from traffic optimization to financial markets - are enormous!"
-# title: "My Research Paper"
-# authors: "Parth K. Thaker"
-# date: "2024-01-01"
-# arxivId: "2401.12345"
-# doi: "10.1234/example"
-# videoUrl: "https://youtube.com/watch?v=..."
-# posterUrl: "https://example.com/poster.pdf"
-# slideUrl: "https://example.com/slides.pdf"
-# conferenceUrl: "https://conference.com/paper123"
+title: >-
+  Non-Stationary Bandits with Periodic Behavior: Harnessing Ramanujan
+  Periodicity Transforms to Conquer Time-Varying Challenges
+authors: 'P. Thaker, V. Gattani, V. Tirukkonda, P. Saidi, G. Dasarathy'
+date: '2024-04-19'
+venue: ICASSP 2024
+tags:
+  - Non-stationary Bandits
+  - Ramanujan Transforms
+  - Signal Processing
+  - Periodic Behavior
+  - Time-varying Systems
+abstract: >-
+  We address the challenging problem of non-stationary multi-armed bandits where
+  the reward distributions change over time in a periodic manner. Traditional
+  approaches struggle with time-varying environments due to the
+  exploration-exploitation trade-off becoming more complex when the optimal
+  actions shift cyclically. We propose a novel framework that harnesses
+  Ramanujan Periodicity Transforms to detect and exploit periodic patterns in
+  reward structures. Our approach leverages the mathematical elegance of
+  Ramanujan sums to efficiently identify co-resonant frequencies in the
+  time-varying reward signals, enabling more effective adaptation to periodic
+  non-stationarity. The method provides theoretical guarantees on regret bounds
+  while demonstrating superior empirical performance on both synthetic and
+  real-world datasets with periodic reward patterns.
+insight: >-
+  Standard non-stationary bandit algorithms treat reward drift as adversarial
+  and pay to re-learn the optimum each time it shifts. We instead model the
+  periodicity directly: a Ramanujan periodicity transform recovers the support
+  of the periods from the reward sequence, and the policy uses that structure to
+  anticipate which arm is best at each phase rather than rediscovering it. The
+  payoff is lower regret in settings like traffic or demand cycles where the
+  optimal arm returns on a schedule.
+oneLiner: >-
+  A multi-armed bandit method that uses the Ramanujan periodicity transform to
+  detect periodic patterns in shifting rewards and exploit them to reduce
+  regret.
 ---
 
 <!-- # Non-Stationary Bandits with Periodic Behavior: Harnessing Ramanujan Periodicity Transforms to Conquer Time-Varying Challenges -->

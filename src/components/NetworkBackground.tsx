@@ -7,138 +7,156 @@ interface Node {
   y: number
   vx: number
   vy: number
-  connections: number[]
 }
+
+const LINK_DIST = 140
+const MOUSE_DIST = 190
 
 export default function NetworkBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>(0)
-  const nodesRef = useRef<Node[]>([])
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+
+    let width = 0
+    let height = 0
+    let nodes: Node[] = []
+    let raf = 0
+    const mouse = { x: -9999, y: -9999, active: false }
+
+    const isDark = () => document.documentElement.classList.contains('dark')
+
+    const seedNodes = () => {
+      const target = Math.min(
+        window.innerWidth < 640 ? 34 : 80,
+        Math.floor((width * height) / 18000)
+      )
+      nodes = Array.from({ length: target }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+      }))
     }
 
-    const createNodes = () => {
-      const nodes: Node[] = []
-      const nodeCount = Math.min(50, Math.floor((window.innerWidth * window.innerHeight) / 15000))
-      
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          connections: []
-        })
-      }
+    const resize = () => {
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      seedNodes()
+    }
 
-      // Create connections
-      nodes.forEach((node, i) => {
-        const connectionCount = Math.floor(Math.random() * 3) + 1
-        for (let j = 0; j < connectionCount; j++) {
-          const targetIndex = Math.floor(Math.random() * nodes.length)
-          if (targetIndex !== i && !node.connections.includes(targetIndex)) {
-            node.connections.push(targetIndex)
+    const draw = () => {
+      const dark = isDark()
+      const line = dark ? '150, 138, 255' : '79, 62, 200'
+      const dot = dark ? '186, 178, 255' : '90, 74, 210'
+
+      ctx.clearRect(0, 0, width, height)
+
+      // node-to-node links
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j]
+          const dx = a.x - b.x
+          const dy = a.y - b.y
+          const d = Math.hypot(dx, dy)
+          if (d < LINK_DIST) {
+            ctx.strokeStyle = `rgba(${line}, ${(1 - d / LINK_DIST) * 0.22})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(a.x, a.y)
+            ctx.lineTo(b.x, b.y)
+            ctx.stroke()
           }
         }
-      })
+      }
 
-      nodesRef.current = nodes
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
-      const nodes = nodesRef.current
-      
-      // Update positions
-      nodes.forEach(node => {
-        node.x += node.vx
-        node.y += node.vy
-
-        // Bounce off edges
-        if (node.x <= 0 || node.x >= canvas.width) node.vx *= -1
-        if (node.y <= 0 || node.y >= canvas.height) node.vy *= -1
-
-        // Keep within bounds
-        node.x = Math.max(0, Math.min(canvas.width, node.x))
-        node.y = Math.max(0, Math.min(canvas.height, node.y))
-      })
-
-      // Draw connections
-      ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)'
-      ctx.lineWidth = 1
-      nodes.forEach((node) => {
-        node.connections.forEach(targetIndex => {
-          if (targetIndex < nodes.length) {
-            const target = nodes[targetIndex]
-            const distance = Math.sqrt(
-              Math.pow(node.x - target.x, 2) + Math.pow(node.y - target.y, 2)
-            )
-            
-            if (distance < 200) {
-              const opacity = (1 - distance / 200) * 0.3
-              ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`
-              ctx.beginPath()
-              ctx.moveTo(node.x, node.y)
-              ctx.lineTo(target.x, target.y)
-              ctx.stroke()
-            }
+      // links to cursor + dots
+      for (const n of nodes) {
+        if (mouse.active) {
+          const d = Math.hypot(n.x - mouse.x, n.y - mouse.y)
+          if (d < MOUSE_DIST) {
+            ctx.strokeStyle = `rgba(${line}, ${(1 - d / MOUSE_DIST) * 0.5})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(n.x, n.y)
+            ctx.lineTo(mouse.x, mouse.y)
+            ctx.stroke()
           }
-        })
-      })
-
-      // Draw nodes
-      nodes.forEach(node => {
-        ctx.fillStyle = 'rgba(100, 116, 139, 0.4)'
+        }
+        ctx.fillStyle = `rgba(${dot}, 0.55)`
         ctx.beginPath()
-        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2)
+        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2)
         ctx.fill()
-
-        // Pulsing effect
-        const pulseRadius = 3 + Math.sin(Date.now() * 0.002 + node.x * 0.01) * 1
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.2)'
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2)
-        ctx.fill()
-      })
-
-      animationRef.current = requestAnimationFrame(animate)
+      }
     }
 
-    resizeCanvas()
-    createNodes()
-    animate()
-
-    const handleResize = () => {
-      resizeCanvas()
-      createNodes()
+    const step = () => {
+      for (const n of nodes) {
+        n.x += n.vx
+        n.y += n.vy
+        if (n.x <= 0 || n.x >= width) n.vx *= -1
+        if (n.y <= 0 || n.y >= height) n.vy *= -1
+        n.x = Math.max(0, Math.min(width, n.x))
+        n.y = Math.max(0, Math.min(height, n.y))
+      }
+      draw()
+      raf = requestAnimationFrame(step)
     }
 
-    window.addEventListener('resize', handleResize)
+    const onMove = (e: MouseEvent) => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+      mouse.active = true
+    }
+    const onLeave = () => {
+      mouse.active = false
+    }
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf)
+      } else if (!reduced) {
+        raf = requestAnimationFrame(step)
+      }
+    }
+
+    resize()
+    if (reduced) {
+      draw() // single static frame
+    } else {
+      raf = requestAnimationFrame(step)
+      window.addEventListener('mousemove', onMove, { passive: true })
+      window.addEventListener('mouseout', onLeave)
+      document.addEventListener('visibilitychange', onVisibility)
+    }
+    window.addEventListener('resize', resize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resize)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseout', onLeave)
+      document.removeEventListener('visibilitychange', onVisibility)
     }
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 print:hidden"
+      style={{ opacity: 0.7 }}
     />
   )
 }

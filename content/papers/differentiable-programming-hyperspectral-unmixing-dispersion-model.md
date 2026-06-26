@@ -1,21 +1,46 @@
 ---
-title: "Differentiable Programming for Hyperspectral Unmixing using a Physics-based Dispersion Model"
-authors: "J Janiczek, P Thaker, G Dasarathy, C S Edwards, P Christensen, S Jayasuriya"
-date: "2020-08-01"
-arxivId: "2007.05996"
-venue: "ECCV 2020"
-tags: ["Computer Vision", "Hyperspectral Imaging", "Differentiable Programming", "Physics-based Models", "Remote Sensing"]
-abstract: "Hyperspectral unmixing is an important remote sensing task with applications including material identification and analysis. Characteristic spectral features make many pure materials identifiable from their visible-to-infrared spectra, but quantifying their presence within a mixture is a challenging task due to nonlinearities and factors of variation. We consider spectral variation from a physics-based approach and incorporate it into an end-to-end spectral unmixing algorithm via differentiable programming. The dispersion model is introduced to simulate realistic spectral variation, and an efficient method to fit the parameters is presented. This dispersion model is utilized as a generative model within an analysis-by-synthesis spectral unmixing algorithm. Additionally, we present a technique for inverse rendering using a convolutional neural network to predict parameters of the generative model to enhance performance and speed when training data is available. Results achieve state-of-the-art on both infrared and visible-to-near-infrared (VNIR) datasets, and show promise for the synergy between physics-based models and deep learning in hyperspectral unmixing."
-excitement: "This paper perfectly embodies what I love about interdisciplinary research - it beautifully bridges physics, computer vision, and machine learning! What excites me most is how it tackles the fundamental challenge that real-world spectral measurements are messy and nonlinear, unlike the clean linear mixing models typically assumed. The genius lies in the physics-based dispersion model that captures how light actually interacts with materials - it's not just curve fitting, it's grounded in actual optical physics! The differentiable programming approach is particularly elegant because it makes the entire pipeline end-to-end trainable while respecting physical constraints. The analysis-by-synthesis framework is brilliant - instead of trying to directly invert complex nonlinear mixing, it learns to synthesize realistic spectra and optimizes in that space. This work shows how bringing domain knowledge into machine learning doesn't constrain it, but actually makes it more powerful and interpretable!"
-# title: "My Research Paper"
-# authors: "Parth K. Thaker"
-# date: "2024-01-01"
-# arxivId: "2401.12345"
-# doi: "10.1234/example"
-# videoUrl: "https://youtube.com/watch?v=..."
-# posterUrl: "https://example.com/poster.pdf"
-# slideUrl: "https://example.com/slides.pdf"
-# conferenceUrl: "https://conference.com/paper123"
+title: >-
+  Differentiable Programming for Hyperspectral Unmixing using a Physics-based
+  Dispersion Model
+authors: 'J Janiczek, P Thaker, G Dasarathy, C S Edwards, P Christensen, S Jayasuriya'
+date: '2020-08-01'
+arxivId: '2007.05996'
+venue: ECCV 2020
+tags:
+  - Computer Vision
+  - Hyperspectral Imaging
+  - Differentiable Programming
+  - Physics-based Models
+  - Remote Sensing
+abstract: >-
+  Hyperspectral unmixing is an important remote sensing task with applications
+  including material identification and analysis. Characteristic spectral
+  features make many pure materials identifiable from their visible-to-infrared
+  spectra, but quantifying their presence within a mixture is a challenging task
+  due to nonlinearities and factors of variation. We consider spectral variation
+  from a physics-based approach and incorporate it into an end-to-end spectral
+  unmixing algorithm via differentiable programming. The dispersion model is
+  introduced to simulate realistic spectral variation, and an efficient method
+  to fit the parameters is presented. This dispersion model is utilized as a
+  generative model within an analysis-by-synthesis spectral unmixing algorithm.
+  Additionally, we present a technique for inverse rendering using a
+  convolutional neural network to predict parameters of the generative model to
+  enhance performance and speed when training data is available. Results achieve
+  state-of-the-art on both infrared and visible-to-near-infrared (VNIR)
+  datasets, and show promise for the synergy between physics-based models and
+  deep learning in hyperspectral unmixing.
+insight: >-
+  Most unmixing methods lean on a linear mixing assumption that breaks down once
+  you account for real spectral variability. We instead made a physics-based
+  dispersion model differentiable and used it as the generative component in an
+  analysis-by-synthesis loop, so abundances and physical parameters are fit
+  jointly via gradient descent. The CNN that predicts dispersion parameters is
+  mainly there to cut inference cost when training data is available.
+oneLiner: >-
+  Makes a physics-based optical dispersion model differentiable and uses it for
+  end-to-end hyperspectral unmixing, jointly estimating material abundances and
+  physical parameters.
+codeUrl: 'https://github.com/johnjaniczek/InfraRender'
 ---
 
 <!-- # Differentiable Programming for Hyperspectral Unmixing using a Physics-based Dispersion Model -->

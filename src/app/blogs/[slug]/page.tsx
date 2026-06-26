@@ -1,106 +1,68 @@
 import { notFound } from 'next/navigation'
-import { getContentBySlug, getAllSlugs, BlogMetadata } from '@/lib/markdown'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import NetworkBackground from '@/components/NetworkBackground'
-import CursorTracker from '@/components/CursorTracker'
+import { ArrowLeft } from 'lucide-react'
+import { getContentBySlug, getAllSlugs, BlogMetadata } from '@/lib/markdown'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllSlugs('blogs')
-  return slugs.map((slug) => ({ slug }))
+  return getAllSlugs('blogs').map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getContentBySlug<BlogMetadata>('blogs', slug)
+  if (!post) return {}
+  const m = post.metadata
+  return {
+    title: `${m.title} - Parth K. Thaker`,
+    description: m.description,
+    alternates: { canonical: `/blogs/${slug}` },
+    openGraph: { title: m.title, description: m.description, type: 'article' },
+  }
 }
 
 export default async function BlogPage({ params }: Props) {
   const { slug } = await params
-  const blog = await getContentBySlug('blogs', slug)
-  
-  if (!blog) {
-    notFound()
-  }
-  
-  const metadata = blog.metadata as BlogMetadata
-  
-  return (
-    <div className="min-h-screen relative bg-gradient-to-br from-slate-50 via-orange-50 to-red-50">
-      <CursorTracker />
-      <NetworkBackground />
-      
-      <nav className="relative z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold gradient-text">
-              Parth K. Thaker
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/papers" className="relative group">
-                <span className="text-slate-700 hover:text-blue-600 transition-colors duration-300 font-medium">
-                  Papers
-                </span>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300"></div>
-              </Link>
-              <Link href="/blogs" className="relative group">
-                <span className="text-orange-600 font-medium">
-                  Blog
-                </span>
-                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-red-500"></div>
-              </Link>
-              <Link href="/hobbies" className="relative group">
-                <span className="text-slate-700 hover:text-green-600 transition-colors duration-300 font-medium">
-                  Hobbies
-                </span>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
-        {/* Blog Header */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200 mb-8">
-          <div className="space-y-6">
-            <div>
-              <h1 className="text-4xl font-bold gradient-text mb-4">{metadata.title}</h1>
-              
-              <div className="flex items-center gap-6 text-slate-600 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                  <span>{new Date(metadata.date).toLocaleDateString()}</span>
-                </div>
-                {metadata.readTime && (
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
-                    <span>{metadata.readTime} min read</span>
-                  </div>
-                )}
-              </div>
-              
-              <p className="text-slate-700 text-lg leading-relaxed mb-6">{metadata.description}</p>
-              
-              <div className="flex flex-wrap gap-2">
-                {metadata.tags.map((tag) => (
-                  <span 
-                    key={tag}
-                    className="px-4 py-2 bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 text-orange-700 rounded-full text-sm font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+  const post = await getContentBySlug<BlogMetadata>('blogs', slug)
+  if (!post) notFound()
 
-        {/* Blog Content */}
-        <div className="network-card p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200">
-          <div className="prose prose-lg prose-slate max-w-none prose-headings:gradient-text prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline">
-            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-          </div>
+  const m = post.metadata
+
+  return (
+    <article className="mx-auto max-w-3xl px-6 py-12">
+      <Link href="/blogs" className="link-underline mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+        <ArrowLeft className="h-3.5 w-3.5" /> Writing
+      </Link>
+
+      <header className="mb-10">
+        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+          <time>
+            {new Date(m.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+          {m.readTime && <span>· {m.readTime} min read</span>}
         </div>
-      </div>
-    </div>
+        <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{m.title}</h1>
+        {m.description && <p className="mt-4 text-lg text-muted-foreground">{m.description}</p>}
+        {m.tags?.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-1.5">
+            {m.tags.map((t) => (
+              <span key={t} className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
+    </article>
   )
 }
