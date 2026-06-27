@@ -46,6 +46,8 @@ export interface PaperMetadata extends BaseMetadata {
   abstract: string
   /** One plain sentence ("what it does") for cards and previews. */
   oneLiner?: string
+  /** Slug of the blog explainer that is the narrative home for this work. */
+  blog?: string
   /**
    * Parth's authentic, first-person "why this mattered" note (1-3 sentences).
    * Preferred over the older `excitement` field, which reads as generated copy.

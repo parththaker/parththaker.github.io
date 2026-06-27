@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, FileText, Github, Presentation, Video } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink, FileText, Github, Presentation, Video } from 'lucide-react'
 import { getContentBySlug, getAllSlugs, PaperMetadata } from '@/lib/markdown'
 
 interface Props {
@@ -128,7 +128,24 @@ export default async function PaperPage({ params }: Props) {
         </section>
       )}
 
-      <div className="prose mt-12" dangerouslySetInnerHTML={{ __html: paper.content }} />
+      {m.blog && (
+        <Link
+          href={`/blogs/${m.blog}/`}
+          className="card-surface group mt-10 flex items-center justify-between gap-4 p-6"
+        >
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-brand">Deep dive</div>
+            <p className="mt-1 font-semibold leading-snug">
+              Read the explainer — intuition, the key idea, and honest limitations
+            </p>
+          </div>
+          <ArrowRight className="h-5 w-5 shrink-0 text-brand transition-transform group-hover:translate-x-1" />
+        </Link>
+      )}
+
+      {paper.content?.trim() && (
+        <div className="prose mt-12" dangerouslySetInnerHTML={{ __html: paper.content }} />
+      )}
     </article>
   )
 }
