@@ -8,6 +8,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  Star,
   Twitter,
 } from 'lucide-react'
 import {
@@ -47,12 +48,12 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="brand-glow pointer-events-none absolute inset-x-0 top-0 h-[420px]" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-12 pt-16 md:pt-24 lg:grid-cols-5">
-          <div className="lg:col-span-3">
+          <div className="min-w-0 lg:col-span-3">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
               Open to AI research engineer roles
             </p>
-            <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               Parth K. Thaker
             </h1>
             <p className="mt-3 text-base font-medium text-muted-foreground">AI Research Engineer</p>
@@ -124,7 +125,7 @@ export default function Home() {
         </div>
 
         {/* proof band: borrowed credibility + honest counts */}
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto mt-8 max-w-6xl px-6 sm:mt-14">
           <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 px-6 py-6 backdrop-blur-sm sm:flex-row sm:justify-center sm:gap-8">
             <span className="eyebrow">Published at</span>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-medium">
@@ -164,8 +165,11 @@ export default function Home() {
           <Reveal>
             <Link
               href={`/papers/${featured.slug}`}
-              className="card-surface group block border-brand/30 p-6 sm:p-8"
+              className="card-surface group block border-brand/30 p-6 ring-1 ring-inset ring-brand/15 sm:p-8"
             >
+              <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider text-brand">
+                <Star className="h-3 w-3 fill-current" /> Featured
+              </div>
               <PaperMeta m={featured.metadata} />
               <h3 className="mt-3 text-xl font-bold leading-snug transition-colors group-hover:text-brand sm:text-2xl">
                 {featured.metadata.title}

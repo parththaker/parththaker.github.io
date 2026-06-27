@@ -5,6 +5,7 @@ import Link from 'next/link'
 // mobile. Full chronology lives on /about.
 const STOPS = [
   { year: '2016', org: 'IIT Madras', role: 'B.Tech + M.Tech', now: false },
+  { year: '2022', org: 'MERL', role: 'Research Intern', now: false },
   { year: '2024', org: 'ASU', role: 'Ph.D. — optimization & bandits', now: false },
   { year: 'now', org: 'Intuitive Surgical', role: 'AI Research Engineer', now: true },
 ]
@@ -17,7 +18,7 @@ export default function CareerTimeline() {
       {/* mobile vertical spine */}
       <div className="absolute bottom-3 left-[7px] top-3 w-px bg-border sm:hidden" />
 
-      <ol className="grid grid-cols-1 gap-7 sm:grid-cols-3 sm:gap-4">
+      <ol className="grid grid-cols-1 gap-7 sm:grid-cols-4 sm:gap-4">
         {STOPS.map((s) => (
           <li
             key={s.org}
