@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Crimson_Pro, JetBrains_Mono } from "next/font/google";
+import { Inter, Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
@@ -11,10 +11,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const crimsonPro = Crimson_Pro({
-  variable: "--font-crimson-pro",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -103,7 +104,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${crimsonPro.variable} ${jetbrainsMono.variable} dark`}
+      className={`${inter.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} dark`}
       suppressHydrationWarning
     >
       <head>

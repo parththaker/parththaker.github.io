@@ -9,7 +9,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-crimson-pro);
+  --font-serif: var(--font-source-serif);
   --font-mono: var(--font-jetbrains-mono);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
@@ -261,6 +261,9 @@
 .prose table { @apply my-6 w-full text-sm; }
 .prose th, .prose td { @apply border px-3 py-2 text-left; }
 .prose .katex-display { @apply overflow-x-auto overflow-y-hidden py-2; }
+/* Bond math with prose: KaTeX defaults to 1.21em (oversized inline); size + color match */
+.prose .katex { font-size: 1.08em; color: inherit; }
+.prose .katex-display > .katex { font-size: 1.21em; }
 
 /* =================================================== REDUCED MOTION */
 /* Section eyebrow / overline — left-edge scan anchors (F-pattern) */
