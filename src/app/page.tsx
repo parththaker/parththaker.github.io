@@ -21,7 +21,6 @@ import {
 import { SOCIALS } from '@/lib/site'
 import Reveal from '@/components/Reveal'
 import CareerTimeline from '@/components/CareerTimeline'
-import MagneticButton from '@/components/MagneticButton'
 
 const ICONS = { mail: Mail, github: Github, linkedin: Linkedin, x: Twitter }
 
@@ -77,9 +76,9 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <MagneticButton href="/papers" className="btn btn-brand">
+              <Link href="/papers" className="btn btn-brand">
                 View research <ArrowRight className="h-4 w-4" />
-              </MagneticButton>
+              </Link>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 <Download className="h-4 w-4" /> Résumé (PDF)
               </a>

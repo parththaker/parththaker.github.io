@@ -162,8 +162,9 @@
     color: var(--brand-foreground);
   }
   .btn-brand:hover {
-    @apply -translate-y-0.5 shadow-md;
-    filter: brightness(1.06);
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 24px -8px color-mix(in oklch, var(--brand) 55%, transparent);
   }
   .btn-ghost {
     @apply border bg-transparent;
