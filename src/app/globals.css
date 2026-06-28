@@ -251,6 +251,10 @@
   @apply my-6 overflow-x-auto rounded-xl p-5 text-sm leading-relaxed;
   background: oklch(0.20 0.012 274);
   border: 1px solid var(--border);
+  /* code background is always dark, so force light text — otherwise
+     non-highlighted blocks (e.g. ASCII diagrams) inherit the light-mode
+     foreground and render dark-on-dark. .hljs token colors still win. */
+  color: #c9d1d9;
 }
 .prose pre code {
   @apply bg-transparent p-0 text-[0.9em];
