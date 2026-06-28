@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>parth@portfolio: ~ — Parth K. Thaker</title>
+<meta name="description" content="Parth K. Thaker — AI Research Engineer. Ph.D.-grade optimization and bandit theory, applied to secure LLM systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* refined warm-dark terminal palette */
+    --bg:#16130f;
+    --term-bg:#1b1813;
+    --term-bg-2:#211d17;
+    --chrome:#2a251d;
+    --border:#352f25;
+    --fg:#e9e1d2;        /* warm off-white */
+    --muted:#9b9384;     /* dim comment */
+    --green:#a7c080;     /* prompt / user */
+    --amber:#dbb368;     /* commands / accents */
+    --cyan:#7fbbb3;      /* paths / venues */
+    --magenta:#d699b6;   /* keys */
+    --blue:#83b6d6;      /* links */
+    --red:#e67e80;
+    --yellow:#e1c87a;
+    --shadow:0 30px 80px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.02);
+    --maxw:980px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(219,179,104,.06), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(127,187,179,.05), transparent 55%),
+      var(--bg);
+    color:var(--fg);
+    font-family:"JetBrains Mono", ui-monospace, "IBM Plex Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size:clamp(13px,1vw + 9px,15px);
+    line-height:1.6;
+    padding:clamp(12px,4vw,48px);
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  a{color:var(--blue);text-decoration:none;border-bottom:1px dotted rgba(131,182,214,.45);transition:color .15s,border-color .15s,background .15s;}
+  a:hover{color:#aed4ee;border-bottom-color:#aed4ee;background:rgba(131,182,214,.08);}
+  a:focus-visible{outline:2px solid var(--amber);outline-offset:2px;border-radius:2px;}
+
+  /* ---- window ---- */
+  .window{
+    width:100%;
+    max-width:var(--maxw);
+    background:var(--term-bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .chrome{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:11px 14px;
+    background:linear-gradient(var(--chrome),#241f18);
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:5;
+  }
+  .dots{display:flex;gap:8px;flex:0 0 auto;}
+  .dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.3);}
+  .dot.r{background:#ec6a5e;}
+  .dot.y{background:#f4bf4f;}
+  .dot.g{background:#61c554;}
+  .title{
+    flex:1;text-align:center;color:var(--muted);font-size:.82em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em;
+  }
+  .title b{color:var(--fg);font-weight:500;}
+  .chrome-spacer{flex:0 0 52px;}
+  @media (max-width:560px){.chrome-spacer{display:none;}}
+
+  /* quick command bar */
+  .tabbar{
+    display:flex;gap:6px;flex-wrap:wrap;padding:8px 14px;
+    background:var(--term-bg-2);border-bottom:1px solid var(--border);
+  }
+  .tabbar button{
+    font:inherit;font-size:.78em;cursor:pointer;
+    color:var(--muted);background:transparent;
+    border:1px solid var(--border);border-radius:6px;
+    padding:3px 9px;transition:all .15s;
+  }
+  .tabbar button:hover{color:var(--amber);border-color:var(--amber);background:rgba(219,179,104,.07);}
+  .tabbar button:focus-visible{outline:2px solid var(--amber);outline-offset:1px;}
+
+  /* ---- terminal body ---- */
+  .term{
+    padding:clamp(14px,3vw,28px) clamp(14px,3.5vw,34px) clamp(40px,6vw,60px);
+    background:
+      linear-gradient(var(--term-bg),var(--term-bg));
+  }
+  .line{display:block;}
+  .prompt{white-space:pre-wrap;margin-top:1.7em;word-break:break-word;}
+  .prompt:first-child{margin-top:0;}
+  .u{color:var(--green);font-weight:500;}
+  .at{color:var(--muted);}
+  .host{color:var(--cyan);font-weight:500;}
+  .path{color:var(--amber);}
+  .sym{color:var(--muted);}
+  .cmd{color:var(--fg);font-weight:700;}
+  .flag{color:var(--magenta);}
+  .comment{color:var(--muted);font-style:italic;}
+  .out{margin:.35em 0 0;color:var(--fg);}
+  .dim{color:var(--muted);}
+  .accent{color:var(--amber);}
+  .ok{color:var(--green);}
+  .name{color:var(--amber);font-weight:700;}
+
+  /* neofetch / profile block */
+  .neofetch{
+    display:flex;gap:clamp(16px,3vw,34px);align-items:flex-start;
+    margin-top:.6em;flex-wrap:wrap;
+  }
+  .avatar-wrap{flex:0 0 auto;}
+  .avatar{
+    width:clamp(96px,28vw,150px);height:clamp(96px,28vw,150px);
+    border-radius:10px;object-fit:cover;display:block;
+    border:1px solid var(--border);
+    box-shadow:0 0 0 4px var(--term-bg-2), 0 14px 30px -12px rgba(0,0,0,.7);
+    filter:saturate(.96) contrast(1.02);
+  }
+  .ascii-frame{
+    color:var(--green);font-size:.7em;line-height:1.05;margin-top:6px;
+    white-space:pre;opacity:.55;text-align:center;
+  }
+  .specs{flex:1 1 260px;min-width:200px;}
+  .specs .who{color:var(--green);font-weight:700;}
+  .specs .who u{color:var(--amber);text-decoration:none;}
+  .specs hr{border:none;border-top:1px solid var(--border);margin:.4em 0;}
+  .kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;}
+  .kv dt{color:var(--magenta);font-weight:500;}
+  .kv dd{margin:0;color:var(--fg);}
+  .palette{margin-top:.7em;display:flex;gap:4px;}
+  .palette span{width:16px;height:16px;border-radius:3px;display:inline-block;}
+
+  /* about */
+  .md h1{font-size:1em;color:var(--amber);margin:.2em 0;font-weight:700;}
+  .md p{margin:.45em 0;}
+
+  /* publications listing */
+  .pubs{margin-top:.4em;}
+  .pubhead{color:var(--muted);font-size:.85em;margin:.2em 0 .6em;}
+  .pub{
+    display:block;padding:.55em 0;border-top:1px solid rgba(53,47,37,.7);
+  }
+  .pub:first-of-type{border-top:none;}
+  .pubrow1{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;}
+  .perm{color:var(--muted);font-size:.85em;letter-spacing:.04em;}
+  .venue{
+    color:var(--cyan);font-weight:700;font-size:.86em;
+    border:1px solid rgba(127,187,179,.35);border-radius:5px;padding:0 7px;
+    white-space:nowrap;
+  }
+  .ptitle{color:var(--fg);font-weight:500;}
+  .authors{color:var(--muted);font-size:.86em;margin:.15em 0 .1em;}
+  .authors b{color:var(--amber);}
+  .desc{color:var(--muted);font-size:.92em;margin:.1em 0;}
+  .links{display:flex;gap:14px;flex-wrap:wrap;margin-top:.2em;font-size:.86em;}
+  .links a::before{content:"↳ ";color:var(--muted);}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:max-content 1fr;gap:3px 16px;margin-top:.4em;}
+  .contact-grid dt{color:var(--magenta);}
+  .contact-grid dd{margin:0;}
+
+  /* cursor */
+  .cursor{
+    display:inline-block;width:.62em;height:1.05em;background:var(--amber);
+    margin-left:2px;vertical-align:-0.18em;animation:blink 1.05s steps(1) infinite;
+    box-shadow:0 0 8px rgba(219,179,104,.55);
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  .scanline{pointer-events:none;}
+
+  @media (prefers-reduced-motion:reduce){
+    .cursor{animation:none;}
+  }
+  @media (max-width:480px){
+    .perm{display:none;}
+    .links a::before{content:"";}
+  }
+</style>
+</head>
+<body>
+  <main class="window" role="main" aria-label="Terminal portfolio of Parth K. Thaker">
+    <header class="chrome">
+      <div class="dots" aria-hidden="true">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      </div>
+      <div class="title"><b>parth@portfolio</b>: ~</div>
+      <div class="chrome-spacer" aria-hidden="true"></div>
+    </header>
+
+    <nav class="tabbar" aria-label="Jump to command">
+      <button data-go="whoami">whoami</button>
+      <button data-go="about">cat about.md</button>
+      <button data-go="pubs">ls publications/</button>
+      <button data-go="patent">cat patent</button>
+      <button data-go="contact">contact</button>
+    </nav>
+
+    <section class="term" id="term">
+
+      <!-- whoami -->
+      <p class="prompt" id="whoami"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">whoami</span></p>
+      <p class="out"><span class="name">Parth K. Thaker</span> <span class="dim">—</span> <span class="accent">AI Research Engineer</span></p>
+      <p class="out dim">Ph.D.-grade optimization and bandit theory, applied to secure LLM systems.</p>
+
+      <!-- profile / neofetch -->
+      <p class="prompt"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">./profile</span> <span class="flag">--fetch</span></p>
+      <div class="neofetch out">
+        <div class="avatar-wrap">
+          <img class="avatar" src="/profile_photo.png" alt="Portrait photograph of Parth K. Thaker" width="150" height="150" />
+          <div class="ascii-frame" aria-hidden="true">+----------------+
+|  ~/parth.png   |
++----------------+</div>
+        </div>
+        <div class="specs">
+          <div class="who">parth<span class="dim">@</span><u>portfolio</u></div>
+          <hr />
+          <dl class="kv">
+            <dt>Role</dt><dd>AI Research Engineer</dd>
+            <dt>Now</dt><dd>Intuitive Surgical — secure, privacy-preserving LLM systems: retrieval assistants over internal docs/code, guardrail/security analysis for LLM apps, LLM + CI/CD tooling.</dd>
+            <dt>Ph.D.</dt><dd>Electrical Engineering, Arizona State University, 2024 — advisor Prof. Gautam Dasarathy. Nonconvex optimization, graph theory, multi-armed bandits.</dd>
+            <dt>Earlier</dt><dd>MERL (research intern, 2022) · NetraDyne (systems engineer) · IISc (research intern)</dd>
+            <dt>Degree</dt><dd>B.Tech + M.Tech, IIT Madras</dd>
+            <dt>Location</dt><dd>Sunnyvale, CA</dd>
+            <dt>CV</dt><dd><a href="/resume.pdf">resume.pdf</a></dd>
+          </dl>
+          <div class="palette" aria-hidden="true">
+            <span style="background:#e67e80"></span><span style="background:#dbb368"></span>
+            <span style="background:#e1c87a"></span><span style="background:#a7c080"></span>
+            <span style="background:#7fbbb3"></span><span style="background:#83b6d6"></span>
+            <span style="background:#d699b6"></span><span style="background:#e9e1d2"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- about -->
+      <p class="prompt" id="about"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">cat</span> about.md</p>
+      <div class="out md">
+        <h1># about</h1>
+        <p>I build secure LLM systems for the enterprise — retrieval assistants that reason over internal documentation and code, guardrail and security analysis for LLM applications, and tooling that wires LLMs into CI/CD pipelines.</p>
+        <p>That practice is grounded in a Ph.D. in nonconvex optimization, graph theory, and multi-armed bandits. <span class="dim"># the same math that proves an algorithm converges also tells you where a system will fail.</span></p>
+      </div>
+
+      <!-- publications -->
+      <p class="prompt" id="pubs"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls</span> <span class="flag">-la</span> publications/</p>
+      <div class="out pubs">
+        <p class="pubhead dim">total 6 — sorted by prestige · recency</p>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">NeurIPS 2022</span>
+            <span class="ptitle">Maximizing and Satisficing in Multi-armed Bandits with Graph Information <span class="accent">(GRUB)</span></span>
+          </div>
+          <p class="authors"><b>P. K. Thaker</b>, M. Malu, N. Rao, G. Dasarathy</p>
+          <p class="desc">A similarity graph over arms finds the best arm with far fewer samples than UCB — with a matching lower bound.</p>
+          <p class="links">
+            <a href="https://arxiv.org/abs/2108.01152">arXiv:2108.01152</a>
+            <a href="https://github.com/parththaker/Bandits-GRUB">code</a>
+          </p>
+        </article>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">ISIT 2020</span>
+            <span class="ptitle">On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems</span>
+          </div>
+          <p class="authors"><b>P. K. Thaker</b>, G. Dasarathy, A. Nedic</p>
+          <p class="desc">Identifiability plus a benign nonconvex landscape — gradient descent converges globally from any initialization.</p>
+          <p class="links">
+            <a href="https://arxiv.org/abs/2002.01066">arXiv:2002.01066</a>
+          </p>
+        </article>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">ECCV 2020</span>
+            <span class="ptitle">Differentiable Programming for Hyperspectral Unmixing using a Physics-based Dispersion Model <span class="accent">(InfraRender)</span></span>
+          </div>
+          <p class="authors">J. Janiczek, <b>P. Thaker</b>, G. Dasarathy, C. Edwards, P. Christensen, S. Jayasuriya</p>
+          <p class="desc">Makes a physics dispersion model differentiable for end-to-end hyperspectral unmixing.</p>
+          <p class="links">
+            <a href="https://arxiv.org/abs/2007.05996">arXiv:2007.05996</a>
+            <a href="https://github.com/johnjaniczek/InfraRender">code</a>
+          </p>
+        </article>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">IFAC 2023</span>
+            <span class="ptitle">Bandit-based Multi-agent Search under Noisy Observations</span>
+          </div>
+          <p class="authors"><b>P. Thaker</b>, S. Di Cairano, A. P. Vinod</p>
+          <p class="desc">A thresholding bandit coordinates search agents with finite-time guarantees — led to a granted patent.</p>
+          <p class="links">
+            <span class="dim">MERL TR2023-085 · IFAC World Congress</span>
+          </p>
+        </article>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">ICASSP 2024</span>
+            <span class="ptitle">Non-Stationary Bandits with Periodic Behavior via Ramanujan Periodicity Transforms</span>
+          </div>
+          <p class="authors"><b>P. Thaker</b>, V. Gattani, V. Tirukkonda, P. Saidi, G. Dasarathy</p>
+          <p class="desc">Detect and exploit periodicity instead of re-learning the best arm after every shift.</p>
+        </article>
+
+        <article class="pub">
+          <div class="pubrow1">
+            <span class="perm">-rw-r--r--</span>
+            <span class="venue">ISIT 2017</span>
+            <span class="ptitle">When to Arrive in a Congested System</span>
+          </div>
+          <p class="authors"><b>P. Thaker</b>, A. Gopalan, R. Vaze</p>
+          <p class="desc">Distributed learning that converges to a unique Nash equilibrium for timing access to an intermittent server.</p>
+        </article>
+      </div>
+
+      <!-- patent -->
+      <p class="prompt" id="patent"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">cat</span> patent</p>
+      <div class="out">
+        <p><span class="ok">●</span> <span class="ptitle">Controlling Search Agents with Noisy Observations and Probabilistic Guarantees</span></p>
+        <p class="dim">US&nbsp;12,393,191&nbsp;B2 · Mitsubishi Electric Research Laboratories (MERL) · granted 2025</p>
+      </div>
+
+      <!-- contact -->
+      <p class="prompt" id="contact"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span class="cmd">contact</span></p>
+      <div class="out">
+        <dl class="contact-grid">
+          <dt>email</dt><dd><a href="mailto:parneh@gmail.com">parneh@gmail.com</a></dd>
+          <dt>where</dt><dd>Sunnyvale, CA</dd>
+          <dt>github</dt><dd><a href="https://github.com/parththaker">github.com/parththaker</a></dd>
+          <dt>linkedin</dt><dd><a href="https://linkedin.com/in/parththaker1">linkedin.com/in/parththaker1</a></dd>
+          <dt>x</dt><dd><a href="https://x.com/ParthKThaker">x.com/ParthKThaker</a></dd>
+          <dt>cv</dt><dd><a href="/resume.pdf">resume.pdf</a></dd>
+        </dl>
+      </div>
+
+      <!-- live prompt -->
+      <p class="prompt"><span class="u">parth</span><span class="at">@</span><span class="host">portfolio</span> <span class="path">~</span> <span class="sym">$</span> <span id="live"></span><span class="cursor" aria-hidden="true"></span></p>
+
+    </section>
+  </main>
+
+  <script>
+    // Quick-command bar: scroll to the matching output block.
+    document.querySelectorAll('.tabbar button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var t = document.getElementById(b.dataset.go);
+        if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Gentle "typing" effect on the final live prompt, then leave the cursor blinking.
+    (function(){
+      var live = document.getElementById('live');
+      if(!live) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var msg = 'help';
+      if(reduce){ live.textContent = msg; return; }
+      var i = 0;
+      function type(){
+        if(i <= msg.length){
+          live.textContent = msg.slice(0, i);
+          i++;
+          setTimeout(type, 180 + Math.random()*120);
+        }
+      }
+      setTimeout(type, 900);
+    })();
+  </script>
+</body>
+</html>

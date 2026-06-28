@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Parth K. Thaker — AI Research Engineer</title>
+<meta name="description" content="Parth K. Thaker — AI Research Engineer. Ph.D.-grade optimization and bandit theory, applied to secure LLM systems." />
+
+<!-- Fonts: Newsreader (display) + Source Serif 4 (body) + IBM Plex Mono (code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- KaTeX for real math -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+<style>
+  :root{
+    --paper:#fcfbf7;
+    --ink:#1a1916;
+    --muted:#6f6c63;
+    --faint:#928e83;
+    --rule:#e4e0d4;
+    --rule-strong:#cfcabc;
+    --accent:#9c2b1b;      /* restrained brick red */
+    --accent-soft:#c25a45;
+    --field:#f4f1e8;
+    --maxtext:660px;
+  }
+  *{box-sizing:border-box;}
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Source Serif 4", Georgia, serif;
+    font-size:19px;
+    line-height:1.62;
+    font-feature-settings:"onum" 1, "kern" 1;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* subtle paper grain via radial dots */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(rgba(0,0,0,.018) 1px, transparent 1px);
+    background-size:4px 4px;mix-blend-mode:multiply;
+  }
+  .wrap{ position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:0 24px 8rem; }
+  .col{ max-width:var(--maxtext); }
+
+  a{ color:var(--accent); text-decoration:none; background-image:linear-gradient(var(--accent),var(--accent)); background-position:0 95%; background-repeat:no-repeat; background-size:100% 1px; transition:color .15s, background-size .15s; }
+  a:hover{ color:var(--accent-soft); background-size:100% 2px; }
+
+  /* ---------- masthead ---------- */
+  header.masthead{ padding:4.5rem 0 2.2rem; border-bottom:1px solid var(--rule); }
+  .kicker{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin:0 0 1.4rem; }
+  .masthead-grid{ display:flex; gap:2.2rem; align-items:flex-start; }
+  .portrait{ flex:0 0 96px; }
+  .portrait img{ width:96px; height:96px; border-radius:50%; object-fit:cover; filter:grayscale(100%) contrast(1.02); border:1px solid var(--rule-strong); }
+  h1{ font-family:"Newsreader",serif; font-weight:500; font-size:clamp(2.4rem,6vw,3.6rem); line-height:1.02; letter-spacing:-.015em; margin:.1rem 0 .35rem; }
+  h1 .small{ font-style:italic; color:var(--muted); font-weight:400; }
+  .role{ font-family:"Newsreader",serif; font-size:1.25rem; font-style:italic; color:var(--muted); margin:0 0 1rem; }
+  .value{ font-size:1.05rem; margin:.2rem 0 1.4rem; max-width:46ch; }
+  .meta{ font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:.3rem 1.1rem; align-items:center; }
+  .meta a{ background:none; }
+  .meta .dot{ color:var(--rule-strong); }
+
+  /* ---------- section scaffolding ---------- */
+  section{ padding-top:3.4rem; }
+  .sec-head{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin:0 0 1.4rem; display:flex; align-items:center; gap:.9rem; }
+  .sec-head::after{ content:""; flex:1; height:1px; background:var(--rule); }
+  h2{ font-family:"Newsreader",serif; font-weight:500; font-size:1.9rem; letter-spacing:-.01em; margin:0 0 .8rem; }
+  .col p{ margin:0 0 1.1rem; }
+  .lead{ font-size:1.18rem; line-height:1.6; }
+  .drop::first-letter{ initial-letter:2; font-family:"Newsreader",serif; font-weight:600; color:var(--accent); margin-right:.06em; }
+
+  /* ---------- sidenotes (Tufte-style right margin) ---------- */
+  .sidenote{
+    float:right; clear:right; width:240px; margin-right:-300px; margin-top:.35rem; margin-bottom:1.1rem;
+    font-family:"Source Serif 4",serif; font-size:.82rem; line-height:1.46; color:var(--muted);
+    border-top:1px solid var(--rule-strong); padding-top:.45rem;
+  }
+  .sidenote .sn-num{ font-family:"IBM Plex Mono",monospace; color:var(--accent); font-size:.7rem; }
+  .sidenote a{ font-size:inherit; }
+  .snref{ font-family:"IBM Plex Mono",monospace; font-size:.62em; color:var(--accent); vertical-align:super; line-height:0; padding:0 .12em; }
+
+  /* equation block label */
+  .katex-display{ margin:1.4rem 0; }
+  figure.eq{ margin:1.6rem 0; padding:1rem 1.2rem; background:var(--field); border-left:2px solid var(--accent); border-radius:2px; }
+  figure.eq figcaption{ font-size:.82rem; color:var(--muted); margin-top:.5rem; font-style:italic; }
+
+  /* ---------- interactive figure ---------- */
+  .figbox{ margin:1.8rem 0 1rem; border:1px solid var(--rule-strong); background:#fffdf8; border-radius:3px; overflow:hidden; box-shadow:0 1px 0 rgba(0,0,0,.02); }
+  .figbar{ display:flex; flex-wrap:wrap; gap:.6rem .9rem; align-items:center; padding:.7rem .95rem; border-bottom:1px solid var(--rule); background:linear-gradient(var(--field),#fffdf8); }
+  .figtitle{ font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); margin-right:auto; }
+  .seg{ display:inline-flex; border:1px solid var(--rule-strong); border-radius:3px; overflow:hidden; }
+  .seg button{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:.32rem .7rem; border:0; background:#fff; color:var(--muted); cursor:pointer; transition:background .15s,color .15s; }
+  .seg button + button{ border-left:1px solid var(--rule-strong); }
+  .seg button[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+  .btn{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:.34rem .8rem; border:1px solid var(--rule-strong); background:#fff; color:var(--ink); border-radius:3px; cursor:pointer; transition:background .15s; }
+  .btn:hover{ background:var(--field); }
+  canvas#land{ display:block; width:100%; height:340px; touch-action:none; cursor:crosshair; }
+  .figfoot{ display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; align-items:center; padding:.6rem .95rem; border-top:1px solid var(--rule); font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--muted); }
+  .figfoot .read{ display:flex; gap:1.2rem; }
+  .figfoot b{ color:var(--ink); font-weight:500; }
+  .slider-row{ display:flex; align-items:center; gap:.6rem; flex:1; min-width:180px; }
+  input[type=range]{ -webkit-appearance:none; appearance:none; height:2px; background:var(--rule-strong); flex:1; border-radius:2px; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent); cursor:pointer; border:2px solid var(--paper); }
+  input[type=range]::-moz-range-thumb{ width:14px; height:14px; border-radius:50%; background:var(--accent); cursor:pointer; border:2px solid var(--paper); }
+  .verdict{ font-style:normal; }
+  .verdict.good{ color:#1f7a3a; } .verdict.bad{ color:var(--accent); }
+
+  /* ---------- publications ---------- */
+  ol.pubs{ list-style:none; margin:0; padding:0; counter-reset:pub; }
+  ol.pubs li{ counter-increment:pub; position:relative; padding:1.2rem 0 1.2rem 3rem; border-top:1px solid var(--rule); }
+  ol.pubs li::before{ content:counter(pub,decimal-leading-zero); position:absolute; left:0; top:1.35rem; font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--accent); }
+  .pub-title{ font-family:"Newsreader",serif; font-size:1.18rem; font-weight:500; line-height:1.28; margin:0 0 .25rem; color:var(--ink); }
+  .pub-title a{ background:none; color:var(--ink); }
+  .pub-title a:hover{ color:var(--accent); }
+  .pub-authors{ font-size:.92rem; color:var(--muted); margin:0 0 .35rem; }
+  .pub-authors b{ color:var(--ink); font-weight:600; }
+  .pub-venue{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--faint); margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.3rem .7rem; align-items:center; }
+  .badge{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.04em; padding:.12rem .45rem; border:1px solid var(--rule-strong); border-radius:2px; color:var(--muted); }
+  .badge.prime{ border-color:var(--accent); color:var(--accent); }
+  .pub-note{ font-size:.95rem; color:var(--ink); margin:0; max-width:60ch; }
+  .pub-links{ margin-top:.4rem; font-family:"IBM Plex Mono",monospace; font-size:.72rem; display:flex; gap:1rem; flex-wrap:wrap; }
+
+  /* timeline / patent */
+  .twocol{ display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; }
+  ul.cv{ list-style:none; margin:0; padding:0; }
+  ul.cv li{ padding:.55rem 0; border-bottom:1px solid var(--rule); display:flex; gap:.8rem; }
+  ul.cv li .yr{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--faint); flex:0 0 4.2rem; padding-top:.18rem; }
+  ul.cv li .what b{ font-weight:600; }
+  ul.cv li .what span{ display:block; font-size:.86rem; color:var(--muted); }
+  .patent{ background:var(--field); border:1px solid var(--rule); border-radius:3px; padding:1.1rem 1.2rem; }
+  .patent .pat-k{ font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin:0 0 .5rem; }
+
+  footer{ margin-top:4rem; padding-top:1.6rem; border-top:1px solid var(--rule-strong); font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; }
+  footer a{ background:none; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .sidenote{ float:none; width:auto; margin:1.1rem 0; padding:.6rem 0 .6rem .95rem; border-top:0; border-left:2px solid var(--accent); }
+    .twocol{ grid-template-columns:1fr; gap:1rem; }
+  }
+  @media (max-width:560px){
+    body{ font-size:18px; }
+    .wrap{ padding:0 18px 5rem; }
+    header.masthead{ padding-top:3rem; }
+    .masthead-grid{ flex-direction:column; gap:1.2rem; }
+    .portrait img{ width:84px; height:84px; }
+    canvas#land{ height:300px; }
+    .figbar{ gap:.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <p class="kicker">Sunnyvale, California · Research notebook</p>
+    <div class="masthead-grid">
+      <div class="portrait">
+        <img src="/profile_photo.png" alt="Portrait photograph of Parth K. Thaker" />
+      </div>
+      <div>
+        <h1>Parth K. Thaker</h1>
+        <p class="role">AI Research Engineer</p>
+        <p class="value">Ph.D.-grade optimization and bandit theory, applied to secure LLM systems.</p>
+        <div class="meta">
+          <a href="mailto:parneh@gmail.com">parneh@gmail.com</a><span class="dot">·</span>
+          <a href="/resume.pdf">CV (pdf)</a><span class="dot">·</span>
+          <a href="https://github.com/parththaker">github</a><span class="dot">·</span>
+          <a href="https://linkedin.com/in/parththaker1">linkedin</a><span class="dot">·</span>
+          <a href="https://x.com/ParthKThaker">x</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section id="about">
+    <p class="sec-head">Abstract</p>
+    <div class="col">
+      <p class="lead drop">I build secure, privacy-preserving LLM systems at <strong>Intuitive Surgical</strong> &mdash; retrieval assistants over internal documents and code, guardrail and security analysis for LLM applications, and LLM tooling wired into CI/CD. The work sits where applied engineering meets a theorist's instinct for what a system can and cannot guarantee.
+
+      <span class="sidenote"><span class="sn-num">[1]</span> Secure here means concretely: keeping proprietary documents and code inside the trust boundary, and reasoning about the failure modes of a retrieval pipeline before it ships, not after.</span>
+      </p>
+
+      <p>That instinct comes from a Ph.D. in Electrical Engineering at <strong>Arizona State University</strong> (2024), advised by Prof. Gautam Dasarathy, on nonconvex optimization, graph theory, and multi-armed bandits.<span class="snref">2</span> The same questions recur across both worlds: <em>when can a learning procedure be trusted to find the right answer</em>, how few observations does it take, and what structure in the problem makes the difference between a guarantee and a hope.
+
+      <span class="sidenote"><span class="sn-num">[2]</span> Earlier: research intern at <strong>MERL</strong> (2022), systems engineer at <strong>NetraDyne</strong>, and research intern at <strong>IISc</strong>. B.Tech + M.Tech, <strong>IIT Madras</strong>.</span>
+      </p>
+
+      <p>Two threads run through the publications below. The first is <strong>benign nonconvexity</strong>: many problems look hopeless &mdash; nonconvex, riddled with the threat of bad local minima &mdash; yet have a landscape on which plain gradient descent converges to the global optimum from <em>any</em> starting point. The second is <strong>structure as a sample-complexity multiplier</strong>: a similarity graph over the arms of a bandit, or known periodicity in a non-stationary one, lets an agent reach the right decision with far fewer observations than a structure-blind baseline.</p>
+    </div>
+  </section>
+
+  <!-- ============ INTERACTIVE FIGURE ============ -->
+  <section id="figure">
+    <p class="sec-head">Figure 1 &mdash; Interactive</p>
+    <div class="col">
+      <h2>When is a nonconvex landscape <em>benign</em>?</h2>
+      <p>Convexity is sufficient for gradient descent to find the global minimum, but it is not necessary. A landscape can wiggle, change curvature, and still have exactly one valley &mdash; in which case descent from <em>any</em> initialization lands at the global optimum. That distinction is the heart of the quadratic-feasibility paper.<span class="snref">3</span> The update rule is the textbook one,
+
+      <span class="sidenote"><span class="sn-num">[3]</span> Thaker, Dasarathy &amp; Nedi&cacute;, ISIT 2020 (<a href="https://arxiv.org/abs/2002.01066">arXiv:2002.01066</a>). The result: identifiability conditions plus a <em>benign</em> landscape &mdash; no spurious local minima &mdash; so gradient descent converges globally.</span>
+      </p>
+
+      <figure class="eq">
+        $$ x_{k+1} \;=\; x_k \;-\; \eta\,\nabla f(x_k), \qquad \eta>0 $$
+        <figcaption>What changes is not the algorithm but the function it runs on.</figcaption>
+      </figure>
+
+      <p>Drag anywhere on the panel (or use the slider) to drop a descent trajectory from that starting point. Toggle between a <strong>generic</strong> nonconvex objective, whose extra valleys trap the iterate, and a <strong>benign</strong> one, where every run finds the bottom no matter where it begins.</p>
+
+      <div class="figbox">
+        <div class="figbar">
+          <span class="figtitle">f(x) on [&minus;2.5, 2.5]</span>
+          <span class="seg" role="group" aria-label="Landscape type">
+            <button id="mGeneric" aria-pressed="false">generic</button>
+            <button id="mBenign" aria-pressed="true">benign</button>
+          </span>
+          <button class="btn" id="runBtn">drop &amp; descend</button>
+        </div>
+        <canvas id="land" aria-label="Interactive plot of a one-dimensional objective with an animated gradient-descent trajectory"></canvas>
+        <div class="figfoot">
+          <span class="slider-row">
+            start&nbsp;x
+            <input type="range" id="startX" min="-2.5" max="2.5" step="0.01" value="-2.05" />
+          </span>
+          <span class="read">
+            <span>x&#x2080; = <b id="rx0">&ndash;</b></span>
+            <span>converged to x* = <b id="rxstar">&ndash;</b></span>
+            <span class="verdict" id="verdict">&ndash;</span>
+          </span>
+        </div>
+      </div>
+      <p style="font-size:.86rem;color:var(--muted);">The dashed line marks the true global minimum. On the benign landscape the ball reaches it every time; on the generic one, descent is honest &mdash; it rolls into whatever valley it started above, which may not be the deepest.</p>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications">
+    <p class="sec-head">Selected Publications</p>
+    <div class="col">
+      <ol class="pubs">
+
+        <li>
+          <p class="pub-title">Maximizing and Satisficing in Multi-armed Bandits with Graph Information <span style="color:var(--faint);font-style:italic;font-weight:400;">(GRUB)</span></p>
+          <p class="pub-authors"><b>P. K. Thaker</b>, M. Malu, N. Rao, G. Dasarathy</p>
+          <p class="pub-venue"><span class="badge prime">NeurIPS 2022</span> <span>arXiv:2108.01152</span></p>
+          <p class="pub-note">A similarity graph over the arms finds the best arm with far fewer samples than UCB &mdash; with a matching lower bound.</p>
+          <p class="pub-links"><a href="https://arxiv.org/abs/2108.01152">arXiv &rarr;</a><a href="https://github.com/parththaker/Bandits-GRUB">code &rarr;</a></p>
+          <span class="sidenote"><span class="sn-num">[A]</span> The graph encodes a prior that nearby arms have similar means; sampling one arm informs its neighbors, so the algorithm spends pulls where they discriminate the most.</span>
+        </li>
+
+        <li>
+          <p class="pub-title">On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems</p>
+          <p class="pub-authors"><b>P. K. Thaker</b>, G. Dasarathy, A. Nedi&cacute;</p>
+          <p class="pub-venue"><span class="badge prime">ISIT 2020</span> <span>arXiv:2002.01066</span></p>
+          <p class="pub-note">Identifiability plus a benign nonconvex landscape &mdash; gradient descent converges globally from any initialization. (This is the result animated in Figure 1.)</p>
+          <p class="pub-links"><a href="https://arxiv.org/abs/2002.01066">arXiv &rarr;</a></p>
+        </li>
+
+        <li>
+          <p class="pub-title">Differentiable Programming for Hyperspectral Unmixing using a Physics-based Dispersion Model <span style="color:var(--faint);font-style:italic;font-weight:400;">(InfraRender)</span></p>
+          <p class="pub-authors">J. Janiczek, <b>P. Thaker</b>, G. Dasarathy, C. Edwards, P. Christensen, S. Jayasuriya</p>
+          <p class="pub-venue"><span class="badge prime">ECCV 2020</span> <span>arXiv:2007.05996</span></p>
+          <p class="pub-note">Makes a physics dispersion model differentiable for end-to-end hyperspectral unmixing.</p>
+          <p class="pub-links"><a href="https://arxiv.org/abs/2007.05996">arXiv &rarr;</a><a href="https://github.com/johnjaniczek/InfraRender">code &rarr;</a></p>
+          <span class="sidenote"><span class="sn-num">[B]</span> Second author of six; Janiczek led. A nice example of putting a known physical model <em>inside</em> the differentiable graph rather than learning around it.</span>
+        </li>
+
+        <li>
+          <p class="pub-title">Bandit-based Multi-agent Search under Noisy Observations</p>
+          <p class="pub-authors"><b>P. Thaker</b>, S. Di Cairano, A. P. Vinod</p>
+          <p class="pub-venue"><span class="badge">IFAC World Congress 2023</span> <span>MERL TR2023-085</span></p>
+          <p class="pub-note">A thresholding bandit coordinates search agents with finite-time guarantees; the work led to a granted patent.</p>
+        </li>
+
+        <li>
+          <p class="pub-title">Non-Stationary Bandits with Periodic Behavior via Ramanujan Periodicity Transforms</p>
+          <p class="pub-authors"><b>P. Thaker</b>, V. Gattani, V. Tirukkonda, P. Saidi, G. Dasarathy</p>
+          <p class="pub-venue"><span class="badge">ICASSP 2024</span></p>
+          <p class="pub-note">Detect and exploit periodicity instead of re-learning the best arm after every shift.</p>
+        </li>
+
+        <li>
+          <p class="pub-title">When to Arrive in a Congested System</p>
+          <p class="pub-authors"><b>P. Thaker</b>, A. Gopalan, R. Vaze</p>
+          <p class="pub-venue"><span class="badge">ISIT 2017</span></p>
+          <p class="pub-note">Distributed learning that converges to a unique Nash equilibrium for timing access to an intermittent server.</p>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PATENT + TRACK ============ -->
+  <section id="more">
+    <p class="sec-head">Patent &amp; Track</p>
+    <div class="col">
+      <div class="twocol">
+        <div>
+          <div class="patent">
+            <p class="pat-k">Granted patent</p>
+            <p class="pub-title" style="font-size:1.05rem;">Controlling Search Agents with Noisy Observations and Probabilistic Guarantees</p>
+            <p class="pub-venue" style="margin-bottom:0;"><span class="badge prime">US 12,393,191 B2</span> <span>MERL · 2025</span></p>
+          </div>
+        </div>
+        <div>
+          <ul class="cv">
+            <li><span class="yr">now</span><span class="what"><b>Intuitive Surgical</b><span>Secure, privacy-preserving LLM systems</span></span></li>
+            <li><span class="yr">2024</span><span class="what"><b>Ph.D., EE — Arizona State University</b><span>Advisor: Prof. Gautam Dasarathy</span></span></li>
+            <li><span class="yr">2022</span><span class="what"><b>MERL</b><span>Research intern</span></span></li>
+            <li><span class="yr">—</span><span class="what"><b>NetraDyne</b><span>Systems engineer</span></span></li>
+            <li><span class="yr">—</span><span class="what"><b>IISc</b><span>Research intern</span></span></li>
+            <li><span class="yr">—</span><span class="what"><b>IIT Madras</b><span>B.Tech + M.Tech</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Parth K. Thaker</span>
+    <a href="mailto:parneh@gmail.com">parneh@gmail.com</a>
+    <a href="/resume.pdf">CV</a>
+    <a href="https://github.com/parththaker">github</a>
+    <a href="https://linkedin.com/in/parththaker1">linkedin</a>
+    <a href="https://x.com/ParthKThaker">x</a>
+    <span style="margin-left:auto;color:var(--faint);">Set in Newsreader &amp; Source Serif&nbsp;4.</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // ---------- objective functions on x in [-2.5, 2.5] ----------
+  // benign: single global min at x=0, but nonconvex (curvature flips)
+  // generic: multiple local minima that trap gradient descent
+  var XMIN=-2.5, XMAX=2.5;
+  var modes = {
+    benign:{
+      f:function(x){ return 0.5*x*x - 0.18*Math.cos(4*x) + 0.18; },
+      g:function(x){ return x + 0.72*Math.sin(4*x); }
+    },
+    generic:{
+      f:function(x){ return 0.5*x*x - 0.62*Math.cos(4*x) + 0.62; },
+      g:function(x){ return x + 2.48*Math.sin(4*x); }
+    }
+  };
+  var mode = "benign";
+  var ETA = 0.045;        // step size
+  var MAXSTEPS = 600;
+
+  // global minimum by fine scan
+  function globalMin(m){
+    var best=1e9, bx=0;
+    for(var x=XMIN;x<=XMAX;x+=0.001){ var v=m.f(x); if(v<best){best=v;bx=x;} }
+    return bx;
+  }
+
+  var canvas = document.getElementById("land");
+  var ctx = canvas.getContext("2d");
+  var W=0,H=0,dpr=1;
+
+  // domain bounds for y (recomputed per mode)
+  var YMIN=0, YMAX=1, PAD=34;
+
+  function computeY(){
+    var m=modes[mode], lo=1e9, hi=-1e9;
+    for(var x=XMIN;x<=XMAX;x+=0.01){ var v=m.f(x); if(v<lo)lo=v; if(v>hi)hi=v; }
+    YMIN=lo; YMAX=hi + (hi-lo)*0.08;
+  }
+
+  function px(x){ return PAD + (x-XMIN)/(XMAX-XMIN)*(W-2*PAD); }
+  function py(y){ return (H-PAD) - (y-YMIN)/(YMAX-YMIN)*(H-2*PAD); }
+  function invPx(p){ return XMIN + (p-PAD)/(W-2*PAD)*(XMAX-XMIN); }
+
+  function resize(){
+    dpr = window.devicePixelRatio||1;
+    var r = canvas.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W*dpr);
+    canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw();
+  }
+
+  // ---------- descent state ----------
+  var traj=[];          // array of x values
+  var animIdx=0, anim=null, x0=-2.05, xstar=null, gmin=0;
+
+  function buildTrajectory(start){
+    var m=modes[mode]; var xs=[start]; var x=start;
+    for(var i=0;i<MAXSTEPS;i++){
+      var grad=m.g(x);
+      var nx = x - ETA*grad;
+      if(nx<XMIN)nx=XMIN; if(nx>XMAX)nx=XMAX;
+      xs.push(nx);
+      if(Math.abs(nx-x)<1e-5) break;
+      x=nx;
+    }
+    return xs;
+  }
+
+  function startDescent(start){
+    if(anim) cancelAnimationFrame(anim);
+    x0 = Math.max(XMIN,Math.min(XMAX,start));
+    document.getElementById("startX").value = x0.toFixed(2);
+    traj = buildTrajectory(x0);
+    animIdx = 0; xstar=null;
+    document.getElementById("rx0").textContent = x0.toFixed(2);
+    document.getElementById("rxstar").textContent = "…";
+    var vEl=document.getElementById("verdict"); vEl.textContent="descending…"; vEl.className="verdict";
+    step();
+  }
+
+  function step(){
+    animIdx += 2;                       // a couple of GD steps per frame
+    if(animIdx >= traj.length-1){
+      animIdx = traj.length-1;
+      finish();
+      draw();
+      return;
+    }
+    draw();
+    anim = requestAnimationFrame(step);
+  }
+
+  function finish(){
+    xstar = traj[traj.length-1];
+    document.getElementById("rxstar").textContent = xstar.toFixed(3);
+    var hitGlobal = Math.abs(xstar - gmin) < 0.06;
+    var vEl=document.getElementById("verdict");
+    if(hitGlobal){ vEl.textContent="✓ reached global minimum"; vEl.className="verdict good"; }
+    else { vEl.textContent="✗ trapped in a local minimum"; vEl.className="verdict bad"; }
+  }
+
+  // ---------- drawing ----------
+  function draw(){
+    if(!W) return;
+    var m=modes[mode];
+    ctx.clearRect(0,0,W,H);
+
+    // baseline grid (very light)
+    ctx.strokeStyle="#ece8dc"; ctx.lineWidth=1;
+    ctx.beginPath();
+    for(var gx=-2;gx<=2;gx++){ var X=px(gx); ctx.moveTo(X,PAD-6); ctx.lineTo(X,H-PAD+6); }
+    ctx.stroke();
+    // x axis ticks labels
+    ctx.fillStyle="#a8a293"; ctx.font="10px 'IBM Plex Mono', monospace"; ctx.textAlign="center";
+    for(var tx=-2;tx<=2;tx++){ ctx.fillText(tx.toString(), px(tx), H-PAD+18); }
+
+    // global min vertical dashed line
+    ctx.save();
+    ctx.strokeStyle="rgba(156,43,27,.45)"; ctx.lineWidth=1.2; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(px(gmin),PAD-6); ctx.lineTo(px(gmin),H-PAD); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle="#9c2b1b"; ctx.font="10px 'IBM Plex Mono', monospace"; ctx.textAlign="left";
+    ctx.fillText("global min", px(gmin)+6, PAD+6);
+
+    // the curve f(x)
+    ctx.strokeStyle="#2b2924"; ctx.lineWidth=2; ctx.beginPath();
+    var first=true;
+    for(var p=PAD;p<=W-PAD;p++){
+      var xx=invPx(p), yy=m.f(xx), Y=py(yy);
+      if(first){ ctx.moveTo(p,Y); first=false; } else ctx.lineTo(p,Y);
+    }
+    ctx.stroke();
+
+    // trajectory trail on the curve
+    if(traj.length){
+      var upto = Math.min(animIdx, traj.length-1);
+      ctx.strokeStyle="rgba(194,90,69,.55)"; ctx.lineWidth=1.4; ctx.beginPath();
+      for(var i=0;i<=upto;i++){ var xv=traj[i],yv=m.f(xv); if(i===0)ctx.moveTo(px(xv),py(yv)); else ctx.lineTo(px(xv),py(yv)); }
+      ctx.stroke();
+      // faint dots at past iterates
+      ctx.fillStyle="rgba(156,43,27,.28)";
+      for(var j=0;j<=upto;j+=3){ var xa=traj[j],ya=m.f(xa); ctx.beginPath(); ctx.arc(px(xa),py(ya),2,0,7); ctx.fill(); }
+
+      // the ball
+      var cx=traj[upto], cy=m.f(cx);
+      ctx.fillStyle="#9c2b1b"; ctx.strokeStyle="#fffdf8"; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(px(cx),py(cy),6.5,0,7); ctx.fill(); ctx.stroke();
+      // gradient arrow at the ball (direction of motion = -grad)
+      var gr=m.g(cx);
+      if(Math.abs(gr)>0.04 && upto<traj.length-1){
+        var dir = gr>0?-1:1;
+        ctx.strokeStyle="rgba(156,43,27,.7)"; ctx.lineWidth=1.6;
+        var ax=px(cx), ay=py(cy)-14;
+        ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(ax+dir*16,ay); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ax+dir*16,ay); ctx.lineTo(ax+dir*10,ay-4); ctx.lineTo(ax+dir*10,ay+4); ctx.closePath(); ctx.fillStyle="rgba(156,43,27,.7)"; ctx.fill();
+      }
+    }
+  }
+
+  // ---------- interaction ----------
+  function setMode(newMode){
+    mode=newMode;
+    document.getElementById("mBenign").setAttribute("aria-pressed", mode==="benign");
+    document.getElementById("mGeneric").setAttribute("aria-pressed", mode==="generic");
+    computeY(); gmin=globalMin(modes[mode]);
+    startDescent(x0);
+  }
+
+  document.getElementById("mBenign").addEventListener("click",function(){ setMode("benign"); });
+  document.getElementById("mGeneric").addEventListener("click",function(){ setMode("generic"); });
+  document.getElementById("runBtn").addEventListener("click",function(){ startDescent(parseFloat(document.getElementById("startX").value)); });
+  document.getElementById("startX").addEventListener("input",function(e){
+    var s=parseFloat(e.target.value);
+    document.getElementById("rx0").textContent=s.toFixed(2);
+    // live preview ball position without animating descent
+    if(anim) cancelAnimationFrame(anim);
+    x0=s; traj=[s]; animIdx=0; draw();
+  });
+  document.getElementById("startX").addEventListener("change",function(e){ startDescent(parseFloat(e.target.value)); });
+
+  // drag / click on canvas to set start
+  var dragging=false;
+  function pointerToX(ev){
+    var r=canvas.getBoundingClientRect();
+    var cx=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left;
+    return Math.max(XMIN,Math.min(XMAX, invPx(cx)));
+  }
+  canvas.addEventListener("pointerdown",function(ev){
+    dragging=true; canvas.setPointerCapture(ev.pointerId);
+    if(anim) cancelAnimationFrame(anim);
+    var s=pointerToX(ev); x0=s; traj=[s]; animIdx=0;
+    document.getElementById("startX").value=s.toFixed(2);
+    document.getElementById("rx0").textContent=s.toFixed(2);
+    draw();
+  });
+  canvas.addEventListener("pointermove",function(ev){
+    if(!dragging) return;
+    var s=pointerToX(ev); x0=s; traj=[s]; animIdx=0;
+    document.getElementById("startX").value=s.toFixed(2);
+    document.getElementById("rx0").textContent=s.toFixed(2);
+    draw();
+  });
+  canvas.addEventListener("pointerup",function(ev){
+    if(!dragging) return; dragging=false;
+    startDescent(x0);
+  });
+
+  window.addEventListener("resize", resize);
+
+  // init
+  computeY(); gmin=globalMin(modes[mode]);
+  // wait a tick so layout has width
+  requestAnimationFrame(function(){ resize(); startDescent(-2.05); });
+})();
+</script>
+</body>
+</html>
