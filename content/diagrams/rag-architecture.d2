@@ -1,0 +1,28 @@
+# RAG architecture — ingestion + query flow
+# Render: d2 --sketch --theme=0   ... -light.svg   (light)
+#         d2 --sketch --theme=200 ... -dark.svg    (dark)
+direction: down
+
+ingest: Ingestion {
+  pdf: "PDF" { shape: page }
+  md: "PDF → Markdown\n(+ extracted images)"
+  tree: "Parse to nested tree\n(mirrors heading outline)"
+  chunk: "Per-section chunk\n+ outline as context\n+ image paths"
+  db: "Vector DB\n(dense embeddings)" { shape: cylinder }
+  pdf -> md -> tree -> chunk -> db
+}
+
+query: Query {
+  q: "User query"
+  search: "Hybrid search\n(+ per-user filter)"
+  ctx: "Retrieved chunks\n(+ images + parent context)"
+  llm: "LLM\nkeep image tags only\nwhere relevant"
+  verify: "Verify image tags\nreject hallucinations" {
+    style.stroke: "#E5231B"
+    style.stroke-width: 2
+  }
+  render: "Rendered answer\nimages inline, cited"
+  q -> search -> ctx -> llm -> verify -> render
+}
+
+ingest.db -> query.search: "retrieve"
