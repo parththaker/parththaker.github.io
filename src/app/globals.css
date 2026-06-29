@@ -8,12 +8,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-archivo);
   --font-serif: var(--font-source-serif);
   --font-mono: var(--font-jetbrains-mono);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
-  --color-brand-muted: var(--brand-muted);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -30,237 +29,175 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* ============================================================= LIGHT */
+/* ===================================================== LIGHT (default) */
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.99 0.003 270);
-  --foreground: oklch(0.20 0.01 270);
+  --radius: 0.4rem; /* Swiss: minimal rounding */
+  --background: oklch(0.992 0.0015 260);   /* cool near-white, not cream */
+  --foreground: oklch(0.205 0.012 264);    /* cool near-black */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.01 270);
+  --card-foreground: oklch(0.205 0.012 264);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.01 270);
-  --primary: oklch(0.24 0.02 270);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.96 0.005 270);
-  --secondary-foreground: oklch(0.24 0.02 270);
-  --muted: oklch(0.96 0.005 270);
-  --muted-foreground: oklch(0.50 0.01 270);
-  --accent: oklch(0.95 0.01 270);
-  --accent-foreground: oklch(0.24 0.02 270);
+  --popover-foreground: oklch(0.205 0.012 264);
+  --primary: oklch(0.24 0.012 264);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.965 0.003 264);
+  --secondary-foreground: oklch(0.24 0.012 264);
+  --muted: oklch(0.965 0.003 264);
+  --muted-foreground: oklch(0.50 0.012 264);
+  --accent: oklch(0.95 0.004 264);
+  --accent-foreground: oklch(0.24 0.012 264);
   --destructive: oklch(0.58 0.22 27);
-  --border: oklch(0.90 0.005 270);
-  --input: oklch(0.90 0.005 270);
-  --ring: oklch(0.55 0.2 273);
+  --border: oklch(0.90 0.004 264);         /* hairline cool gray */
+  --input: oklch(0.90 0.004 264);
+  --ring: oklch(0.58 0.22 27);
 
-  --brand: oklch(0.52 0.21 273);
+  --brand: oklch(0.575 0.224 27);          /* Swiss red ~#E5231B */
   --brand-foreground: oklch(0.99 0 0);
-  --brand-muted: oklch(0.93 0.05 273);
 }
 
-/* ============================================================= DARK */
+/* ===================================================== DARK */
 .dark {
-  --background: oklch(0.165 0.012 274);
-  --foreground: oklch(0.95 0.005 270);
-  --card: oklch(0.205 0.014 274);
-  --card-foreground: oklch(0.95 0.005 270);
-  --popover: oklch(0.205 0.014 274);
-  --popover-foreground: oklch(0.95 0.005 270);
-  --primary: oklch(0.95 0.005 270);
-  --primary-foreground: oklch(0.2 0.01 270);
-  --secondary: oklch(0.26 0.015 274);
-  --secondary-foreground: oklch(0.95 0.005 270);
-  --muted: oklch(0.26 0.015 274);
-  --muted-foreground: oklch(0.70 0.015 274);
-  --accent: oklch(0.28 0.02 274);
+  --background: oklch(0.175 0.009 264);     /* cool near-black */
+  --foreground: oklch(0.95 0.004 264);
+  --card: oklch(0.21 0.01 264);
+  --card-foreground: oklch(0.95 0.004 264);
+  --popover: oklch(0.21 0.01 264);
+  --popover-foreground: oklch(0.95 0.004 264);
+  --primary: oklch(0.95 0.004 264);
+  --primary-foreground: oklch(0.2 0.01 264);
+  --secondary: oklch(0.26 0.012 264);
+  --secondary-foreground: oklch(0.95 0.004 264);
+  --muted: oklch(0.26 0.012 264);
+  --muted-foreground: oklch(0.70 0.012 264);
+  --accent: oklch(0.28 0.014 264);
   --accent-foreground: oklch(0.97 0 0);
-  --destructive: oklch(0.70 0.19 22);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.72 0.18 280);
+  --destructive: oklch(0.70 0.19 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.64 0.21 26);
 
-  --brand: oklch(0.72 0.17 281);
-  --brand-foreground: oklch(0.17 0.01 274);
-  --brand-muted: oklch(0.30 0.06 281);
+  --brand: oklch(0.645 0.215 26);          /* brightened Swiss red on dark */
+  --brand-foreground: oklch(0.17 0.01 264);
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv11", "ss01";
+    font-feature-settings: "ss01";
     text-rendering: optimizeLegibility;
   }
+  /* Swiss: headings are the grotesque, tight, flush-left */
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans tracking-tight;
     text-wrap: balance;
   }
-  ::selection {
-    background: color-mix(in oklch, var(--brand) 35%, transparent);
-  }
-  :focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+  ::selection { background: color-mix(in oklch, var(--brand) 28%, transparent); }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 8px;
-    border: 2px solid var(--background);
-  }
+  ::-webkit-scrollbar-thumb { background: var(--border); border: 2px solid var(--background); border-radius: 6px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
 }
 
 @layer components {
-  /* Brand accent gradient text — used sparingly for hero / section accents */
-  .text-gradient {
-    background-image: linear-gradient(
-      100deg,
-      var(--foreground) 0%,
-      color-mix(in oklch, var(--brand) 80%, var(--foreground)) 60%,
-      var(--brand) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+  /* hairline rule (top) used between Swiss rows/sections */
+  .rule { border-top: 1px solid var(--border); }
 
-  /* Frosted surface card with a quiet brand top-edge on hover */
-  .card-surface {
-    @apply relative rounded-2xl border bg-card/70 backdrop-blur-sm transition-all duration-300;
+  /* §-style section marker: red mono index */
+  .marker {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--brand);
+    text-transform: uppercase;
   }
-  .card-surface:hover {
-    @apply -translate-y-0.5 shadow-lg;
-    border-color: color-mix(in oklch, var(--brand) 45%, var(--border));
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-foreground);
   }
+  .tabular { font-variant-numeric: tabular-nums; }
 
   .chip {
-    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium;
-    background: color-mix(in oklch, var(--brand) 8%, transparent);
-    border-color: color-mix(in oklch, var(--brand) 25%, var(--border));
-    color: color-mix(in oklch, var(--brand) 75%, var(--foreground));
+    @apply inline-flex items-center rounded-sm border px-2 py-0.5 text-xs font-medium;
+    font-family: var(--font-mono);
+    border-color: var(--border);
+    color: var(--muted-foreground);
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 select-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-colors duration-150 select-none;
+    font-family: var(--font-sans);
   }
-  .btn-brand {
-    background: var(--brand);
-    color: var(--brand-foreground);
-  }
-  .btn-brand:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 24px -8px color-mix(in oklch, var(--brand) 55%, transparent);
-  }
-  .btn-ghost {
-    @apply border bg-transparent;
-    color: var(--foreground);
-  }
-  .btn-ghost:hover {
-    background: var(--accent);
-    border-color: color-mix(in oklch, var(--brand) 40%, var(--border));
-  }
+  .btn-brand { background: var(--brand); color: var(--brand-foreground); }
+  .btn-brand:hover { filter: brightness(1.05); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--foreground); }
+  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
 
-  /* Animated underline link */
-  .link-underline {
-    @apply relative;
-  }
+  /* link underline grows; red */
+  .link-underline { @apply relative; }
   .link-underline::after {
-    content: "";
-    @apply absolute left-0 -bottom-0.5 h-px w-0 transition-all duration-300;
+    content: ""; @apply absolute left-0 -bottom-0.5 h-px w-0 transition-all duration-200;
     background: var(--brand);
   }
   .link-underline:hover::after { @apply w-full; }
 
-  /* Scroll-reveal — JS toggles .is-visible via IntersectionObserver */
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
+  /* Swiss index row: hover tints + red index number */
+  .index-row { @apply grid items-baseline gap-x-4 py-4 transition-colors; border-top: 1px solid var(--border); }
+  .index-row:hover { background: var(--accent); }
+  .index-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--brand); }
 
-  /* Soft radial brand glow for hero backdrops */
-  .brand-glow {
-    background: radial-gradient(
-      60% 60% at 50% 0%,
-      color-mix(in oklch, var(--brand) 22%, transparent) 0%,
-      transparent 70%
-    );
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* Swiss card surface — bordered panel; quiet brand-border on hover */
+  .card-surface {
+    @apply rounded-md border bg-card transition-colors duration-150;
+    border-color: var(--border);
   }
+  .card-surface:hover { border-color: var(--brand); }
+
+  /* no gradients in the Swiss system — render as a solid brand accent */
+  .text-gradient { color: var(--brand); }
+
+  /* venue marker (used on some cards) */
+  .venue-mark { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted-foreground); }
 }
 
-/* =================================================== PROSE (articles) */
+/* ===================================================== PROSE (articles) */
 .prose {
-  @apply max-w-none text-[1.0625rem] leading-8;
+  @apply max-w-none text-[1.075rem] leading-8;
   color: var(--foreground);
   font-family: var(--font-serif);
 }
-.prose h1, .prose h2, .prose h3, .prose h4 {
-  font-family: var(--font-sans);
-  color: var(--foreground);
-  scroll-margin-top: 6rem;
-}
+.prose h1, .prose h2, .prose h3, .prose h4 { font-family: var(--font-sans); color: var(--foreground); scroll-margin-top: 6rem; letter-spacing: -0.01em; }
 .prose h1 { @apply text-3xl font-bold mt-0 mb-6; }
-.prose h2 { @apply text-2xl font-bold mt-12 mb-4 pb-2 border-b; }
+.prose h2 { @apply text-2xl font-bold mt-12 mb-4 pb-2; border-bottom: 1px solid var(--border); }
 .prose h3 { @apply text-xl font-semibold mt-8 mb-3; }
-.prose h4 { @apply text-lg font-semibold mt-6 mb-2; }
 .prose p { @apply my-5; }
 .prose strong { color: var(--foreground); font-weight: 600; }
-.prose a {
-  color: color-mix(in oklch, var(--brand) 80%, var(--foreground));
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: color-mix(in oklch, var(--brand) 40%, transparent);
-}
+.prose a { color: color-mix(in oklch, var(--brand) 88%, var(--foreground)); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in oklch, var(--brand) 40%, transparent); }
 .prose a:hover { text-decoration-color: var(--brand); }
 .prose ul { @apply my-5 ml-6 list-disc; }
 .prose ol { @apply my-5 ml-6 list-decimal; }
 .prose li { @apply my-2; }
 .prose li::marker { color: var(--brand); }
-.prose blockquote {
-  @apply my-6 border-l-2 pl-5 italic;
-  border-color: var(--brand);
-  color: var(--muted-foreground);
-}
-.prose code {
-  font-family: var(--font-mono);
-  @apply rounded px-1.5 py-0.5 text-[0.85em];
-  background: var(--muted);
-}
-.prose pre {
-  @apply my-6 overflow-x-auto rounded-xl p-5 text-sm leading-relaxed;
-  background: oklch(0.20 0.012 274);
-  border: 1px solid var(--border);
-  /* code background is always dark, so force light text — otherwise
-     non-highlighted blocks (e.g. ASCII diagrams) inherit the light-mode
-     foreground and render dark-on-dark. .hljs token colors still win. */
-  color: #c9d1d9;
-}
-.prose pre code {
-  @apply bg-transparent p-0 text-[0.9em];
-  font-family: var(--font-mono);
-}
-.prose img { @apply rounded-xl border my-6; }
+.prose blockquote { @apply my-6 border-l-2 pl-5 italic; border-color: var(--brand); color: var(--muted-foreground); }
+.prose code { font-family: var(--font-mono); @apply rounded px-1.5 py-0.5 text-[0.85em]; background: var(--muted); }
+.prose pre { @apply my-6 overflow-x-auto rounded-md p-5 text-sm leading-relaxed; background: oklch(0.2 0.012 264); border: 1px solid var(--border); color: #c9d1d9; }
+.prose pre code { @apply bg-transparent p-0 text-[0.9em]; font-family: var(--font-mono); }
+.prose img { @apply rounded-md border my-6; }
 
 /* Diagram figures (D2-rendered SVGs) — swap light/dark variants by theme class */
 .prose figure.diagram { @apply my-8; }
@@ -268,53 +205,18 @@
 .prose figure.diagram .diagram-dark { display: none; }
 .dark .prose figure.diagram .diagram-light { display: none; }
 .dark .prose figure.diagram .diagram-dark { display: block; }
-.prose figure.diagram figcaption {
-  @apply mt-3 text-center text-sm;
-  color: var(--muted-foreground);
-  font-family: var(--font-sans);
-}
-.prose hr { @apply my-10 border-border; }
+.prose figure.diagram figcaption { @apply mt-3 text-center text-sm; color: var(--muted-foreground); font-family: var(--font-sans); }
+.prose hr { @apply my-10; border-color: var(--border); }
 .prose table { @apply my-6 w-full text-sm; }
 .prose th, .prose td { @apply border px-3 py-2 text-left; }
 .prose .katex-display { @apply overflow-x-auto overflow-y-hidden py-2; }
-/* Bond math with prose: KaTeX defaults to 1.21em (oversized inline); size + color match */
 .prose .katex { font-size: 1.08em; color: inherit; }
 .prose .katex-display > .katex { font-size: 1.21em; }
 
-/* =================================================== REDUCED MOTION */
-/* Section eyebrow / overline — left-edge scan anchors (F-pattern) */
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--brand);
-}
-
-/* Grayscale venue wordmarks that brighten on hover */
-.venue-mark {
-  color: var(--muted-foreground);
-  opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
-}
-.venue-mark:hover {
-  opacity: 1;
-  color: var(--foreground);
-}
-
-/* Hero scroll cue */
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
-}
-.scroll-cue { animation: bob 1.8s ease-in-out infinite; }
+/* Scholarly margin sidenotes (full wiring lands with MDX in a later phase) */
+.sidenote { font-family: var(--font-sans); font-size: 0.8rem; line-height: 1.5; color: var(--muted-foreground); }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }

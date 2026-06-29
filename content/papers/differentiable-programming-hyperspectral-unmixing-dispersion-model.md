@@ -41,7 +41,6 @@ oneLiner: >-
   end-to-end hyperspectral unmixing, jointly estimating material abundances and
   physical parameters.
 codeUrl: 'https://github.com/johnjaniczek/InfraRender'
-featured: true
 blog: differentiable-physics-for-hyperspectral-unmixing
 ---
 

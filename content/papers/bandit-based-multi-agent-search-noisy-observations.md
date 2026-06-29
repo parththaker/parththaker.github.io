@@ -33,5 +33,6 @@ oneLiner: >-
   agents under noisy sensor data, with finite bounds on search time, labeling
   time, and cost.
 blog: multi-agent-search-with-bandits
+featured: true
 ---
 

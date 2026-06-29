@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4, JetBrains_Mono } from "next/font/google";
+import { Archivo, Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
-import ConditionalNetwork from "@/components/ConditionalNetwork";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   },
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');}}catch(e){}})();`;
+const themeScript = `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -104,7 +104,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} dark`}
+      className={`${archivo.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -163,7 +163,6 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col font-sans">
-        <ConditionalNetwork />
         <SiteNav />
         <main className="relative z-10 flex-1">{children}</main>
         <SiteFooter />

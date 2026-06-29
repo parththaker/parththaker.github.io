@@ -1,16 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  ArrowRight,
-  ArrowUpRight,
-  ChevronDown,
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  Star,
-  Twitter,
-} from 'lucide-react'
+import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import {
   getFeatured,
   getAllContent,
@@ -23,55 +13,38 @@ import Reveal from '@/components/Reveal'
 import CareerTimeline from '@/components/CareerTimeline'
 
 const ICONS = { mail: Mail, github: Github, linkedin: Linkedin, x: Twitter }
+const FOCUS = ['Nonconvex optimization', 'Graph-based bandits', 'Reinforcement learning', 'Secure LLM systems']
 
-const FOCUS = [
-  'Nonconvex optimization',
-  'Graph-based bandits',
-  'Reinforcement learning',
-  'Secure LLM systems',
-]
-
-const VENUES = ['NeurIPS', 'ECCV', 'ICASSP', 'ISIT']
+function Authors({ s }: { s: string }) {
+  return <>{s.split(/(Thaker)/).map((p, i) => (p === 'Thaker' ? <b key={i} className="text-foreground">Thaker</b> : <span key={i}>{p}</span>))}</>
+}
 
 export default function Home() {
   const papers = getFeatured<PaperMetadata>('papers', 3)
   const projects = getFeatured<ProjectMetadata>('projects', 2)
   const posts = getAllContent<BlogMetadata>('blogs').slice(0, 3)
-  const paperCount = getAllContent('papers').length
-
-  const [featured, ...restPapers] = papers
 
   return (
     <>
       {/* ----------------------------------------------------------- HERO */}
-      <section className="relative overflow-hidden">
-        <div className="brand-glow pointer-events-none absolute inset-x-0 top-0 h-[420px]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-12 pt-16 md:pt-24 lg:grid-cols-5">
-          <div className="min-w-0 lg:col-span-3">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              Open to AI research engineer roles
-            </p>
-            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      <section className="mx-auto max-w-5xl px-6 pb-14 pt-14">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <div className="eyebrow mb-5">AI Research Engineer / Sunnyvale, CA</div>
+            <h1 className="whitespace-nowrap text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
               Parth K. Thaker
             </h1>
-            <p className="mt-3 text-base font-medium text-muted-foreground">AI Research Engineer</p>
-            <p className="mt-5 max-w-xl text-xl font-semibold leading-snug text-foreground">
-              Ph.D.-grade optimization and bandit theory, applied to secure LLM systems.
-            </p>
-            <p className="mt-4 max-w-xl leading-relaxed text-foreground/80">
-              Currently building <strong className="font-semibold text-foreground">privacy-safe LLM
-              workflows</strong> at Intuitive Surgical. Before that, a Ph.D. at ASU on{' '}
-              <strong className="font-semibold text-foreground">graph-based bandits</strong> and{' '}
-              <strong className="font-semibold text-foreground">nonconvex optimization</strong>, with
-              research at MERL and IISc.
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-foreground/80">
+              Ph.D.-grade <strong className="font-semibold text-foreground">optimization</strong> and{' '}
+              <strong className="font-semibold text-foreground">bandit theory</strong>, applied to{' '}
+              <strong className="font-semibold text-foreground">secure LLM systems</strong>. Currently building
+              privacy-safe LLM workflows at Intuitive Surgical; Ph.D. at ASU on graph-based bandits and
+              nonconvex optimization.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-7 flex flex-wrap gap-2">
               {FOCUS.map((f) => (
-                <span key={f} className="chip">
-                  {f}
-                </span>
+                <span key={f} className="chip">{f}</span>
               ))}
             </div>
 
@@ -84,232 +57,145 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 flex gap-2">
+            <div className="mt-7 flex gap-2">
               {SOCIALS.map((s) => {
                 const Icon = ICONS[s.icon]
                 return (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target={s.icon === 'mail' ? undefined : '_blank'}
-                    rel="noopener noreferrer"
+                  <a key={s.label} href={s.href} target={s.icon === 'mail' ? undefined : '_blank'} rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="grid h-10 w-10 place-items-center rounded-lg border border-border text-foreground/70 transition-colors hover:border-brand/50 hover:text-brand"
-                  >
-                    <Icon className="h-[1.05rem] w-[1.05rem]" />
+                    className="grid h-9 w-9 place-items-center border border-border text-foreground/70 transition-colors hover:border-brand hover:text-brand">
+                    <Icon className="h-4 w-4" />
                   </a>
                 )
               })}
             </div>
           </div>
 
-          <div className="lg:col-span-2">
-            <figure className="mx-auto w-fit">
-              <div className="relative aspect-[4/5] w-[260px] overflow-hidden rounded-2xl border border-border bg-card shadow-xl sm:w-[320px]">
-                <Image
-                  src="/profile_photo.png"
-                  alt="Parth K. Thaker — AI Research Engineer"
-                  fill
-                  sizes="(max-width: 640px) 260px, 320px"
-                  className="object-cover object-top"
-                  priority
-                />
+          <div className="md:col-span-4">
+            <figure>
+              <div className="aspect-[4/5] w-full overflow-hidden border border-border bg-card">
+                <Image src="/profile_photo.png" alt="Parth K. Thaker" width={400} height={500}
+                  className="h-full w-full object-cover object-top" priority />
               </div>
-              <figcaption className="mt-3 text-center text-xs text-muted-foreground">
-                <span className="font-medium text-brand">Now</span> — AI Research Engineer @ Intuitive
-                Surgical
-              </figcaption>
             </figure>
           </div>
         </div>
-
-        {/* proof band: borrowed credibility + honest counts */}
-        <div className="mx-auto mt-8 max-w-6xl px-6 sm:mt-14">
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 px-6 py-6 backdrop-blur-sm sm:flex-row sm:justify-center sm:gap-8">
-            <span className="eyebrow">Published at</span>
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-medium">
-              {VENUES.map((v) => (
-                <span key={v} className="venue-mark">
-                  {v}
-                </span>
-              ))}
-            </div>
-            <span className="hidden h-4 w-px bg-border sm:block" />
-            <span className="text-sm tabular-nums text-muted-foreground">
-              {paperCount} papers · 1 patent · open-source code
-            </span>
-          </div>
-        </div>
-
-        {/* career timeline */}
-        <div className="mx-auto max-w-3xl px-6 py-12">
-          <CareerTimeline />
-        </div>
-
-        {/* scroll cue */}
-        <div className="flex justify-center pb-6">
-          <a
-            href="#research"
-            aria-label="Jump to research"
-            className="scroll-cue grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-brand/50 hover:text-brand"
-          >
-            <ChevronDown className="h-4 w-4" />
-          </a>
-        </div>
       </section>
 
-      {/* ------------------------------------------------- SELECTED RESEARCH */}
-      {featured && (
-        <Section id="research" index="01" eyebrow="Research" title="Selected research" href="/papers" linkLabel="All papers">
-          <Reveal>
-            <Link
-              href={`/papers/${featured.slug}`}
-              className="card-surface group block border-brand/30 p-6 ring-1 ring-inset ring-brand/15 sm:p-8"
-            >
-              <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider text-brand">
-                <Star className="h-3 w-3 fill-current" /> Featured
-              </div>
-              <PaperMeta m={featured.metadata} />
-              <h3 className="mt-3 text-xl font-bold leading-snug transition-colors group-hover:text-brand sm:text-2xl">
-                {featured.metadata.title}
-              </h3>
-              <p className="mt-3 max-w-3xl text-[0.975rem] leading-relaxed text-foreground/80">
-                {featured.metadata.oneLiner ?? featured.metadata.abstract}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand">
-                Read the paper{' '}
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </Reveal>
+      {/* § 01 — NOW */}
+      <Section num="01" title="Now">
+        <p className="max-w-2xl text-[1.05rem] leading-relaxed text-foreground/80">
+          AI Research Engineer at <b className="font-semibold text-foreground">Intuitive Surgical</b> — building secure,
+          privacy-preserving LLM systems: retrieval assistants over internal documents and code, guardrail and
+          security analysis for LLM applications, and LLM + CI/CD tooling. Open to AI research engineer roles.
+        </p>
+      </Section>
 
-          {restPapers.length > 0 && (
-            <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              {restPapers.map((p, i) => (
-                <Reveal key={p.slug} delay={(i + 1) * 80}>
-                  <Link href={`/papers/${p.slug}`} className="card-surface group flex h-full flex-col p-5">
-                    <PaperMeta m={p.metadata} />
-                    <h3 className="mt-2 font-semibold leading-snug transition-colors group-hover:text-brand">
-                      {p.metadata.title}
-                    </h3>
-                    <p className="mt-2 line-clamp-3 flex-1 text-sm text-foreground/75">
-                      {p.metadata.oneLiner ?? p.metadata.abstract}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
-                      Read <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </span>
+      {/* § 02 — TRAJECTORY */}
+      <Section num="02" title="Trajectory">
+        <CareerTimeline />
+      </Section>
+
+      {/* § 03 — SELECTED RESEARCH */}
+      <Section num="03" title="Selected research" href="/papers" linkLabel="All papers">
+        <ol>
+          {papers.map((p, i) => {
+            const m = p.metadata
+            return (
+              <Reveal key={p.slug}>
+                <Link href={`/papers/${p.slug}/`}
+                  className="index-row items-start grid-cols-[2rem_1fr] gap-y-1 sm:grid-cols-[2.5rem_1fr_8rem]">
+                  <span className="index-num tabular">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="min-w-0">
+                    <div className="font-semibold leading-snug">{m.title}</div>
+                    <div className="mt-1 text-sm text-muted-foreground"><Authors s={m.authors} /></div>
+                    <div className="mt-1 text-sm text-foreground/70">{m.oneLiner ?? ''}</div>
+                  </div>
+                  <div className="col-start-2 mt-1 font-mono text-xs text-muted-foreground tabular sm:col-start-3 sm:mt-0 sm:text-right">
+                    <div>{m.venue}</div>
+                    <div>{new Date(m.date).getFullYear()}</div>
+                  </div>
+                </Link>
+              </Reveal>
+            )
+          })}
+        </ol>
+      </Section>
+
+      {/* § 04 — SELECTED PROJECTS */}
+      {projects.length > 0 && (
+        <Section num="04" title="Selected projects" href="/projects" linkLabel="All projects">
+          <ol>
+            {projects.map((p, i) => {
+              const m = p.metadata
+              return (
+                <Reveal key={p.slug}>
+                  <Link href={`/projects/${p.slug}/`}
+                    className="index-row items-start grid-cols-[2rem_1fr] gap-y-1 sm:grid-cols-[2.5rem_1fr_10rem]">
+                    <span className="index-num tabular">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="min-w-0">
+                      <div className="font-semibold leading-snug">{m.title}</div>
+                      <div className="mt-1 text-sm text-foreground/70">{m.summary}</div>
+                    </div>
+                    <div className="col-start-2 mt-1 flex flex-wrap gap-1 sm:col-start-3 sm:mt-0 sm:justify-end">
+                      {m.stack?.slice(0, 3).map((s) => (
+                        <span key={s} className="font-mono text-[0.68rem] text-muted-foreground">{s}</span>
+                      ))}
+                    </div>
                   </Link>
                 </Reveal>
-              ))}
-            </div>
-          )}
+              )
+            })}
+          </ol>
         </Section>
       )}
 
-      {/* ----------------------------------------------- SELECTED PROJECTS */}
-      {projects.length > 0 && (
-        <Section index="02" eyebrow="Projects" title="Selected projects" href="/projects" linkLabel="All projects">
-          <div className="grid gap-5 sm:grid-cols-2">
-            {projects.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 80}>
-                <Link href={`/projects/${p.slug}`} className="card-surface group flex h-full flex-col p-6">
-                  {p.metadata.role && (
-                    <div className="eyebrow mb-2 text-[0.7rem]">{p.metadata.role}</div>
-                  )}
-                  <h3 className="font-semibold leading-snug transition-colors group-hover:text-brand">
-                    {p.metadata.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm text-foreground/75">{p.metadata.summary}</p>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.metadata.stack?.slice(0, 4).map((s) => (
-                      <span key={s} className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* -------------------------------------------------- LATEST WRITING */}
+      {/* § 05 — WRITING */}
       {posts.length > 0 && (
-        <Section index="03" eyebrow="Writing" title="Latest writing" href="/blogs" linkLabel="All writing">
-          <div className="grid gap-4">
-            {posts.map((post, i) => (
-              <Reveal key={post.slug} delay={i * 80}>
-                <Link
-                  href={`/blogs/${post.slug}`}
-                  className="card-surface group flex items-center justify-between gap-4 p-5"
-                >
-                  <div>
-                    <h3 className="font-semibold transition-colors group-hover:text-brand">
-                      {post.metadata.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-sm text-foreground/75">
-                      {post.metadata.description}
-                    </p>
-                  </div>
-                  <ArrowUpRight className="hidden h-5 w-5 shrink-0 text-brand transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:block" />
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+        <Section num="05" title="Writing" href="/blogs" linkLabel="All writing">
+          <ol>
+            {posts.map((post) => {
+              const m = post.metadata
+              return (
+                <Reveal key={post.slug}>
+                  <Link href={`/blogs/${post.slug}/`}
+                    className="index-row items-start grid-cols-[2rem_1fr] gap-y-1 sm:grid-cols-[2.5rem_1fr_7rem]">
+                    <span className="index-num tabular">›</span>
+                    <div className="min-w-0">
+                      <div className="font-semibold leading-snug">{m.title}</div>
+                      <div className="mt-1 text-sm text-foreground/70">{m.description}</div>
+                    </div>
+                    <div className="col-start-2 mt-1 font-mono text-xs text-muted-foreground tabular sm:col-start-3 sm:mt-0 sm:text-right">
+                      {new Date(m.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+                    </div>
+                  </Link>
+                </Reveal>
+              )
+            })}
+          </ol>
         </Section>
       )}
     </>
   )
 }
 
-function PaperMeta({ m }: { m: PaperMetadata }) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-muted-foreground">
-      {m.venue && <span className="chip">{m.venue}</span>}
-      <span className="tabular-nums">{new Date(m.date).getFullYear()}</span>
-      {m.codeUrl && (
-        <span className="inline-flex items-center gap-1">
-          <Github className="h-3 w-3" /> Code
-        </span>
-      )}
-      {m.arxivId && <span>arXiv</span>}
-    </div>
-  )
-}
-
 function Section({
-  id,
-  index,
-  eyebrow,
-  title,
-  subtitle,
-  href,
-  linkLabel,
-  children,
+  num, title, href, linkLabel, children,
 }: {
-  id?: string
-  index: string
-  eyebrow: string
-  title: string
-  subtitle?: string
-  href: string
-  linkLabel: string
-  children: React.ReactNode
+  num: string; title: string; href?: string; linkLabel?: string; children: React.ReactNode
 }) {
   return (
-    <section id={id} className="mx-auto max-w-6xl scroll-mt-20 px-6 py-16">
-      <div className="mb-8 flex items-end justify-between gap-4">
-        <div>
-          <div className="eyebrow">
-            {index} — {eyebrow}
-          </div>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>
-          {subtitle && <p className="mt-1.5 text-sm text-muted-foreground">{subtitle}</p>}
+    <section className="mx-auto max-w-5xl px-6 py-10">
+      <div className="rule mb-7 flex items-end justify-between gap-4 pt-7">
+        <div className="flex items-baseline gap-4">
+          <span className="index-num tabular">§ {num}</span>
+          <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
         </div>
-        <Link href={href} className="link-underline shrink-0 text-sm font-medium text-brand">
-          {linkLabel} →
-        </Link>
+        {href && linkLabel && (
+          <Link href={href} className="link-underline shrink-0 text-sm font-medium text-brand">
+            {linkLabel} →
+          </Link>
+        )}
       </div>
       {children}
     </section>
