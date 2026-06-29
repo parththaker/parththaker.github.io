@@ -39,43 +39,11 @@ So the real question is not "how do we copy faster" but "why are we copying at a
 
 The control plane is always on and cheap; the data plane scales from zero. KEDA bridges them by scaling workers off queue depth.
 
-```
-┌───────────────────────────────────────────────────────────────┐
-│                     ALWAYS-ON CONTROL PLANE                    │
-│                                                               │
-│   Web UI (Next.js / React)                                    │
-│       │                                                        │
-│       ▼                                                        │
-│   API service (FastAPI, background cache)                     │
-│       ├──▶ versioned data lake (stateless replicas)           │
-│       │       └─▶ blockstore: object storage bucket           │
-│       ├──▶ Postgres (HA)                                       │
-│       └──▶ Redis (streams = queues, keys = locks/progress)    │
-└───────────────────────────────────────────────────────────────┘
-                     │ (KEDA: Redis-stream lag triggers)
-                     ▼
-┌───────────────────────────────────────────────────────────────┐
-│                   SCALE-TO-ZERO WORKER TIER                    │
-│   tagger-worker   (0→N)                                        │
-│   gen-worker      (0→N, the heavy tier)                        │
-│   validate-worker (0→N)                                        │
-└───────────────────────────────────────────────────────────────┘
-
-  INGEST                              OUTPUT
-  ──────                              ──────
-  session lands in bucket            variant merged to main
-    │                                  │
-    ▼                                  ▼ (in-lake post-merge hook)
-  message → tagger queue              list every object on commit,
-    │                                  publish one message per file
-    ▼                                  (logical path + physical coords)
-  tagger-worker                        │
-    ├─ extract metadata tags           ▼
-    ├─ write 0-byte marker object      consumer does server-side copy
-    │  with native object metadata     to the destination bucket
-    └─ zero-copy import to catalog     (byte-identical binaries,
-                                        scrubbed metadata)
-```
+<figure class="diagram">
+  <img class="diagram-light" src="/diagrams/zero-copy-architecture-light.svg" alt="Zero-copy test-data flow: a variant is a branch, validated then merged; on merge an in-lake hook fans out per-file messages to a consumer that server-side-copies to the destination bucket." />
+  <img class="diagram-dark" src="/diagrams/zero-copy-architecture-dark.svg" alt="Zero-copy test-data flow: a variant is a branch, validated then merged; on merge an in-lake hook fans out per-file messages to a consumer that server-side-copies to the destination bucket." />
+  <figcaption>A variant is a zero-copy branch; on merge, an in-lake hook fans out per-file messages and the consumer server-side-copies bytes to the destination.</figcaption>
+</figure>
 
 Two logical stores do the work: a **catalog repo** (every uploaded session, imported zero-copy when it's tagged) and a short-lived **run repo** per test run (deleted when the run finishes). Only two human actions exist in the whole flow: a session lands in the bucket and the tagger picks it up automatically; a user clicks "Generate" and everything from run-repo creation through delivery happens with no further input.
 

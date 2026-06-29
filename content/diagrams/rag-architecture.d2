@@ -1,28 +1,52 @@
 # RAG architecture — ingestion + query flow
-# Render: d2 --sketch --theme=0   ... -light.svg   (light)
-#         d2 --sketch --theme=200 ... -dark.svg    (dark)
-direction: down
-
-ingest: Ingestion {
-  pdf: "PDF" { shape: page }
-  md: "PDF → Markdown\n(+ extracted images)"
-  tree: "Parse to nested tree\n(mirrors heading outline)"
-  chunk: "Per-section chunk\n+ outline as context\n+ image paths"
-  db: "Vector DB\n(dense embeddings)" { shape: cylinder }
-  pdf -> md -> tree -> chunk -> db
-}
-
-query: Query {
-  q: "User query"
-  search: "Hybrid search\n(+ per-user filter)"
-  ctx: "Retrieved chunks\n(+ images + parent context)"
-  llm: "LLM\nkeep image tags only\nwhere relevant"
-  verify: "Verify image tags\nreject hallucinations" {
-    style.stroke: "#E5231B"
-    style.stroke-width: 2
+# Render via scripts/render-diagrams.sh (clean, two stacked lanes, Archivo, transparent bg).
+vars: {
+  d2-config: {
+    theme-overrides: { N7: transparent }
   }
-  render: "Rendered answer\nimages inline, cited"
-  q -> search -> ctx -> llm -> verify -> render
 }
 
-ingest.db -> query.search: "retrieve"
+classes: {
+  node: { style: { border-radius: 8; font-size: 26; stroke-width: 1 } }
+  store: { shape: cylinder; style: { font-size: 26; stroke-width: 1 } }
+  focal: {
+    style: {
+      border-radius: 8
+      font-size: 26
+      stroke: "#E5231B"
+      stroke-width: 3
+      font-color: "#E5231B"
+      bold: true
+    }
+  }
+}
+
+pipeline: "" {
+  grid-rows: 2
+  vertical-gap: 80
+  horizontal-gap: 60
+  style: { fill: transparent; stroke: transparent }
+
+  ingest: Ingestion {
+    direction: right
+    pdf: PDF { class: node }
+    md: "PDF → Markdown" { class: node }
+    tree: "Outline tree" { class: node }
+    chunk: "Contextual chunk\n+ outline + images" { class: node }
+    db: "Vector DB" { class: store }
+    pdf -> md -> tree -> chunk -> db
+  }
+
+  query: Query {
+    direction: right
+    q: "User query" { class: node }
+    search: "Hybrid search" { class: node }
+    ctx: "Retrieved chunks\n+ images + context" { class: node }
+    llm: "LLM answer" { class: node }
+    verify: "Verify image tags" { class: focal }
+    render: "Answer\nimages inline, cited" { class: node }
+    q -> search -> ctx -> llm -> verify -> render
+  }
+}
+
+pipeline.ingest.db -> pipeline.query.search: retrieve

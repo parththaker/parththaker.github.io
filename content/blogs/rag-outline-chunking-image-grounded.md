@@ -35,44 +35,11 @@ And it cited at the wrong granularity. "Source: doc-A.pdf" tells you nothing whe
 
 So the system had to do three things the naive pipeline couldn't: chunk along the document's own structure, carry images through to the rendered answer, and attribute every claim down to the page. Here is the shape of what I built.
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                          INGESTION                            │
-│                                                               │
-│  PDF ──► pdf_to_markdown(write_images=True)                   │
-│            │                                                  │
-│            ▼   markdown text + extracted PNGs on disk         │
-│  parse_markdown(filename, md)                                 │
-│            │                                                  │
-│            ▼   nested JSON tree: { H1: { H2: {content,        │
-│            │                               images, ...} } }   │
-│  enumerate_paths(tree) → ["H1>H2>H3", ...]                    │
-│            │                                                  │
-│            ▼   per path → ContextualChunk:                    │
-│            │     • content (own section)                      │
-│            │     • parent_content (siblings under parent)     │
-│            │     • embedding_content (templated w/ outline)   │
-│            │     • image paths from the JSON node             │
-│            │     • dense embedding (MPNet, 768d)              │
-│            ▼                                                  │
-│  Vector DB collection (contextual partition)                 │
-├──────────────────────────────────────────────────────────────┤
-│                            QUERY                              │
-│                                                               │
-│  query ──► dense embed + hybrid (dense+sparse) ──► search     │
-│            (per-user partition filter)                        │
-│            │                                                  │
-│            ▼   retrieved chunks (+ image paths + parent ctx)  │
-│  build JSON-mode prompt {sentences[], sources[],             │
-│                          page_nums[][], chunk_ids[]}          │
-│            │                                                  │
-│            ▼   LLM — keep ![](...) tags only where relevant   │
-│  verify_image_tags(answer, context) — reject hallucinations  │
-│            │                                                  │
-│            ▼   render markdown — images inline, sources       │
-│                collapse into clickable references             │
-└──────────────────────────────────────────────────────────────┘
-```
+<figure class="diagram">
+  <img class="diagram-light" src="/diagrams/rag-architecture-light.svg" alt="RAG architecture: ingestion builds an outline-aware, image-carrying index; query retrieves, generates, and verifies image references before rendering." />
+  <img class="diagram-dark" src="/diagrams/rag-architecture-dark.svg" alt="RAG architecture: ingestion builds an outline-aware, image-carrying index; query retrieves, generates, and verifies image references before rendering." />
+  <figcaption>Ingestion builds an outline-aware, image-carrying index; query retrieves, generates, then verifies image references before rendering.</figcaption>
+</figure>
 
 ## The key idea: embed the paragraph with its address
 

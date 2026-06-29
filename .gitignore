@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# D2 diagram fonts (fetched by scripts/render-diagrams.sh)
+.diagram-fonts/

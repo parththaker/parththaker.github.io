@@ -1,0 +1,50 @@
+# Zero-copy test-data — generate + deliver flow
+# Render via scripts/render-diagrams.sh (clean, two stacked lanes, Archivo, transparent bg).
+vars: {
+  d2-config: {
+    theme-overrides: { N7: transparent }
+  }
+}
+
+classes: {
+  node: { style: { border-radius: 8; font-size: 26; stroke-width: 1 } }
+  store: { shape: cylinder; style: { font-size: 26; stroke-width: 1 } }
+  focal: {
+    style: {
+      border-radius: 8
+      font-size: 26
+      stroke: "#E5231B"
+      stroke-width: 3
+      font-color: "#E5231B"
+      bold: true
+    }
+  }
+}
+
+pipeline: "" {
+  grid-rows: 2
+  vertical-gap: 80
+  horizontal-gap: 60
+  style: { fill: transparent; stroke: transparent }
+
+  generate: Generate {
+    direction: right
+    src: "Source session\n(catalog repo)" { class: store }
+    branch: "Run-repo branch\nzero-copy stage" { class: focal }
+    rewrite: "Rewrite identifiers\n(~2% of files)" { class: node }
+    validate: "Validate\n(scan for leaks)" { class: node }
+    merge: "Merge to main" { class: node }
+    src -> branch -> rewrite -> validate -> merge
+  }
+
+  deliver: Deliver {
+    direction: right
+    hook: "In-lake hook\n(on merge)" { class: node }
+    msg: "Per-file messages\n(Pub/Sub)" { class: node }
+    consumer: "Consumer\nserver-side copy" { class: node }
+    dest: "Destination bucket" { class: store }
+    hook -> msg -> consumer -> dest
+  }
+}
+
+pipeline.generate.merge -> pipeline.deliver.hook: fires

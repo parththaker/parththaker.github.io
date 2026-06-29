@@ -261,6 +261,18 @@
   font-family: var(--font-mono);
 }
 .prose img { @apply rounded-xl border my-6; }
+
+/* Diagram figures (D2-rendered SVGs) — swap light/dark variants by theme class */
+.prose figure.diagram { @apply my-8; }
+.prose figure.diagram img { @apply mx-auto my-0 block w-full max-w-full rounded-none border-0; }
+.prose figure.diagram .diagram-dark { display: none; }
+.dark .prose figure.diagram .diagram-light { display: none; }
+.dark .prose figure.diagram .diagram-dark { display: block; }
+.prose figure.diagram figcaption {
+  @apply mt-3 text-center text-sm;
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+}
 .prose hr { @apply my-10 border-border; }
 .prose table { @apply my-6 w-full text-sm; }
 .prose th, .prose td { @apply border px-3 py-2 text-left; }
