@@ -31,18 +31,6 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      # The redesign preview lives at master:/preview (deployed manually, not
-      # built from source on `main`). force_orphan wipes it on every deploy, so
-      # carry it forward from the current Pages branch into the new build.
-      - name: Carry forward /preview subdir
-        run: |
-          git fetch origin master --depth=1 2>/dev/null || true
-          if git archive origin/master preview 2>/dev/null | tar -x -C ./out; then
-            echo "✓ /preview preserved"
-          else
-            echo "ℹ no existing /preview to preserve"
-          fi
-
       # Publishes the static export (out/) to the `master` branch, which
       # GitHub Pages serves at https://parththaker.github.io/.
       # Source lives on `main`; `master` is the generated build artifact.

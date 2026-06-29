@@ -37,7 +37,21 @@ const EXPERIENCE = [
     org: 'Intuitive Surgical',
     when: 'Jul 2024 — Present',
     where: 'Sunnyvale, CA',
-    note: 'Secure, privacy-safe LLM workflows for developer and worker productivity — document + image assistants, security/guardrail analysis for LLM applications, and LLM + CI/CD integration tooling.',
+    note: 'Secure, privacy-safe LLM workflows — document and image assistants, guardrail and security analysis for LLM applications, and LLM + CI/CD tooling — alongside platform and infrastructure work: pipeline performance, cross-region Kubernetes, and operational monitoring.',
+  },
+  {
+    role: 'Ph.D. Researcher — Optimization & Bandits',
+    org: 'Arizona State University',
+    when: 'Aug 2017 — Jun 2024',
+    where: 'Tempe, AZ',
+    note: 'Nonconvex optimization, multi-armed bandits, and graph theory with Prof. Gautam Dasarathy — from sample-complexity and landscape analysis for quadratic feasibility to graph-informed pure exploration (GRUB, NeurIPS 2022).',
+  },
+  {
+    role: 'Research Intern',
+    org: 'Intuitive Surgical',
+    when: 'May — Aug 2023',
+    where: 'San Francisco Bay Area',
+    note: 'Improved a DINO-based self-supervised video-search system with fine-grained training objectives, raising retrieval quality under limited-label constraints.',
   },
   {
     role: 'Research Intern — Algorithms',
@@ -54,18 +68,25 @@ const EXPERIENCE = [
     note: 'Driver-safety features from mobile sensor and IMU data to analyze driving behavior.',
   },
   {
-    role: 'Research Intern',
+    role: 'Summer Research Intern',
     org: 'Indian Institute of Science (IISc)',
     when: 'May — Aug 2015',
     where: 'Bangalore, India',
-    note: 'Linear bandit algorithms under perturbation; learning for multi-user bandwidth sharing.',
+    note: 'Linear bandit algorithms under perturbation (validity of OFUL); a learning algorithm for multi-user bandwidth sharing, analyzed and proven to converge.',
+  },
+  {
+    role: 'Summer Intern',
+    org: 'Securifi Embedded Systems',
+    when: 'May — Jul 2014',
+    where: 'Hyderabad, India',
+    note: 'SQL/NoSQL database performance analysis, cloud automation with Cloud-init + Puppet, and embedded-OS driver support on routers.',
   },
   {
     role: 'Engineering Intern',
     org: 'Cisco Systems',
-    when: 'Summer 2013',
+    when: 'May — Jul 2013',
     where: 'Bangalore, India',
-    note: 'DHCP client test tooling for BNG session controllers at 1M+ subscriber-session scale.',
+    note: 'A lightweight DHCP client (v4/v6) in Python to test BNG session controllers at 1M+ subscriber-session scale, with round-trip latency measurements.',
   },
 ]
 
