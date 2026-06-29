@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Parth K. Thaker — AI Research Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#1b2231; --ink-2:#222b3d; --ink-soft:#9aa3b5;
+    --paper:#f6f5f2; --card:#ffffff; --text:#1f2430; --muted:#5f6675; --line:#e7e4dd;
+    --accent:#9b2d3f; --accent-soft:#f0e3e5;
+    --sw:312px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);
+    font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;letter-spacing:-0.01em;color:#171c27}
+
+  /* ---------------- sidebar ---------------- */
+  .sidebar{position:fixed;top:0;left:0;width:var(--sw);height:100vh;overflow-y:auto;
+    background:linear-gradient(180deg,var(--ink),var(--ink-2));color:#e9ecf3;
+    padding:38px 30px;display:flex;flex-direction:column;gap:18px}
+  .avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:top;
+    border:3px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.35);align-self:center}
+  .s-name{font-family:"Source Serif 4",serif;font-size:1.55rem;font-weight:600;text-align:center;color:#fff;margin:4px 0 0;line-height:1.2}
+  .s-role{text-align:center;color:#cdd3e0;font-size:.92rem;margin-top:2px}
+  .s-aff{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:2px}
+  .s-divider{height:1px;background:rgba(255,255,255,.1);margin:6px 0}
+  nav.s-nav{display:flex;flex-direction:column;gap:2px}
+  nav.s-nav a{color:#c8cdda;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;font-weight:600;
+    padding:9px 12px;border-radius:7px;border-left:2px solid transparent}
+  nav.s-nav a:hover{background:rgba(255,255,255,.06);color:#fff;text-decoration:none;border-left-color:var(--accent)}
+  .s-cv{margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--accent);color:#fff;border-radius:8px;padding:10px 14px;font-size:.8rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.08em}
+  .s-cv:hover{filter:brightness(1.08);text-decoration:none}
+  .s-social{display:flex;gap:10px;justify-content:center;margin-top:4px}
+  .s-social a{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid rgba(255,255,255,.16);color:#cdd3e0}
+  .s-social a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .s-social svg{width:17px;height:17px;fill:currentColor}
+  .s-spacer{flex:1}
+  .s-foot{color:var(--ink-soft);font-size:.7rem;text-align:center}
+
+  /* ---------------- main ---------------- */
+  main{margin-left:var(--sw);padding:60px 56px;max-width:980px}
+  section{margin-bottom:54px;scroll-margin-top:30px}
+  .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;font-family:Inter}
+  h2.section-title{font-size:1.7rem;margin:6px 0 22px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .lead p{margin:0 0 14px}
+  .about-grid{display:grid;grid-template-columns:1fr 250px;gap:40px;align-items:start}
+  .coords{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;font-size:.9rem}
+  .coords h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px;font-family:Inter;font-weight:700}
+  .coords .row{display:flex;gap:10px;margin-bottom:9px;color:var(--text)}
+  .coords .row svg{width:15px;height:15px;fill:var(--accent);flex:none;margin-top:3px}
+
+  /* publications */
+  .pub{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .pub:last-child{border-bottom:none}
+  .badge{width:84px;height:64px;border:1px solid var(--line);border-radius:8px;background:var(--card);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    font-weight:700;color:#2c3344;font-size:.86rem;line-height:1.1}
+  .badge span{font-size:.66rem;color:var(--muted);font-weight:600;margin-top:3px;letter-spacing:.04em}
+  .pub-title{font-family:"Source Serif 4",serif;font-size:1.08rem;font-weight:600;color:#171c27;margin:0 0 3px}
+  .pub-title a{color:#171c27}
+  .pub-authors{font-size:.86rem;color:var(--muted);margin:0 0 6px}
+  .pub-authors b{color:var(--text)}
+  .pub-note{font-size:.9rem;color:#454b59;margin:6px 0 8px}
+  .pub-links{display:flex;flex-wrap:wrap;gap:8px}
+  .pub-links a{font-size:.74rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:6px;padding:3px 9px;color:var(--accent);background:var(--card)}
+  .pub-links a:hover{background:var(--accent);color:#fff;border-color:var(--accent);text-decoration:none}
+  .sub-h{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;font-family:Inter;margin:26px 0 8px}
+
+  /* news timeline */
+  .timeline{position:relative;margin-left:6px;padding-left:26px;border-left:2px solid var(--line)}
+  .tl{position:relative;padding:0 0 22px}
+  .tl::before{content:"";position:absolute;left:-33px;top:4px;width:11px;height:11px;border-radius:50%;
+    background:var(--accent);border:2px solid var(--paper)}
+  .tl .date{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.05em}
+  .tl .what{font-size:.94rem;color:#3c4150;margin-top:2px}
+  .tl .what b{color:#171c27}
+
+  footer{margin-left:var(--sw);padding:26px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+
+  @media (max-width:900px){
+    .sidebar{position:static;width:100%;height:auto;flex-direction:column;align-items:center}
+    main{margin-left:0;padding:40px 24px}
+    footer{margin-left:0;padding:24px}
+    .about-grid{grid-template-columns:1fr;gap:24px}
+    nav.s-nav{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  }
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <img class="avatar" src="/profile_photo.png" alt="Parth K. Thaker" />
+  <div>
+    <div class="s-name">Parth K. Thaker</div>
+    <div class="s-role">AI Research Engineer</div>
+    <div class="s-aff">Intuitive Surgical · Ph.D., ASU</div>
+  </div>
+  <div class="s-divider"></div>
+  <nav class="s-nav">
+    <a href="#about">Home</a>
+    <a href="#research">Research &amp; Publications</a>
+    <a href="#news">Recent News</a>
+    <a href="#projects">Projects</a>
+    <a href="#writing">Writing</a>
+  </nav>
+  <a class="s-cv" href="/resume.pdf">Download CV</a>
+  <div class="s-social">
+    <a href="mailto:parneh@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a href="https://github.com/parththaker" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.776.42-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.003 0c2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .322.216.694.825.576C20.565 21.795 24 17.297 24 12 24 5.37 18.627 0 12 0z"/></svg></a>
+    <a href="https://www.linkedin.com/in/parththaker1/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+    <a href="https://twitter.com/ParthKThaker" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+  </div>
+  <div class="s-spacer"></div>
+  <div class="s-foot">© 2026 Parth K. Thaker</div>
+</aside>
+
+<main>
+  <section id="about">
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">About me</h2>
+    <div class="about-grid">
+      <div class="lead">
+        <p>I'm an AI Research Engineer at <b>Intuitive Surgical</b>, where I build secure,
+        privacy-preserving LLM systems — retrieval assistants over internal documents and code,
+        guardrail and security analysis for LLM applications, and model-assisted tooling in
+        developer workflows.</p>
+        <p>I completed my Ph.D. at <b>Arizona State University</b> with Prof. Gautam Dasarathy,
+        working at the intersection of nonconvex optimization, graph theory, and multi-armed
+        bandits — from sample-complexity and landscape analysis for quadratic feasibility to
+        graph-informed pure exploration (GRUB, NeurIPS 2022). I care about results that are
+        both provable and usable, and I try to carry that discipline into the systems I ship.</p>
+      </div>
+      <aside class="coords">
+        <h3>Coordinates</h3>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span><a href="mailto:parneh@gmail.com">parneh@gmail.com</a></span></div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span>Sunnyvale, CA</span></div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.776.42-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.003 0c2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .322.216.694.825.576C20.565 21.795 24 17.297 24 12 24 5.37 18.627 0 12 0z"/></svg><span><a href="https://github.com/parththaker">github.com/parththaker</a></span></div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg><span><a href="https://www.linkedin.com/in/parththaker1/">in/parththaker1</a></span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="eyebrow">Research</div>
+    <h2 class="section-title">Selected publications</h2>
+
+    <div class="pub">
+      <div class="badge">NeurIPS<span>2022</span></div>
+      <div>
+        <p class="pub-title"><a href="https://arxiv.org/abs/2108.01152">Maximizing and Satisficing in Multi-armed Bandits with Graph Information</a></p>
+        <p class="pub-authors"><b>P. K. Thaker</b>, M. Malu, N. Rao, G. Dasarathy</p>
+        <p class="pub-note">A pure-exploration bandit method (GRUB) that uses a similarity graph over arms to find the best arm — or one above a threshold — with far fewer samples than standard UCB, with a matching lower bound.</p>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2108.01152">arXiv</a><a href="https://github.com/parththaker/Bandits-GRUB">Code</a><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="badge">ICASSP<span>2024</span></div>
+      <div>
+        <p class="pub-title">Non-Stationary Bandits with Periodic Behavior via Ramanujan Periodicity Transforms</p>
+        <p class="pub-authors"><b>P. Thaker</b>, V. Gattani, V. Tirukkonda, P. Saidi, G. Dasarathy</p>
+        <p class="pub-note">Detects and exploits periodic structure in shifting rewards — modeling the period directly instead of re-learning the best arm after every change.</p>
+        <div class="pub-links"><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="badge">IFAC<span>2023</span></div>
+      <div>
+        <p class="pub-title">Bandit-based Multi-agent Search under Noisy Observations</p>
+        <p class="pub-authors"><b>P. Thaker</b>, S. Di Cairano, A. P. Vinod</p>
+        <p class="pub-note">A thresholding multi-armed bandit for coordinating search agents under noisy sensors, with finite-time guarantees on search time and cost. Work from a MERL internship; led to a granted US patent.</p>
+        <div class="pub-links"><a href="https://www.merl.com/publications/TR2023-085">MERL TR</a><a href="https://patents.google.com/patent/US12393191B2/en">Patent</a><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="badge">ECCV<span>2020</span></div>
+      <div>
+        <p class="pub-title"><a href="https://arxiv.org/abs/2007.05996">Differentiable Programming for Hyperspectral Unmixing using a Physics-based Dispersion Model</a></p>
+        <p class="pub-authors">J. Janiczek, <b>P. Thaker</b>, G. Dasarathy, C. Edwards, P. Christensen, S. Jayasuriya</p>
+        <p class="pub-note">Makes a physics-based dispersion model differentiable and uses it for end-to-end hyperspectral unmixing, jointly estimating abundances and physical parameters.</p>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2007.05996">arXiv</a><a href="https://github.com/johnjaniczek/InfraRender">Code</a><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="badge">ISIT<span>2020</span></div>
+      <div>
+        <p class="pub-title"><a href="https://arxiv.org/abs/2002.01066">On the Sample Complexity and Optimization Landscape for Quadratic Feasibility Problems</a></p>
+        <p class="pub-authors"><b>P. K. Thaker</b>, G. Dasarathy, A. Nedić</p>
+        <p class="pub-note">Identifiability and a benign nonconvex landscape for recovering a vector from quadratic measurements — gradient descent converges globally from any initialization.</p>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2002.01066">arXiv</a><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="badge">ISIT<span>2017</span></div>
+      <div>
+        <p class="pub-title">When to Arrive in a Congested System</p>
+        <p class="pub-authors"><b>P. Thaker</b>, A. Gopalan, R. Vaze</p>
+        <p class="pub-note">A distributed learning rule that converges to a unique Nash equilibrium for timing access to an intermittently-available server, while keeping sensing cost low.</p>
+        <div class="pub-links"><a href="#">Explainer →</a></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Patents</div>
+    <div class="pub">
+      <div class="badge">US<span>2025</span></div>
+      <div>
+        <p class="pub-title"><a href="https://patents.google.com/patent/US12393191B2/en">Controlling Search Agents with Noisy Observations and Probabilistic Guarantees</a></p>
+        <p class="pub-authors">A. P. Vinod, S. Di Cairano, <b>P. Thaker</b>, G. Dasarathy — US 12,393,191 B2 (MERL)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="eyebrow">News</div>
+    <h2 class="section-title">Recent news</h2>
+    <div class="timeline">
+      <div class="tl"><div class="date">Aug 2025</div><div class="what"><b>Patent granted</b> — "Controlling search agents with noisy observations" (US 12,393,191 B2), from the MERL multi-agent search work.</div></div>
+      <div class="tl"><div class="date">2024</div><div class="what"><b>Ph.D. conferred</b> in Electrical Engineering at Arizona State University, advised by Prof. Gautam Dasarathy.</div></div>
+      <div class="tl"><div class="date">Jul 2024</div><div class="what">Joined <b>Intuitive Surgical</b> as an AI Research Engineer, working on secure LLM systems.</div></div>
+      <div class="tl"><div class="date">Apr 2024</div><div class="what">Paper on periodic non-stationary bandits accepted at <b>ICASSP 2024</b>.</div></div>
+      <div class="tl"><div class="date">2023</div><div class="what">Multi-agent search paper at the <b>IFAC World Congress 2023</b> (work done at MERL).</div></div>
+      <div class="tl"><div class="date">2022</div><div class="what">GRUB accepted at <b>NeurIPS 2022</b>.</div></div>
+    </div>
+  </section>
+</main>
+<footer>Built with care · A research-focused variant of parththaker.github.io</footer>
+</body>
+</html>

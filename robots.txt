@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://parththaker.github.io/sitemap.xml
