@@ -5,7 +5,7 @@ import landscape from '@/data/expertise-landscape.json'
 import '@/components/expertise/map.css'
 
 export const metadata: Metadata = {
-  title: 'Work · Parth K. Thaker',
+  title: 'Expertise · Parth K. Thaker',
   description: 'The fields I have worked in, drawn from my reading log and my papers, with every public paper, patent, project and post linked.',
 }
 
@@ -15,7 +15,7 @@ export default function ExpertisePage() {
   const placeholders = (landscape.placeholders as string[]).length > 0
   return (
     <div className="mx-auto max-w-5xl px-5 pt-6 pb-20">
-      <h1 className="sr-only">Work</h1>
+      <h1 className="sr-only">Expertise</h1>
       <MapOfWork />
 
       <p className="mt-14 font-mono text-[11px] tracking-[0.04em] text-muted-foreground">
