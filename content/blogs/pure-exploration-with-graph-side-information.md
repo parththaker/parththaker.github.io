@@ -12,6 +12,7 @@ tags:
   - graph signal processing
   - learning theory
 readTime: 10
+fields: [bandits]
 ---
 
 Suppose I hand you a recommender with two hundred million items and ask you to find the single best one. The textbook answer to best-arm identification is brutal and unambiguous: play every arm, and play each suboptimal arm on the order of $1/\Delta_i^2$ times, where $\Delta_i = \mu^* - \mu_i$ is the gap between the best mean reward $\mu^*$ and arm $i$'s mean $\mu_i$. The total sample budget scales as $\sum_{i} 1/\Delta_i^2$. With two hundred million arms, even *one pull each* is already infeasible — so the classical guarantee isn't merely expensive at this scale, it's vacuous: you can't even afford the single pass it assumes.

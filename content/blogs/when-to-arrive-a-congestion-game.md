@@ -15,6 +15,7 @@ tags:
   - congestion
   - wireless
 readTime: 10
+fields: [bandits]
 ---
 
 Picture five strangers all refreshing the same flaky WiFi access point as they drive past it at 30 m/s. The hotspot blinks on and off on its own schedule; every probe drains battery; and the instant the link comes up, whoever else grabbed the same window splits the bandwidth with you. When, exactly, should you check?

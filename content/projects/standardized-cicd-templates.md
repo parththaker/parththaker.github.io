@@ -5,6 +5,7 @@ summary: "Rolled out reusable CI/CD templates (automated test, build, publish) t
 role: "Platform / developer experience"
 stack: ["GitLab CI/CD", "Automation", "Platform"]
 tags: ["Infrastructure", "Developer tooling"]
+fields: [cloud]
 ---
 
 ## Problem

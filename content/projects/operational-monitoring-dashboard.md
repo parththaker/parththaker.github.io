@@ -5,6 +5,7 @@ summary: "Designed and shipped a production dashboard for real-time data-pipelin
 role: "Full-stack"
 stack: ["React", "shadcn/ui", "Airflow", "FastAPI"]
 tags: ["Full-stack", "Observability"]
+fields: [cloud]
 ---
 
 ## Problem

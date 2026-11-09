@@ -35,5 +35,6 @@ oneLiner: >-
   intermittently-available server choose when to sample it, converging to a
   unique Nash equilibrium while keeping sensing costs low.
 blog: when-to-arrive-a-congestion-game
+fields: [bandits]
 ---
 

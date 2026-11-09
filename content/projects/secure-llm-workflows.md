@@ -6,6 +6,7 @@ role: "AI Research Engineer · Intuitive Surgical"
 stack: ["LLMs", "RAG", "Python", "Cloud", "CI/CD"]
 tags: ["Applied LLM", "Security & privacy"]
 featured: true
+fields: [ai-systems, cloud]
 ---
 
 > This is current, proprietary employer work, so the description here is

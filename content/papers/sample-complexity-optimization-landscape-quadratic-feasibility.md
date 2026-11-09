@@ -38,5 +38,6 @@ oneLiner: >-
   gradient descent converge globally from arbitrary initialization.
 featured: true
 blog: nonconvex-landscape-of-quadratic-feasibility
+fields: [optimization]
 ---
 

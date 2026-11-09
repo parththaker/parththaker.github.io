@@ -1,0 +1,44 @@
+# Reading ledger for the map of work.
+#
+# One entry per paper, book or link. Its layer is the highest it has reached:
+#   to-read   on the list, not read yet
+#   read      read
+# Cited entries are not listed here: they come from the .bib files in bib/ (see bib/README.md).
+# If the same work appears here and in a .bib, or in two places here, it is one entry at the higher
+# layer, tagged with the union of fields. Matching is by doi, then arxiv id, then title.
+#
+# fields: one or more ids from fields.yaml. An entry with two fields joins those two mesas at its layer.
+# Optional keys: authors, year, url, doi, arxiv.
+entries: []
+# Example entry; uncomment and replace `entries: []` above:
+# entries:
+#   - title: Bandit Algorithms
+#     authors: Tor Lattimore, Csaba Szepesvári
+#     year: 2020
+#     url: https://tor-lattimore.com/downloads/book/book.pdf
+#     layer: read
+#     fields: [bandits]
+
+# Placeholder counts, used for a field only while it has no real entries at that layer. Delete a field's
+# line here once its entries above are real. While any placeholder is in use the page says so.
+# Shared placeholders apply only when both fields are placeholder-backed at that layer and may not
+# exceed the smaller field's count.
+placeholders:
+  counts:
+    bandits:       {to-read: 12, cited: 70, read: 14}
+    robotics:      {to-read: 6,  cited: 25, read: 4}
+    optimization:  {to-read: 0,  cited: 40, read: 8}
+    hyperspectral: {to-read: 0,  cited: 30, read: 2}
+    cloud:         {to-read: 30, cited: 0,  read: 6}
+    ai-systems:    {to-read: 180, cited: 10, read: 15}
+  shared:
+    - fields: [optimization, bandits]
+      counts: {cited: 12, read: 3}
+    - fields: [bandits, robotics]
+      counts: {cited: 8, read: 2}
+    - fields: [bandits, ai-systems]
+      counts: {to-read: 8, read: 4}
+    - fields: [ai-systems, cloud]
+      counts: {to-read: 15, read: 3}
+    - fields: [optimization, hyperspectral]
+      counts: {cited: 10, read: 1}

@@ -34,5 +34,6 @@ oneLiner: >-
   time, and cost.
 blog: multi-agent-search-with-bandits
 featured: true
+fields: [bandits, robotics]
 ---
 

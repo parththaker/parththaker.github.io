@@ -1,0 +1,16 @@
+# The fields of the map of work: one mesa each.
+# `id` is what `fields:` in paper, post and project frontmatter and the reading ledger refer to.
+# Order sets which field is an item's home mesa when it has several fields (the first match wins).
+fields:
+  - id: bandits
+    title: Bandits & learning
+  - id: robotics
+    title: Robotics
+  - id: optimization
+    title: Optimization
+  - id: hyperspectral
+    title: Hyperspectral unmixing
+  - id: cloud
+    title: Cloud infra
+  - id: ai-systems
+    title: AI systems

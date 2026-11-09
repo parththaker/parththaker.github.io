@@ -14,6 +14,7 @@ tags:
   - sample complexity
   - optimization landscape
 readTime: 10
+fields: [optimization]
 ---
 
 Suppose I hand you a vector $x \in \mathbb{C}^n$ that you cannot see directly. All you get are $m$ numbers, each of the form $\langle A_i x, x\rangle = c_i$, where every $A_i$ is a known Hermitian $n \times n$ matrix. Each measurement is a quadratic form — energy-like, sign-blind, and worst of all, blind to global phase: replace $x$ by $e^{i\varphi}x$ and every $c_i$ is unchanged. Two questions hang over this immediately. First, is there even enough information to pin down $x$ (up to that unavoidable phase)? Second, even if there is, the obvious way to recover it is to minimize a nonconvex loss — and nonconvex least-squares over $\mathbb{C}^n$ is the kind of problem that, in general, is NP-hard. So why would any honest person expect to solve it from a cold start?

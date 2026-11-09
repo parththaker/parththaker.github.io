@@ -1,0 +1,14 @@
+{
+  "layers": ["to-read", "cited", "read", "written", "published"],
+  "placement": { "pitch": 15, "row_gap": 9, "margin": 3, "order": "year", "overflow": "plus" },
+  "glyphs_free": ["hexagon", "bar", "cross"],
+  "materials": {
+    "paper":  { "layer": "published", "glyph": "circle",   "label": "paper" },
+    "patent": { "layer": "published", "glyph": "diamond",  "label": "patent" },
+    "system": { "layer": "written",   "glyph": "square",   "label": "project" },
+    "post":   { "layer": "written",   "glyph": "triangle", "label": "post" },
+    "note":   { "layer": "written",   "glyph": "bar",      "label": "note", "evidence": false },
+    "talk":   { "layer": "written",   "glyph": "hexagon",  "label": "talk" }
+  },
+  "draft_layer": "written"
+}

@@ -25,6 +25,7 @@ interface BaseMetadata {
   /** ISO date string, e.g. "2024-05-01". Used for sorting (newest first). */
   date: string
   tags?: string[]
+  fields?: string[]   // ids from content/expertise/fields.yaml; places the item on the map of work
   /** Surface this item in the "featured" rails on the homepage. */
   featured?: boolean
   /** Hide from the published site without deleting the file. */

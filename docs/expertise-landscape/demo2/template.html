@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-style="sandstone"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Map of work · demo 2 · plateau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FCFCFD;--fg:#2B2D33;--muted:#74767E;--hair:#E3E4E8;--brand:#E5231B;--card:#fff;--bc:#e8e4dc;
+ --sea:#F4F3EF;--shelf:#E6E9EA;--shelfe:#B9C2C6;--tk-l:#fff;--tk-s:#000;--tk-o:0;--grain:0;
+ --t2:#cbc5bb;--t3:#d7d2c9;--t4:#e3dfd7;--t5:#efece6;--rw2:#9a948a;--rw3:#9a948a;--rw4:#9a948a;--rw5:#9a948a;--re2:#7a746b;--re3:#7a746b;--re4:#7a746b;--re5:#7a746b;--edge:#6f6a62;--bt:#fff;--bs:#6a655d}
+html[data-theme=dark]{--bg:#17181C;--fg:#ECEDF0;--muted:#A9ACB5;--hair:#2E3037;--brand:#F05B4F;--card:#1f2024;
+ --sea:#17181C;--shelf:#20242A;--shelfe:#3A4149;--t2:#35363c;--t3:#3c3d43;--t4:#43444a;--t5:#4a4b50;--rw2:#26272c;--rw3:#26272c;--rw4:#26272c;--rw5:#26272c;--re2:#1d1e22;--re3:#1d1e22;--re4:#1d1e22;--re5:#1d1e22;--edge:#5a5c63;--bt:#d8d4cc;--bc:#b9b5ad;--bs:#2a2b30}
+/* Strata: the Grand Canyon sequence borrowed as a colour code, rim to river: Kaibab cream, Coconino buff, Hermit red, Redwall/Supai red-brown */
+html[data-style=strata],html[data-style=sandstone]{--sea:#F0F5F3;--shelf:#D7E6E0;--shelfe:#9FB8AE;
+ --t5:#DCCDB9;--t4:#D0AC93;--t3:#C2947B;--t2:#AB7B6F;--rw5:#C8B6A1;--re5:#A2907F;--rw4:#BD967D;--re4:#96725F;--rw3:#AF7E65;--re3:#885B49;--rw2:#98655A;--re2:#71443E;--edge:#56423D;--bt:#EBE5DA;--bc:#D5CEC2;--bs:#885B49;--tk-l:#FFFFFF;--tk-s:#56423D}
+html[data-theme=dark][data-style=strata],html[data-theme=dark][data-style=sandstone]{--sea:#1F2526;--shelf:#303B3A;--shelfe:#46544F;
+ --t5:#8A8072;--t4:#7D6656;--t3:#6D5142;--t2:#5B4039;--rw5:#7F7364;--re5:#6B5F53;--rw4:#725949;--re4:#5E463A;--rw3:#624536;--re3:#4E3328;--rw2:#51342E;--re2:#3D2320;--edge:#2a1f1b;--bt:#9D9890;--bc:#7C766F;--bs:#4E3328;--tk-l:#CFC5BC;--tk-s:#120d0b}
+html[data-style=sandstone]{--tk-o:.9;--grain:1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 "Source Serif 4",Georgia,serif}
+header{display:flex;justify-content:space-between;align-items:baseline;max-width:980px;margin:0 auto;padding:22px 20px 0;font-family:Archivo,Helvetica,Arial,sans-serif}
+header .nm{font-weight:700;letter-spacing:-.01em}header nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-size:14px}header nav a.on{color:var(--fg);border-bottom:2px solid var(--brand)}
+main{max-width:980px;margin:0 auto;padding:28px 20px 60px}
+h1{font:700 34px/1.1 Archivo,Helvetica,Arial,sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+p.claim{max-width:66ch;margin:0 0 18px;color:var(--fg)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:12px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.ctl button{font:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:1px solid var(--hair);color:var(--muted);padding:6px 10px;cursor:pointer;border-radius:2px}
+.ctl button[aria-pressed=true]{color:var(--fg);border-color:var(--fg)}.ctl .sp{flex:1}
+figure{margin:0}svg#map{display:block;width:100%;height:auto;background:var(--sea);border:1px solid var(--hair);cursor:default;touch-action:none;user-select:none;-webkit-user-select:none}svg#map.drag{cursor:grabbing}svg#map text{user-select:none}
+.shelf{fill:var(--shelf);stroke:var(--shelfe);stroke-width:.6;stroke-dasharray:2 2;vector-effect:non-scaling-stroke}
+.tp{stroke:var(--edge);stroke-width:.5;vector-effect:non-scaling-stroke}.t2{fill:var(--t2)}.t3{fill:var(--t3)}.t4{fill:var(--t4)}.t5{fill:var(--t5)}
+.rw.r2{fill:var(--rw2)}.rw.r3{fill:var(--rw3)}.rw.r4{fill:var(--rw4)}.rw.r5{fill:var(--rw5)}.re.r2{fill:var(--re2)}.re.r3{fill:var(--re3)}.re.r4{fill:var(--re4)}.re.r5{fill:var(--re5)}
+html[data-style=sandstone] .rw.r2{fill:url(#bw2)}html[data-style=sandstone] .rw.r3{fill:url(#bw3)}html[data-style=sandstone] .rw.r4{fill:url(#bw4)}html[data-style=sandstone] .rw.r5{fill:url(#bw5)}
+html[data-style=sandstone] .re.r2{fill:url(#be2)}html[data-style=sandstone] .re.r3{fill:url(#be3)}html[data-style=sandstone] .re.r4{fill:url(#be4)}html[data-style=sandstone] .re.r5{fill:url(#be5)}
+html[data-style=sandstone] #rock{filter:url(#grain)}html[data-theme=dark] #rock{filter:none}
+.tk{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round;opacity:var(--tk-o)}.tk.lit{stroke:var(--tk-l);opacity:calc(var(--tk-o)*.75)}.tk.shd{stroke:var(--tk-s);opacity:calc(var(--tk-o)*.5)}
+.hit{fill:transparent;pointer-events:all;cursor:pointer}
+.blk .bt{fill:var(--bt);stroke:var(--edge);stroke-width:.5;vector-effect:non-scaling-stroke}.blk .bc{fill:var(--bc)}.blk .bs{fill:var(--bs)}.blk{cursor:pointer}.blk.hot .bt{stroke:var(--brand);stroke-width:1.2}
+#lbl text{font-family:Archivo,Helvetica,Arial,sans-serif;fill:var(--fg);paint-order:stroke;stroke:var(--sea);stroke-width:3px;stroke-linejoin:round;pointer-events:none;transition:opacity .35s}#lbl .fn,#lbl .fs,#lbl .it,#lbl .num{pointer-events:all;cursor:pointer}#lbl .fn:hover{fill:var(--brand)}
+#lbl .fn{font-weight:700;font-size:11px;letter-spacing:.14em}#lbl .fs{font:500 8.5px "JetBrains Mono",monospace;letter-spacing:.06em;fill:var(--muted)}
+#lbl .bn{font:500 8px "JetBrains Mono",monospace;letter-spacing:.08em;fill:var(--fg);opacity:0}#lbl .num{font:700 8px Archivo,sans-serif;opacity:0}#lbl .it{font:italic 400 10.5px "Source Serif 4",Georgia,serif;opacity:0}
+#lbl .ld{stroke:var(--fg);stroke-width:.6;opacity:0;transition:opacity .35s}#lbl .fl{stroke:var(--muted);stroke-width:.6;fill:none}#lbl .fl.hot{stroke:var(--brand)}
+svg[data-z="1"] #lbl .bn,svg[data-z="2"] #lbl .bn,svg[data-z="1"] #lbl .num,svg[data-z="2"] #lbl .num{opacity:1}
+svg[data-z="2"] #lbl .it,svg[data-z="2"] #lbl .ld{opacity:1}svg[data-z="2"] #lbl .fn,svg[data-z="2"] #lbl .fs{opacity:.4}
+svg[data-z="1"] #lbl .fs{opacity:.7}
+#lbl .hot{fill:var(--brand)}#lbl text.dim{opacity:.3}#lbl .off{opacity:0!important}
+figcaption{font:12px/1.5 "JetBrains Mono",monospace;letter-spacing:.06em;color:var(--muted);margin:10px 0 0;text-transform:uppercase}
+#card{min-height:28px;margin:14px 0 0;padding:0;font-size:15px;color:var(--muted)}#card b{color:var(--fg);font-family:Archivo,sans-serif}
+.colophon{margin-top:36px;font:12px/1.5 "JetBrains Mono",monospace;color:var(--muted);letter-spacing:.04em}
+@media(prefers-reduced-motion:reduce){#lbl text,#lbl .ld{transition:none}}
+</style></head><body>
+<header><span class="nm">Parth Thaker</span><nav><a href="#">Papers</a><a href="#">Blog</a><a href="#">Projects</a><a href="#" class="on">Expertise</a></nav></header>
+<main>
+<h1>Map of work</h1>
+<p class="claim">The land is made of what I have read and written, by rule, not by judgment. Height is how far I have gone with a topic, not how much it matters. Every public item is listed below; the rest are counted.</p>
+<div class="ctl"><span>Style</span><button data-s="chipboard">Chipboard</button><button data-s="strata">Strata</button><button data-s="sandstone" aria-pressed="true">Sandstone</button><span class="sp"></span><span>Scroll or click to zoom · Esc resets</span><button id="zi">+</button><button id="zo">−</button><button id="theme">Theme</button></div>
+<figure>
+<svg id="map" viewBox="0 0 900 520" data-z="0" role="img" aria-label="Terraced plateau of seven mesas, one per field of work">
+<defs>
+ <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.14 0.32" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.16 0.12" result="a"/><feComposite in="a" in2="SourceAlpha" operator="in" result="g"/><feBlend in="SourceGraphic" in2="g" mode="multiply"/></filter>
+ <pattern id="bw2" width="8" height="7" patternUnits="userSpaceOnUse" patternTransform="translate(0 2.6)"><rect width="8" height="7" fill="var(--rw2)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/></pattern>
+ <pattern id="bw3" width="8" height="5" patternUnits="userSpaceOnUse" patternTransform="translate(0 3.9)"><rect width="8" height="5" fill="var(--rw3)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 2.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/></pattern>
+ <pattern id="bw4" width="8" height="6" patternUnits="userSpaceOnUse" patternTransform="translate(0 5.2)"><rect width="8" height="6" fill="var(--rw4)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.0H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/></pattern>
+ <pattern id="bw5" width="8" height="7" patternUnits="userSpaceOnUse" patternTransform="translate(0 6.5)"><rect width="8" height="7" fill="var(--rw5)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/></pattern>
+ <pattern id="be2" width="8" height="7" patternUnits="userSpaceOnUse" patternTransform="translate(0 2.6)"><rect width="8" height="7" fill="var(--re2)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/><path d="M5.5 1.6V4.3" stroke="#000" stroke-opacity=".09" stroke-width=".6"/></pattern>
+ <pattern id="be3" width="8" height="5" patternUnits="userSpaceOnUse" patternTransform="translate(0 3.9)"><rect width="8" height="5" fill="var(--re3)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 2.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/><path d="M5.5 1.6V2.8" stroke="#000" stroke-opacity=".09" stroke-width=".6"/></pattern>
+ <pattern id="be4" width="8" height="6" patternUnits="userSpaceOnUse" patternTransform="translate(0 5.2)"><rect width="8" height="6" fill="var(--re4)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.0H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/><path d="M5.5 1.6V3.6" stroke="#000" stroke-opacity=".09" stroke-width=".6"/></pattern>
+ <pattern id="be5" width="8" height="7" patternUnits="userSpaceOnUse" patternTransform="translate(0 6.5)"><rect width="8" height="7" fill="var(--re5)"/><path d="M0 .5H8" stroke="#000" stroke-opacity=".16" stroke-width=".6"/><path d="M1 3.5H6" stroke="#fff" stroke-opacity=".10" stroke-width=".5"/><path d="M5.5 1.6V4.3" stroke="#000" stroke-opacity=".09" stroke-width=".6"/></pattern>
+</defs>
+<rect width="900" height="520" fill="var(--sea)" id="sea"/>
+<g id="world">
+<!--TERRAIN-->
+</g>
+<g id="lbl"></g>
+</svg>
+<figcaption>Shallows: on my reading list · Steps, lowest to highest: cited in my papers, read, written · Summit: published · Each step is as wide as the number of items it holds, on a log scale</figcaption>
+</figure>
+<div id="card">Click a mesa to move closer; click a block to read what it is.</div>
+<p class="colophon">Demo 2 · built from 7 published, 16 written, 52 read, 185 cited and 253 queued records (synthetic counts) · positions locked · regenerated 2026-11-08</p>
+</main>
+<script>
+const D=/*DATA*/;
+const svg=document.getElementById('map'),world=document.getElementById('world'),lbl=document.getElementById('lbl'),card=document.getElementById('card');
+const W=D.W,H=D.H,ZS=D.ZS,RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let cam={...D.cam0},raf=null,hotF=null,hotI=null;const S0=D.cam0.s;
+const NS='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+// build label nodes once
+const nodes=[];
+for(const l of D.labels){
+ if(l.kind==='field'){const ld=mk('path',{class:'fl'}),a=mk('text',{class:'fn','text-anchor':l.anchor,'data-f':l.f}),b=mk('text',{class:'fs','text-anchor':l.anchor,'data-f':l.f});a.textContent=l.name;b.textContent=l.sub;lbl.append(ld,a,b);nodes.push({l,a,b,ld});}
+ else{const a=mk('text',{class:'bn','text-anchor':'middle'});a.textContent=l.name;lbl.append(a);nodes.push({l,a});}
+}
+for(const it of D.items){
+ const ld=mk('path',{class:'ld'}),n=mk('text',{class:'num','text-anchor':'middle','data-i':it.i}),t=mk('text',{class:'it','data-i':it.i});
+ n.textContent=String(it.i).padStart(2,'0');t.textContent=it.name;lbl.append(ld,n,t);nodes.push({it,ld,n,t});
+}
+const sx=x=>W/2+(x-cam.cx)*cam.s,sy=y=>H/2+(y-cam.cy)*cam.s;
+function level(s){return s<1.5?0:s<3.2?1:2}
+function draw(){
+ const s=cam.s;world.setAttribute('transform',`matrix(${s} 0 0 ${s} ${W/2-cam.cx*s} ${H/2-cam.cy*s})`);
+ svg.dataset.z=level(s);
+ for(const n of nodes){
+  if(n.l&&n.l.kind==='field'){const k=(hotF===n.l.f)?Math.max(0,Math.min(1,(s-S0)/(1.5-S0))):0;const wx=n.l.far[0]+(n.l.near[0]-n.l.far[0])*k,wy=n.l.far[1]+(n.l.near[1]-n.l.far[1])*k;
+   const x=sx(wx),y=sy(wy);n.a.setAttribute('x',x);n.a.setAttribute('y',y);n.b.setAttribute('x',x);n.b.setAttribute('y',y+11);
+   const an=k>0.5?'middle':n.l.anchor;n.a.setAttribute('text-anchor',an);n.b.setAttribute('text-anchor',an);
+   const tx=sx(n.l.tgt[0]),ty=sy(n.l.tgt[1]);const gx=an==='start'?x-4:an==='end'?x+4:x,gy=an==='middle'?y+4:y-3;
+   n.ld.setAttribute('d',`M${gx} ${gy}L${tx} ${ty}`);n.ld.style.opacity=1-k;
+   const hot=n.l.f===hotF;n.a.classList.toggle('hot',hot);n.ld.classList.toggle('hot',hot);const dim=hotF&&!hot&&s>=1.5;n.a.classList.toggle('dim',dim);n.b.classList.toggle('dim',dim);n.ld.classList.toggle('off',!!dim);}
+  else if(n.l){const x=sx(n.l.x),y=sy(n.l.y);n.a.setAttribute('x',x);n.a.setAttribute('y',y);n.a.classList.toggle('off',!!hotF&&n.l.f!==hotF);}
+  else{const x=sx(n.it.x),y=sy(n.it.y);const right=(n.it.i%2)===0;const lx=x+(right?16:-16),ly=y-10;
+   n.n.setAttribute('x',x);n.n.setAttribute('y',y-4);
+   n.t.setAttribute('x',lx+(right?2:-2));n.t.setAttribute('y',ly+3);n.t.setAttribute('text-anchor',right?'start':'end');
+   n.ld.setAttribute('d',`M${x} ${y-2}L${lx} ${ly}`);
+   const hot=n.it.i===hotI,off=!!hotF&&n.it.f!==hotF;n.t.classList.toggle('hot',hot);n.n.classList.toggle('hot',hot);
+   n.t.classList.toggle('off',off);n.n.classList.toggle('off',off);n.ld.classList.toggle('off',off);}
+ }
+}
+let go=function(t,ms=450){if(raf)cancelAnimationFrame(raf);const a={...cam},t0=performance.now();
+ if(RM||ms===0){cam={...t};draw();return}
+ (function f(now){const k=Math.min(1,(now-t0)/ms),e=1-Math.pow(1-k,3);
+  cam={cx:a.cx+(t.cx-a.cx)*e,cy:a.cy+(t.cy-a.cy)*e,s:a.s+(t.s-a.s)*e};draw();if(k<1)raf=requestAnimationFrame(f)})(t0)}
+const clampS=s=>Math.max(S0,Math.min(6.5,s));
+function fitField(f){const F=D.fields[f];const span=2*F.r[0]+5*ZS+40;const s=clampS(Math.max(1.8,Math.min(H/span,2.9)));hotF=f;hotI=null;
+ card.innerHTML=`<b>${F.title}</b> · ${F.years} · ${F.n[4]} published, ${F.n[3]} written, ${F.n[2]} read, ${F.n[1]} cited, ${F.n[0]} on the reading list`;
+ go({cx:F.c[0],cy:F.c[1]-2*ZS,s})}
+function fitItem(i){const it=D.items.find(o=>o.i===i);hotI=i;hotF=it.f;const F=D.fields[it.f];
+ card.innerHTML=`<b>${String(i).padStart(2,'0')} · ${it.name}</b> · ${it.lay===5?'published':'written'} · ${F.title}`;
+ go({cx:it.x,cy:it.y+6,s:4.6})}
+function reset(){hotF=null;hotI=null;card.textContent='Click a mesa to move closer; click a block to read what it is.';go({...D.cam0})}
+let drag=null,moved=false;
+svg.addEventListener('pointerdown',e=>{e.preventDefault();drag={x:e.clientX,y:e.clientY,cx:cam.cx,cy:cam.cy};moved=false;svg.setPointerCapture(e.pointerId)});
+svg.addEventListener('pointermove',e=>{if(!drag)return;const r=svg.getBoundingClientRect(),k=W/r.width/cam.s;const dx=(e.clientX-drag.x)*k,dy=(e.clientY-drag.y)*k;
+ if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>4)moved=true;if(moved){cam.cx=drag.cx-dx;cam.cy=drag.cy-dy;svg.classList.add('drag');draw()}});
+svg.addEventListener('pointerup',e=>{svg.classList.remove('drag');const wasDrag=moved;drag=null;if(wasDrag)return;
+ const ti=e.target.closest('[data-i]');if(ti){fitItem(+ti.dataset.i);return}
+ const tf=e.target.closest('[data-f]');if(tf){fitField(tf.dataset.f);return}
+ reset()});
+svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();const mx=cam.cx+((e.clientX-r.left)/r.width*W-W/2)/cam.s,my=cam.cy+((e.clientY-r.top)/r.height*H-H/2)/cam.s;
+ const s2=clampS(cam.s*(e.deltaY>0?0.88:1.14));const k=s2/cam.s;cam={cx:mx-(mx-cam.cx)/k,cy:my-(my-cam.cy)/k,s:s2};draw()},{passive:false});
+document.getElementById('zi').onclick=()=>go({...cam,s:clampS(cam.s*1.5)},250);document.getElementById('zo').onclick=()=>go({...cam,s:clampS(cam.s/1.5)},250);
+addEventListener('keydown',e=>{if(e.key==='Escape')reset()});
+svg.addEventListener('pointerover',e=>{const h=e.target.closest('[data-f]');if(!drag){hotF=h?h.dataset.f:(hotI?D.items.find(o=>o.i===hotI).f:hotF);draw()}const b=e.target.closest('.blk');document.querySelectorAll('.blk.hot').forEach(x=>x.classList.remove('hot'));if(b){b.classList.add('hot')}});
+function setStyle(s){document.documentElement.dataset.style=s;localStorage.setItem('mw-style',s);document.querySelectorAll('.ctl [data-s]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.s===s))}
+document.querySelectorAll('.ctl [data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));if(localStorage.getItem('mw-style'))setStyle(localStorage.getItem('mw-style'));
+document.getElementById('theme').onclick=()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';localStorage.setItem('mw-theme',h.dataset.theme)};
+if(localStorage.getItem('mw-theme'))document.documentElement.dataset.theme=localStorage.getItem('mw-theme');
+const STILL=location.search.includes('still');const go0=go;if(STILL){go=(t)=>{cam={...t};draw()}}
+if(location.hash){const f=location.hash.slice(1);if(D.fields[f])setTimeout(()=>fitField(f),30);else if(f[0]==='i')setTimeout(()=>fitItem(+f.slice(1)),30)}
+draw();
+</script>
+</body></html>

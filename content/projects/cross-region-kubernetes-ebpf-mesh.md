@@ -5,6 +5,7 @@ summary: "Connected Kubernetes clusters across regions with an eBPF cluster mesh
 role: "Infrastructure / platform"
 stack: ["Kubernetes", "Cilium / eBPF", "Multi-region", "Networking"]
 tags: ["Infrastructure", "Kubernetes"]
+fields: [cloud]
 ---
 
 ## Problem

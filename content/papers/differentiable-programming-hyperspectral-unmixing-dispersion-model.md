@@ -42,5 +42,6 @@ oneLiner: >-
   physical parameters.
 codeUrl: 'https://github.com/johnjaniczek/InfraRender'
 blog: differentiable-physics-for-hyperspectral-unmixing
+fields: [hyperspectral, optimization]
 ---
 

@@ -32,5 +32,6 @@ oneLiner: >-
   detect periodic patterns in shifting rewards and exploit them to reduce
   regret.
 blog: periodic-bandits-with-ramanujan-transforms
+fields: [bandits]
 ---
 

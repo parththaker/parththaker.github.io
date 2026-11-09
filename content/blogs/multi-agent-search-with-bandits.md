@@ -12,6 +12,7 @@ tags:
   - robotics
   - thresholding-bandit
 readTime: 11
+fields: [robotics, bandits]
 ---
 
 Five drones hover over a hundred-cell grid. Somewhere in it sit a handful of cells worth caring about — a wildfire's hot edge, a poacher's camp, a leaking pipe — and you do not know how many. Each drone's sensor is cheap, light, and unreliable: one look at a cell returns a single noisy bit. You want every interesting cell flagged, fast, without draining the batteries, and you want to be told honestly when you can trust the answer. Which cell should each drone visit next?

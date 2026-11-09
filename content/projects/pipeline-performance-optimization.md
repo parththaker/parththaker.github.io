@@ -5,6 +5,7 @@ summary: "Cut end-to-end turnaround of critical data pipelines by roughly half v
 role: "Performance / platform"
 stack: ["Kubernetes", "Python", "Performance", "Load testing"]
 tags: ["Infrastructure", "Performance"]
+fields: [cloud]
 ---
 
 ## Problem

@@ -15,6 +15,7 @@ tags:
   - physics-based ML
   - spectroscopy
 readTime: 10
+fields: [hyperspectral, optimization]
 ---
 
 Point a spectrometer at a patch of Martian basalt and you get one curve: reflectance, or emissivity, as a function of wavelength. You know it is a blend of a few pure minerals. The question that pays the bills in planetary science is deceptively simple — *how much of each?* What fraction is pyroxene, what fraction is feldspar, what fraction is dust?

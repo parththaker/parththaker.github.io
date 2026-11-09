@@ -15,6 +15,7 @@ tags:
   - Search
   - Document AI
 readTime: 11
+fields: [ai-systems]
 ---
 
 *A generalized writeup of a production system I built in 2024 — the patterns, not the proprietary details.*

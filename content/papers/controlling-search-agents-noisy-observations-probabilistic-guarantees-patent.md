@@ -39,5 +39,6 @@ oneLiner: >-
   paths using a multi-level multi-armed bandit, classifying regions from noisy
   measurements with probabilistic finite-time guarantees.
 blog: multi-agent-search-with-bandits
+fields: [robotics, bandits]
 ---
 

@@ -4,6 +4,7 @@ date: "2018-05-01"
 tags: ["optimization", "gradient-descent", "research", "mathematics"]
 description: "Exploring an interesting optimization technique that skips projection steps to potentially improve convergence in constrained convex optimization."
 readTime: 6
+fields: [optimization]
 ---
 
 # Projected Gradient Descent with Skipping

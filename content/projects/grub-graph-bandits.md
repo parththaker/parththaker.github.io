@@ -11,6 +11,7 @@ links:
     url: "https://github.com/parththaker/Bandits-GRUB"
   - label: "Paper (NeurIPS 2022)"
     url: "https://arxiv.org/abs/2108.01152"
+fields: [bandits]
 ---
 
 ## Problem

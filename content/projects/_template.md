@@ -5,6 +5,7 @@ summary: "One sentence a recruiter can skim in 3 seconds — what you built and 
 role: "Your role (e.g. Sole engineer, Tech lead)"
 stack: ["AWS", "Terraform", "Python", "LLM"]
 tags: ["Cloud", "LLM Systems"]
+fields: [cloud]   # ids from content/expertise/fields.yaml; one or more
 featured: false
 draft: true
 # Optional external links:

@@ -12,6 +12,7 @@ tags:
   - Signal Processing
   - Regret Minimization
 readTime: 9
+fields: [bandits]
 ---
 
 Suppose the best slot machine in the room changes every Monday, comes back every Sunday, and has done this — quietly, on the same weekly clock — for as long as you have been playing. How many weeks should you go on being surprised by it?

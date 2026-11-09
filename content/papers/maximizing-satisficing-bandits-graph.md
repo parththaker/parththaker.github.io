@@ -38,5 +38,6 @@ oneLiner: >-
 codeUrl: 'https://github.com/parththaker/Bandits-GRUB'
 featured: true
 blog: pure-exploration-with-graph-side-information
+fields: [bandits]
 ---
 

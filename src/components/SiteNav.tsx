@@ -8,6 +8,7 @@ import ThemeToggle from './ThemeToggle'
 
 const NAV = [
   { href: '/papers', label: 'Papers' },
+  { href: '/expertise', label: 'Work' },
   { href: '/projects', label: 'Projects' },
   { href: '/blogs', label: 'Writing' },
   { href: '/ideas', label: 'Notes' },

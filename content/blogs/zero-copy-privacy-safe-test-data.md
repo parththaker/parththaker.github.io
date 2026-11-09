@@ -15,6 +15,7 @@ tags:
   - Kubernetes
   - Privacy
 readTime: 12
+fields: [cloud, ai-systems]
 ---
 
 *A generalized writeup of a production system I built — the patterns, not the proprietary details.*
