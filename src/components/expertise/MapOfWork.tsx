@@ -104,13 +104,13 @@ export default function MapOfWork() {
   }, [layer, join, still])
 
   // camera tween: one rAF loop, ease-out cubic, instant under reduced motion or in still mode
-  const goTo = React.useCallback((target: Cam, ms = 450) => {
+  const goTo = React.useCallback((target: Cam, ms = 800) => {
     if (raf.current) cancelAnimationFrame(raf.current)
     const reduced = (typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches) || (typeof location !== 'undefined' && location.search.includes('still'))
     if (reduced || ms === 0) { setCam(target); return }
     const from = { ...camRef.current }, t0 = performance.now()
     const step = (now: number) => {
-      const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3)
+      const k = Math.min(1, (now - t0) / ms), e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2
       setCam({ cx: from.cx + (target.cx - from.cx) * e, cy: from.cy + (target.cy - from.cy) * e, s: from.s + (target.s - from.s) * e })
       if (k < 1) raf.current = requestAnimationFrame(step)
     }
@@ -125,9 +125,9 @@ export default function MapOfWork() {
   const pickLayer = React.useCallback((f: string, l: string, keepJoin = false) => {
     if (view !== f) { setView(f); setHotF(f); goTo(fieldCam(f)) }
     if (!keepJoin) setJoin(null)
-    if (view === f && layer === l && !keepJoin) { setLayer(null); setOpenLayers((o) => o.filter((x) => x !== l)); setHash(f); return }
+    if (view === f && layer === l && !keepJoin) { home(); return }
     setLayer(l); setOpenLayers((o) => (o.includes(l) ? o : [...o, l])); setHash(`${f}/${l}`)
-  }, [view, layer, goTo])
+  }, [view, layer, goTo, home])
   const pickJoin = React.useCallback((j: { a: string; b: string; layer: string }) => {
     const f = view && (view === j.a || view === j.b) ? view : j.a
     setJoin({ a: j.a, b: j.b, layer: j.layer })
@@ -181,8 +181,8 @@ export default function MapOfWork() {
   const F = view ? D.fields[view] : null
 
   return (
-    <div className={'mapwork' + (view ? ' lg:grid lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-6' : '')} data-style={style} data-z={level} data-still={still || undefined} style={{ ['--k' as string]: kScale }}>
-      <div>
+    <div className="mapwork mw-grid" data-style={style} data-z={level} data-still={still || undefined} style={{ ['--k' as string]: kScale }}>
+      <div className="min-w-0">
         <div className="mb-2 flex flex-wrap items-center justify-end gap-x-3 gap-y-2 font-mono text-[10.5px] tracking-[0.08em] text-muted-foreground uppercase">
           {view && (
             <Button variant="ghost" size="sm" className="mr-auto h-7 gap-1 px-2 font-mono text-[10.5px] tracking-[0.08em] uppercase" onClick={home}>← All fields</Button>
@@ -297,7 +297,7 @@ export default function MapOfWork() {
             </g>
           </svg>
           <figcaption className="mt-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 font-mono text-[11px] tracking-[0.06em] text-muted-foreground uppercase">
-            <span aria-live="polite">{view ? `${D.fields[view].title} · click a terrace to open its layer · click the field again to return` : 'Click a field.'}</span>
+            <span aria-live="polite">{view ? `${D.fields[view].title} · click a terrace to open its layer · click it again to return` : 'Click a field.'}</span>
             {listed.length > 0 && (
               <span>{listed.map((s) => `${s.n} ${SHOW[s.layer] ?? s.layer} shared with ${D.fields[other(s, view!)].title} · not drawn`).join(' · ')}</span>
             )}
@@ -306,6 +306,7 @@ export default function MapOfWork() {
         </figure>
       </div>
 
+      <div className="mw-side min-w-0">
       {view && F && (
         <aside ref={panelRef} className="mw-panel mt-8 lg:mt-0" aria-label={`${F.title}: the stack`}>
           <header className="mb-3">
@@ -362,6 +363,7 @@ export default function MapOfWork() {
           })}
         </aside>
       )}
+      </div>
 
       <CommandDialog open={cmdOpen} onOpenChange={setCmdOpen} title="Find a field or a work" description="Type to filter">
         <CommandInput placeholder="Find a field or a work…" />

@@ -106,3 +106,15 @@
 .mapwork .mw-work.is-shared { box-shadow: inset 2px 0 0 var(--brand); padding-left: 8px; margin-left: -10px; }
 .mapwork .mw-shared { color: var(--brand); margin-bottom: 8px; }
 @media (min-width: 1024px) { .mapwork .mw-panel { max-height: 600px; overflow-y: auto; padding-right: 2px; } }
+
+/* the map and the panel share one grid whose columns animate; the panel fades in once its column has room */
+@media (min-width: 1024px) {
+  .mapwork.mw-grid { display: grid; grid-template-columns: 1fr 0fr; column-gap: 0; align-items: start; transition: grid-template-columns 650ms cubic-bezier(0.4, 0, 0.2, 1), column-gap 650ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .mapwork.mw-grid[data-z='1'] { grid-template-columns: 3fr 2fr; column-gap: 1.5rem; }
+  .mapwork .mw-side { overflow: hidden; }
+  .mapwork .mw-panel { opacity: 0; animation: mw-fade 400ms ease 250ms forwards; }
+}
+@keyframes mw-fade { to { opacity: 1; } }
+.mapwork[data-still].mw-grid { transition: none; }
+.mapwork[data-still] .mw-panel { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .mapwork.mw-grid { transition: none; } .mapwork .mw-panel { animation: none; opacity: 1; } }
