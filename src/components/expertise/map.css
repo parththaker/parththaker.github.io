@@ -105,16 +105,18 @@
 .mapwork .mw-work + .mw-work, .mapwork .mw-shared + .mw-work { margin-top: 10px; }
 .mapwork .mw-work.is-shared { box-shadow: inset 2px 0 0 var(--brand); padding-left: 8px; margin-left: -10px; }
 .mapwork .mw-shared { color: var(--brand); margin-bottom: 8px; }
-@media (min-width: 1024px) { .mapwork .mw-panel { max-height: 600px; overflow-y: auto; padding-right: 2px; } }
 
-/* the map and the panel share one grid whose columns animate; the panel fades in once its column has room */
-@media (min-width: 1024px) {
-  .mapwork.mw-grid { display: grid; grid-template-columns: 1fr 0fr; column-gap: 0; align-items: start; transition: grid-template-columns 650ms cubic-bezier(0.4, 0, 0.2, 1), column-gap 650ms cubic-bezier(0.4, 0, 0.2, 1); }
-  .mapwork.mw-grid[data-z='1'] { grid-template-columns: 3fr 2fr; column-gap: 1.5rem; }
-  .mapwork .mw-side { overflow: hidden; }
-  .mapwork .mw-panel { opacity: 0; animation: mw-fade 400ms ease 250ms forwards; }
-}
+/* below the map: the field index at the overview, the open field's stack otherwise; the swap fades in */
+.mapwork .mw-below > * { animation: mw-fade 350ms ease forwards; opacity: 0; }
 @keyframes mw-fade { to { opacity: 1; } }
-.mapwork[data-still].mw-grid { transition: none; }
-.mapwork[data-still] .mw-panel { animation: none; opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .mapwork.mw-grid { transition: none; } .mapwork .mw-panel { animation: none; opacity: 1; } }
+.mapwork[data-still] .mw-below > * { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .mapwork .mw-below > * { animation: none; opacity: 1; } }
+.mapwork .mw-index { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+.mapwork .mw-row { display: grid; grid-template-columns: minmax(200px, 1.2fr) 90px 3fr; column-gap: 1.25rem; align-items: baseline; width: 100%; padding: 10px 2px; border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent); text-align: left; cursor: pointer; transition: background 0.15s; }
+.mapwork .mw-row:hover, .mapwork .mw-row.hot { background: color-mix(in oklab, var(--muted) 55%, transparent); }
+.mapwork .mw-row-name { font-family: var(--font-archivo), Archivo, Helvetica, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.mapwork .mw-row:hover .mw-row-name, .mapwork .mw-row.hot .mw-row-name { color: var(--brand); }
+.mapwork .mw-row-years, .mapwork .mw-row-counts { font-family: var(--font-jetbrains-mono), ui-monospace, monospace; font-weight: 500; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-foreground); }
+@media (max-width: 640px) { .mapwork .mw-row { grid-template-columns: 1fr; row-gap: 2px; } }
+/* on a narrow screen the overview's perimeter captions cannot fit; the index beneath the map carries the names */
+@media (max-width: 640px) { .mapwork[data-z='0'] .lbl .fn, .mapwork[data-z='0'] .lbl .fs, .mapwork[data-z='0'] .lbl .fl { display: none; } }

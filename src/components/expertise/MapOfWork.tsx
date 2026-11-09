@@ -90,7 +90,7 @@ export default function MapOfWork() {
   React.useEffect(() => {
     const el = svgRef.current
     if (!el || typeof ResizeObserver === 'undefined') return
-    const ro = new ResizeObserver(([e]) => { const w = e.contentRect.width; if (w > 0) setKScale(Math.min(2.4, Math.max(1, W / w))) })
+    const ro = new ResizeObserver(([e]) => { const w = e.contentRect.width; if (w > 0) setKScale(Math.min(1.8, Math.max(1, W / w))) })
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
@@ -181,8 +181,8 @@ export default function MapOfWork() {
   const F = view ? D.fields[view] : null
 
   return (
-    <div className="mapwork mw-grid" data-style={style} data-z={level} data-still={still || undefined} style={{ ['--k' as string]: kScale }}>
-      <div className="min-w-0">
+    <div className="mapwork" data-style={style} data-z={level} data-still={still || undefined} style={{ ['--k' as string]: kScale }}>
+      <div>
         <div className="mb-2 flex flex-wrap items-center justify-end gap-x-3 gap-y-2 font-mono text-[10.5px] tracking-[0.08em] text-muted-foreground uppercase">
           {view && (
             <Button variant="ghost" size="sm" className="mr-auto h-7 gap-1 px-2 font-mono text-[10.5px] tracking-[0.08em] uppercase" onClick={home}>← All fields</Button>
@@ -306,12 +306,27 @@ export default function MapOfWork() {
         </figure>
       </div>
 
-      <div className="mw-side min-w-0">
+      <div className="mw-below mt-10" key={view ?? 'index'}>
+      {!view && (
+        <nav className="mw-index" aria-label="Fields">
+          {Object.entries(D.fields).map(([id, Fd]) => {
+            const counts = ORDER.map((l) => [l, Fd.n[LAY(l) - 1]] as const).filter(([, c]) => c > 0).map(([l, c]) => `${c} ${SHOW[l] ?? l}`).join(' · ')
+            return (
+              <button key={id} type="button" className={'mw-row' + (hotF === id ? ' hot' : '')} onClick={() => open(id)}
+                onPointerEnter={() => setHotF(id)} onPointerLeave={() => setHotF((h) => (h === id ? null : h))}>
+                <span className="mw-row-name">{Fd.title}</span>
+                <span className="mw-row-years">{Fd.years}</span>
+                <span className="mw-row-counts">{counts}</span>
+              </button>
+            )
+          })}
+        </nav>
+      )}
       {view && F && (
-        <aside ref={panelRef} className="mw-panel mt-8 lg:mt-0" aria-label={`${F.title}: the stack`}>
-          <header className="mb-3">
-            <p className="font-mono text-[10.5px] tracking-[0.08em] text-muted-foreground uppercase">{F.years}</p>
+        <aside ref={panelRef} className="mw-panel" aria-label={`${F.title}: the stack`}>
+          <header className="mb-3 flex flex-wrap items-baseline justify-between gap-x-6">
             <h2 className="font-sans text-lg font-semibold tracking-tight">{F.title}</h2>
+            <p className="font-mono text-[10.5px] tracking-[0.08em] text-muted-foreground uppercase">{F.years}</p>
           </header>
           {ORDER.map((l) => {
             const k = LAY(l)
