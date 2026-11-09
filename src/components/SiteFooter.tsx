@@ -10,7 +10,7 @@ const COLUMNS = [
   { href: '/blogs', label: 'Writing' },
   { href: '/ideas', label: 'Notes' },
   { href: '/about', label: 'About' },
-  { href: '/hobbies', label: 'Hobbies' },
+  { href: '/hobbies', label: 'Board games' },
 ]
 
 export default function SiteFooter() {

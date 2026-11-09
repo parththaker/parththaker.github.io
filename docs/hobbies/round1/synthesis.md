@@ -155,3 +155,18 @@ Alt text (what is visible; never the caption):
 - Whether the advisor is in TM_Lab (sets the caption).
 - Whether the two Terra Mystica profile sentences stay (Sol and Terra would cut them).
 - Removing the six unused JPEGs from `public/` (recoverable from git).
+
+## Owner's rulings (2026-11-09)
+Six photos. The advisor is in the lab photo, so its caption stands. The two Terra Mystica profile-average
+sentences are cut (Sol's and Terra's position); the section keeps the tournament paragraph and the
+Geodens clause. The unused JPEGs stay in `public/`.
+
+## Built 2026-11-09
+`src/app/hobbies/page.tsx` replaced as specified (server component, no client state): title and mono
+kicker, three origin paragraphs, the lab photo wide, BOARD GAME ARENA with a ten-row ledger capped at
+`max-w-md` and a two-line footnote, TERRA MYSTICA as one paragraph with the video link and the Geodens
+clause, AT THE TABLE with the cow hand in a 3:4 frame beside the paragraph and a 2×2 grid. Each photo
+links to its JPEG. `GamingMemories`, `GameShelf`, `GamingJourney`, `FunFact` and `GameGallery` deleted;
+nav and footer read "Board games"; route unchanged. Lint clean, build green. Checked in headless Chrome
+at 1300 px (light and dark) and at a true 420 px layout (rendered inside a 420 px iframe, because
+headless Chrome clamps its window to about 500 px and crops the capture).
