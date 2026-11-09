@@ -129,11 +129,12 @@ export default function MapOfWork() {
     setLayer(l); setOpenLayers((o) => (o.includes(l) ? o : [...o, l])); setHash(`${f}/${l}`)
   }, [view, layer, goTo, home])
   const pickJoin = React.useCallback((j: { a: string; b: string; layer: string }) => {
+    if (join && joinKey(join.a, join.b) === joinKey(j.a, j.b) && join.layer === j.layer) { home(); return }   // the selected join again: back out
     const f = view && (view === j.a || view === j.b) ? view : j.a
     setJoin({ a: j.a, b: j.b, layer: j.layer })
     pickLayer(f, j.layer, true)
     setHash(`${joinKey(j.a, j.b)}/${j.layer}`)
-  }, [view, pickLayer])
+  }, [view, join, pickLayer, home])
   const pickItem = React.useCallback((it: Item) => {
     const f = view && it.fields.includes(view) ? view : it.f
     pickLayer(f, it.layer)
