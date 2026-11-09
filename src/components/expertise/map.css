@@ -59,14 +59,14 @@
 .mapwork .lbl .it { fill: var(--ink); }
 
 /* labels: screen space, constant size */
-.mapwork .lbl text { fill: var(--ink); paint-order: stroke; stroke: var(--sea); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; transition: opacity 0.3s; }
-.mapwork .lbl .fn { font: 700 11px var(--font-archivo), Archivo, Helvetica, sans-serif; letter-spacing: 0.14em; pointer-events: all; cursor: pointer; }
+.mapwork .lbl text { fill: var(--ink); paint-order: stroke; stroke: var(--sea); stroke-width: calc(3px * var(--k, 1)); stroke-linejoin: round; pointer-events: none; transition: opacity 0.3s; }
+.mapwork .lbl .fn { font-family: var(--font-archivo), Archivo, Helvetica, sans-serif; font-weight: 700; font-size: calc(11px * var(--k, 1)); letter-spacing: 0.14em; pointer-events: all; cursor: pointer; }
 .mapwork .lbl .fn:hover, .mapwork .lbl .hot { fill: var(--brand); }
-.mapwork .lbl .fs { font: 500 8.5px var(--font-jetbrains-mono), ui-monospace, monospace; letter-spacing: 0.06em; fill: var(--muted-foreground); pointer-events: all; cursor: pointer; }
-.mapwork .lbl .bn { font: 500 8px var(--font-jetbrains-mono), ui-monospace, monospace; letter-spacing: 0.08em; opacity: 0; }
+.mapwork .lbl .fs { font-family: var(--font-jetbrains-mono), ui-monospace, monospace; font-weight: 500; font-size: calc(8.5px * var(--k, 1)); letter-spacing: 0.06em; fill: var(--muted-foreground); pointer-events: all; cursor: pointer; }
+.mapwork .lbl .bn { font-family: var(--font-jetbrains-mono), ui-monospace, monospace; font-weight: 500; font-size: calc(8px * var(--k, 1)); letter-spacing: 0.08em; opacity: 0; }
 .mapwork .lbl .num { font: 700 8px var(--font-archivo), Archivo, sans-serif; opacity: 0; pointer-events: all; cursor: pointer; }
 .mapwork .lbl .it { font: italic 400 11px var(--font-source-serif), 'Source Serif 4', Georgia, serif; }
-.mapwork .lbl .ld, .mapwork .lbl .fl { stroke: var(--muted-foreground); stroke-width: 0.6; fill: none; transition: opacity 0.3s; }
+.mapwork .lbl .ld, .mapwork .lbl .fl { stroke: var(--muted-foreground); stroke-width: calc(0.6px * var(--k, 1)); fill: none; transition: opacity 0.3s; }
 .mapwork .lbl .ld { opacity: 0; }
 .mapwork .lbl .fl.hot { stroke: var(--brand); }
 .mapwork[data-z='1'] .lbl .bn, .mapwork[data-z='2'] .lbl .bn, .mapwork[data-z='1'] .lbl .num, .mapwork[data-z='2'] .lbl .num { opacity: 1; }
@@ -78,3 +78,31 @@
 
 /* still mode (screenshots, og image): no transitions */
 .mapwork[data-still] .lbl text, .mapwork[data-still] .lbl path { transition: none; }
+
+/* click targets: a field's own terrace outline per level, and each join */
+.mapwork .tl, .mapwork .jn { fill: transparent; stroke: var(--brand); stroke-width: 1.6; stroke-opacity: 0; vector-effect: non-scaling-stroke; stroke-linejoin: round; pointer-events: all; cursor: pointer; transition: stroke-opacity 0.2s; }
+.mapwork .tl.hot, .mapwork .jn:hover { stroke-opacity: 0.4; }
+.mapwork .tl.sel, .mapwork .jn.sel { stroke-opacity: 1; }
+.mapwork .shade { pointer-events: none; }
+.mapwork .tk.arch { stroke: var(--edge); stroke-width: 0.8; opacity: 0.6; }
+.mapwork[data-z='1'] .lbl .bn { pointer-events: all; cursor: pointer; }
+.mapwork .lbl .bn.hot { fill: var(--brand); }
+
+/* the stack panel: one band per layer in that layer's tone */
+.mapwork { --band-ink: #241c18; }
+.dark .mapwork { --band-ink: #efe6d8; }
+.mapwork .mw-band + .mw-band { margin-top: 4px; }
+.mapwork .mw-band > button { display: flex; width: 100%; align-items: center; justify-content: space-between; height: 32px; padding: 0 12px 0 11px; border-left: 3px solid transparent; color: var(--band-ink); font: 500 10.5px var(--font-jetbrains-mono), ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; cursor: pointer; transition: filter 0.15s; }
+.mapwork .mw-band > button:hover:not(:disabled) { filter: brightness(0.96); }
+.mapwork .mw-band.sel > button { border-left-color: var(--brand); }
+.mapwork .mw-band.empty > button { opacity: 0.45; cursor: default; }
+.mapwork .mw-l5 > button { background: var(--t5); }
+.mapwork .mw-l4 > button { background: var(--t4); }
+.mapwork .mw-l3 > button { background: var(--t3); }
+.mapwork .mw-l2 > button { background: var(--t2); }
+.mapwork .mw-l1 > button { background: var(--shelf); box-shadow: inset 0 0 0 1px var(--shelfe); }
+.mapwork .mw-body { padding: 10px 12px 14px 14px; }
+.mapwork .mw-work + .mw-work, .mapwork .mw-shared + .mw-work { margin-top: 10px; }
+.mapwork .mw-work.is-shared { box-shadow: inset 2px 0 0 var(--brand); padding-left: 8px; margin-left: -10px; }
+.mapwork .mw-shared { color: var(--brand); margin-bottom: 8px; }
+@media (min-width: 1024px) { .mapwork .mw-panel { max-height: 600px; overflow-y: auto; padding-right: 2px; } }

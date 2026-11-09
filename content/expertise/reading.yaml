@@ -10,6 +10,8 @@
 # fields: one or more ids from fields.yaml. An entry with two fields joins those two mesas at its layer.
 # Optional keys: authors, year, url, doi, arxiv.
 entries: []
+# Layers whose titles may be listed on the page. Default: none, so reading stays private. Example: [read, cited]
+list_titles: []
 # Example entry; uncomment and replace `entries: []` above:
 # entries:
 #   - title: Bandit Algorithms

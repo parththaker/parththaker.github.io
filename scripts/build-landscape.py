@@ -11,6 +11,8 @@ Rules (council rounds 4 and 7, docs/expertise-landscape/):
   one layer per entry, the highest reached; an entry counts once in every field it is tagged with;
   a field's stack is built from its own counts and never altered by sharing;
   two fields join at a layer only as far as they share entries at that layer (exact-layer spans);
+  a join is drawn in the same contour language as the terraces (its mask is unioned with theirs before the blur),
+  waisted and bowed away from the plateau centre; where nothing lies one step beneath it, its riser opens as an arch;
   layout collides on the cited shore: 10 units apart when the pair shares anything, 36 when not;
   no span over a third field; the build fails loudly when the rules cannot be met.
 
@@ -35,7 +37,11 @@ LAYERS = MAT['layers']                            # bottom to top: to-read, cite
 L, LI = len(LAYERS), {name: i for i, name in enumerate(MAT['layers'])}
 LAND = LI['cited']                                # the lowest land terrace; fields collide on this shore
 GAP_SHARE, GAP_APART = 10, 36                     # shore-to-shore gaps: pairs that share, pairs that do not
-SPAN_SCALE, SPAN_MIN, SLAB = 0.5, 3.0, 0.35       # span half-width = SCALE * smaller radius * share; min drawn; lone slab rise
+SPAN_SCALE, SPAN_MIN = 0.5, 3.0                   # join half-width = SCALE * smaller field's radius * shared fraction; min drawn
+WAIST, EASE, FLARE_IN, SAG = 0.80, 0.35, 6.0, 0.09  # join plan shape: waist at mid-span, eased over the outer 35%, overlap into each terrace, bow
+ARCH_END, ARCH_MID, DECK_SHADE = 0.80, 0.25, 0.045  # open join: riser depth in steps at the abutments and at mid-span (3 px floor); deck shade at the waist
+FLARE, FLARE_ZONE, WOBBLE = 0.30, 0.18, 0.08       # join widens by FLARE inside the outer FLARE_ZONE of its length; edge wobble as a fraction of half-width
+MIN_RING_AREA = 40.0                              # contour pieces smaller than this (px²) are noise from the blur and are dropped
 PULL = {'to-read': 0.3, 'cited': 1.0, 'read': 1.0, 'written': 0.5, 'published': 0.35}   # layout pull per shared entry
 SHOW = {'to-read': 'TO READ'}                     # bench label spelling where it differs from the id
 
@@ -311,6 +317,10 @@ def layout(seed):
     rnd = random.Random(seed)
     pos = {f: [W / 2 + rnd.uniform(-160, 160), H / 2 + rnd.uniform(-90, 90)] for f in FIELDS}
     pairs = list(itertools.combinations(FIELDS, 2))
+
+    def need(c, a, b):                                        # clearance a third field needs from the a–b join corridor
+        return R[c][LAND] * 1.45 + corridor[(a, b)] + SAG * math.dist(pos[a], pos[b])
+
     for _ in range(4000):
         for a, b in pairs:                                    # pull sharing pairs to the shore gap, push the rest apart
             pa, pb = pos[a], pos[b]
@@ -323,19 +333,19 @@ def layout(seed):
             else:
                 f = 0.06 * (d - md) if d < md else 0.0
             pa[0] += f * ux; pa[1] += f * uy; pb[0] -= f * ux; pb[1] -= f * uy
-        for a, b in sharing:                                  # keep every third field out of the span corridor
+        for a, b in sharing:                                  # keep every third field out of the join corridor
             for c in FIELDS:
                 if c in (a, b):
                     continue
                 d, qx, qy = seg_dist(pos[c][0], pos[c][1], *pos[a], *pos[b])
-                need = R[c][LAND] * 1.45 + corridor[(a, b)]
-                if d < need:
+                nd = need(c, a, b)
+                if d < nd:
                     if d < 1e-6:
                         nx, ny = -(pos[b][1] - pos[a][1]), pos[b][0] - pos[a][0]
                         nn = math.hypot(nx, ny) or 1.0; nx, ny = nx / nn, ny / nn
                     else:
                         nx, ny = (pos[c][0] - qx) / d, (pos[c][1] - qy) / d
-                    push = 0.5 * (need - d)
+                    push = 0.5 * (nd - d)
                     pos[c][0] += push * nx; pos[c][1] += push * ny
         for a, b in pairs:                                    # hard projection: no two shores closer than allowed
             pa, pb = pos[a], pos[b]
@@ -357,8 +367,8 @@ def layout(seed):
             bad.append(f'{a} and {b} overlap by {md - d:.0f} units')
     for a, b in sharing:
         for c in FIELDS:
-            if c not in (a, b) and seg_dist(pos[c][0], pos[c][1], *pos[a], *pos[b])[0] < R[c][LAND] * 1.45 + corridor[(a, b)] - 1:
-                bad.append(f'{c} lies under the {a}–{b} span')
+            if c not in (a, b) and seg_dist(pos[c][0], pos[c][1], *pos[a], *pos[b])[0] < need(c, a, b) - 1:
+                bad.append(f'{c} lies under the {a}–{b} join')
     err = sum((math.dist(pos[a], pos[b]) - min_dist(pos, a, b)) ** 2 for a, b in sharing)
     return pos, bad, err
 
@@ -369,33 +379,141 @@ if bad:
 C = {f: (round(pos[f][0]), round(pos[f][1])) for f in FIELDS}
 CX = sum(c[0] for c in C.values()) / len(C); CY = sum(c[1] for c in C.values()) / len(C)
 
-# ---------------------------------------------------------------- heightfield from the fields alone
+# ---------------------------------------------------------------- heightfields: all fields, and each field alone
 NX, NY = W // STEP + 1, H // STEP + 1
 X, Y = np.meshgrid(np.arange(NX) * STEP, np.arange(NY) * STEP)
-Z = np.zeros_like(X, dtype=float)
-for f in FIELDS:
+
+
+def field_height(f):
     cx, cy = C[f]
     dx, dy = X - cx, Y - cy
     th, p_ = np.arctan2(dy, dx), phase(f)
     d = np.hypot(dx, dy) * (1 + 0.16 * np.sin(3 * th + p_) + 0.09 * np.sin(5 * th + 2.3 * p_) + 0.05 * np.sin(7 * th - p_))
+    Zf = np.zeros_like(X, dtype=float)
     for k in range(L):
         if R[f][k] > 0:
-            Z = np.maximum(Z, np.where(d <= R[f][k], k + 1, 0))
+            Zf = np.maximum(Zf, np.where(d <= R[f][k], k + 1, 0))
+    return Zf
+
+
+ZF = {f: field_height(f) for f in FIELDS}
+Z = np.maximum.reduce(list(ZF.values()))
 
 
 def blur(A, rad=2):
-    P = np.pad(A, rad, mode='edge'); k = 2 * rad + 1
-    return sliding_window_view(P, (k, k)).mean(axis=(2, 3))
+    Pd = np.pad(A, rad, mode='edge'); k = 2 * rad + 1
+    return sliding_window_view(Pd, (k, k)).mean(axis=(2, 3))
 
 
-F = blur(blur(Z, 2), 1)
+# ---------------------------------------------------------------- joins to draw: a three-field entry joins along a spanning tree
+m_draw = {p: list(v) for p, v in m.items()}
+for e in entries:
+    fs = sorted(e['fields'])
+    if len(fs) < 3:
+        continue
+    k = e['layer']
+    for a, b in itertools.combinations(fs, 2):
+        m_draw[(a, b)][k] -= 1
+    tree, rest = [fs[0]], fs[1:]
+    while rest:
+        a, b = min(((t, r) for t in tree for r in rest), key=lambda ab: math.dist(C[ab[0]], C[ab[1]]))
+        m_draw[tuple(sorted((a, b)))][k] += 1
+        tree.append(b); rest.remove(b)
+
+JOINS, SHARES = {}, []
+for (a, b), mm in sorted(m_draw.items()):
+    for z in range(1, L):                                             # the to-read shelves meet in the water: nothing to draw
+        s = mm[z]
+        if s <= 0:
+            continue
+        rho, small = rho_of(m_draw, a, b, z)
+        drawn = rho >= SPAN_MIN
+        SHARES.append(dict(a=a, b=b, layer=LAYERS[z], n=s, of=n[small][z], drawn=drawn))
+        if not drawn:
+            continue
+        (ax, ay), (bx, by) = C[a], C[b]
+        th = math.atan2(by - ay, bx - ax)
+        ux, uy = math.cos(th), math.sin(th)
+        ra, rb = edge(a, z, th) - FLARE_IN, edge(b, z, th + math.pi) - FLARE_IN
+        pa, pb = (ax + ux * ra, ay + uy * ra), (bx - ux * rb, by - uy * rb)
+        length = math.dist(pa, pb)
+        nx, ny = -uy, ux
+        mid = ((pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2)
+        if (mid[0] - CX) * nx + (mid[1] - CY) * ny < 0:              # bow away from the plateau centre
+            nx, ny = -nx, -ny
+        pts = [(pa[0] + (pb[0] - pa[0]) * t + nx * SAG * length * math.sin(math.pi * t),
+                pa[1] + (pb[1] - pa[1]) * t + ny * SAG * length * math.sin(math.pi * t)) for t in (i / 24 for i in range(25))]
+        JOINS.setdefault(z, []).append(dict(a=a, b=b, z=z, n=s, of=n[small][z], rho=rho, length=length, pts=pts))
+
+
+def _smooth(x):
+    x = min(max(x, 0.0), 1.0)
+    return x * x * (3 - 2 * x)
+
+
+def profile(j, t, side=1):
+    """Half-width of join j at fraction t along it: flared at the abutments, WAIST of it at mid-span, with a little
+    wobble of its own so its edges are not the only straight lines on the map (phase differs per side)."""
+    waist = 1 - (1 - WAIST) * _smooth(min(t, 1 - t) / EASE)
+    flare = 1 + FLARE * (1 - _smooth(min(t, 1 - t) / FLARE_ZONE))
+    ph_ = phase(j['a'] + j['b']) + (0 if side > 0 else 2.1)
+    wob = 1 + WOBBLE * math.sin(2 * math.pi * 2 * t + ph_) * math.sin(math.pi * t)
+    return j['rho'] * waist * flare * wob
+
+
+def capsule_mask(j):
+    pts = j['pts']; n_ = len(pts) - 1
+    dist = np.full(X.shape, 1e9); t = np.zeros(X.shape)
+    for i in range(n_):
+        (ax, ay), (bx, by) = pts[i], pts[i + 1]
+        vx, vy = bx - ax, by - ay
+        ll = vx * vx + vy * vy or 1e-9
+        tt = np.clip(((X - ax) * vx + (Y - ay) * vy) / ll, 0, 1)
+        d_ = np.hypot(X - (ax + tt * vx), Y - (ay + tt * vy))
+        closer = d_ < dist
+        dist = np.where(closer, d_, dist); t = np.where(closer, (i + tt) / n_, t)
+    tt = np.clip(np.minimum(t, 1 - t), 0, 1)
+    ew = np.clip(tt / EASE, 0, 1); ew = ew * ew * (3 - 2 * ew)
+    ef = np.clip(tt / FLARE_ZONE, 0, 1); ef = ef * ef * (3 - 2 * ef)
+    # which side of the axis a cell lies on decides the wobble phase
+    i0 = np.clip((t * (len(pts) - 1)).astype(int), 0, len(pts) - 2)
+    P0 = np.array(pts); ax_, ay_ = P0[i0, 0], P0[i0, 1]; bx_, by_ = P0[i0 + 1, 0], P0[i0 + 1, 1]
+    sidev = np.sign((bx_ - ax_) * (Y - ay_) - (by_ - ay_) * (X - ax_)); sidev = np.where(sidev == 0, 1, sidev)
+    ph_ = phase(j['a'] + j['b']) + np.where(sidev > 0, 0.0, 2.1)
+    wob = 1 + WOBBLE * np.sin(2 * np.pi * 2 * t + ph_) * np.sin(np.pi * t)
+    return dist <= j['rho'] * (1 - (1 - WAIST) * ew) * (1 + FLARE * (1 - ef)) * wob
+
+
+def join_param(j, x, y):
+    """(fraction along the join, lateral distance) of a plan point, along the join's polyline."""
+    pts = j['pts']; n_ = len(pts) - 1; best = (0.0, 1e9)
+    for i in range(n_):
+        (ax, ay), (bx, by) = pts[i], pts[i + 1]
+        vx, vy = bx - ax, by - ay
+        ll = vx * vx + vy * vy or 1e-9
+        tt = ((x - ax) * vx + (y - ay) * vy) / ll
+        tc = min(max(tt, 0.0), 1.0)
+        d_ = math.hypot(x - (ax + tc * vx), y - (ay + tc * vy))
+        if d_ < best[1]:
+            best = ((i + tt) / n_, d_)
+    return best
+
+
+# per-level union masks: the terraces at or above the level plus the joins at exactly that level, blurred together
+U = {}
+for z in range(L):
+    B = Z >= z + 1
+    for j in JOINS.get(z, []):
+        B = B | capsule_mask(j)
+    U[z] = blur(blur(B.astype(float), 2), 1)
+UF = {f: {z: blur(blur((ZF[f] >= z + 1).astype(float), 2), 1) for z in range(1, L) if R[f][z] > 0} for f in FIELDS}
 
 # ---------------------------------------------------------------- marching squares, ring chaining, simplification
 CASES = {1: [('L', 'B')], 2: [('B', 'R')], 3: [('L', 'R')], 4: [('T', 'R')], 5: [('T', 'L'), ('B', 'R')], 6: [('T', 'B')], 7: [('T', 'L')],
          8: [('T', 'L')], 9: [('T', 'B')], 10: [('T', 'R'), ('B', 'L')], 11: [('T', 'R')], 12: [('L', 'R')], 13: [('B', 'R')], 14: [('L', 'B')]}
 
 
-def rings_at(lv):
+def rings_at(F, lv):
     segs = []
     for j in range(NY - 1):
         for i in range(NX - 1):
@@ -429,7 +547,7 @@ def rings_at(lv):
             s = segs[cand]
             cur = s[1] if key(s[0]) == k else s[0]
             ring.append(cur)
-        if len(ring) > 16:
+        if len(ring) > 16 and abs(sum(ring[i][0] * ring[(i + 1) % len(ring)][1] - ring[(i + 1) % len(ring)][0] * ring[i][1] for i in range(len(ring)))) / 2 >= MIN_RING_AREA:
             out.append(ring)
     return out
 
@@ -458,20 +576,70 @@ def simplify_ring(ring, eps):
 
 
 def fmt(x, y):
-    return f'{x:.0f} {y:.0f}'
+    return f'{x:.1f} {y:.1f}'
 
 
 def P(x, y, z):
     return (x, y - z * ZS)
 
 
+def path_of(ring, z=0):
+    return 'M' + 'L'.join(fmt(*P(x, y, z)) for x, y in ring) + 'Z'
+
+
+def sample(F, x, y):
+    i, j = int(round(x / STEP)), int(round(y / STEP))
+    return F[min(max(j, 0), NY - 1), min(max(i, 0), NX - 1)]
+
+
+def point_in(poly, x, y):
+    inside, nn_ = False, len(poly)
+    for i in range(nn_):
+        (xa, ya), (xb, yb) = poly[i], poly[(i + 1) % nn_]
+        if (ya > y) != (yb > y) and x < (xb - xa) * (y - ya) / (yb - ya + 1e-12) + xa:
+            inside = not inside
+    return inside
+
+
+_cs = {}
+
+
+def clear_span(j):
+    """Fractions along join j where nothing lies one step beneath it: the opening of the arch."""
+    key = (j['z'], j['a'], j['b'])
+    if key not in _cs:
+        z = j['z']
+        free = [i / 24 for i, (x_, y_) in enumerate(j['pts']) if sample(U[z - 1], x_, y_) <= 0.5]
+        _cs[key] = (min(free), max(free)) if free else (0.5, 0.5)
+    return _cs[key]
+
+
+def rise_at(z, x, y):
+    """Riser depth below a ring vertex at level z: a full step over ground, an arch profile over an open join."""
+    for j in JOINS.get(z, []):
+        t, lat = join_param(j, x, y)
+        if -0.02 <= t <= 1.02 and lat <= j['rho'] * (1 + FLARE) * 1.1 + 3:
+            if sample(U[z - 1], x, y) > 0.5:
+                return ZS
+            t0, t1 = clear_span(j)
+            lo = max(ARCH_MID * ZS, 3.0)
+            if t1 <= t0:
+                return lo
+            u = (min(max(t, t0), t1) - t0) / (t1 - t0)
+            if u < 0.15 or u > 0.85:
+                return ARCH_END * ZS
+            v = (u - 0.5) / 0.35
+            return lo + (ARCH_END * ZS - lo) * (1 - math.sqrt(max(0.0, 1 - v * v)))
+    return ZS
+
+
 LIGHT = (-0.707, 0.707)        # light from the lower left, the plan-oblique convention
 
 
-def ring_paths(ring, z, rise=None):
-    """Riser strips (west lit, east shade), the deck, and Tanaka lit/shade edge strokes for one ring at height z."""
-    rise = ZS if rise is None else rise
+def ring_paths(ring, z):
+    """Riser strips (west lit, east shade), deck, Tanaka lit/shade strokes and arch soffit edges for one ring at height z."""
     top = [P(x, y, z) for x, y in ring]; nn_ = len(top)
+    rises = [rise_at(z, x, y) for x, y in ring]
     A = sum(top[i][0] * top[(i + 1) % nn_][1] - top[(i + 1) % nn_][0] * top[i][1] for i in range(nn_))
     sgn = 1 if A > 0 else -1
     side, lit = [], []
@@ -495,186 +663,88 @@ def ring_paths(ring, z, rise=None):
             run = [k]
             while i + len(run) < nn_ and cls[(start + i + len(run)) % nn_] == s:
                 run.append((start + i + len(run)) % nn_)
-            pts = [top[j] for j in run] + [top[(run[-1] + 1) % nn_]]
+            idxs = run + [(run[-1] + 1) % nn_]
             if extrude:
-                d = 'M' + 'L'.join(fmt(x, y) for x, y in pts) + 'L' + 'L'.join(fmt(x, y + rise) for x, y in reversed(pts)) + 'Z'
+                d = 'M' + 'L'.join(fmt(*top[j]) for j in idxs) + 'L' + 'L'.join(fmt(top[j][0], top[j][1] + rises[j]) for j in reversed(idxs)) + 'Z'
             else:
-                d = 'M' + 'L'.join(fmt(x, y) for x, y in pts)
+                d = 'M' + 'L'.join(fmt(*top[j]) for j in idxs)
             out.setdefault(s, []).append(d); i += len(run)
         return out
 
+    arch = []                                                    # soffit edge where a viewer-facing riser is shallower than a step
+    run = []
+    for i in list(range(nn_)) + [None]:
+        if i is not None and side[i] is not None and rises[i] < ZS - 0.5:
+            run.append(i)
+        elif run:
+            idxs = run + ([(run[-1] + 1) % nn_] if rises[(run[-1] + 1) % nn_] < ZS - 0.5 else [])
+            arch.append('M' + 'L'.join(fmt(top[j][0], top[j][1] + rises[j]) for j in idxs)); run = []
     ris, tan = strips(side, True), strips(lit, False)
-    return ''.join(ris.get('w', [])), ''.join(ris.get('e', [])), 'M' + 'L'.join(fmt(x, y) for x, y in top) + 'Z', ''.join(tan.get('L', [])), ''.join(tan.get('S', []))
+    return ''.join(ris.get('w', [])), ''.join(ris.get('e', [])), path_of(ring, z), ''.join(tan.get('L', [])), ''.join(tan.get('S', [])), ''.join(arch)
 
 
-def point_in(poly, x, y):
-    inside, nn_ = False, len(poly)
-    for i in range(nn_):
-        (xa, ya), (xb, yb) = poly[i], poly[(i + 1) % nn_]
-        if (ya > y) != (yb > y) and x < (xb - xa) * (y - ya) / (yb - ya + 1e-12) + xa:
-            inside = not inside
-    return inside
+# ---------------------------------------------------------------- paint order: shelf, then per level the terraces (joins included)
+TER, ring_store = [], {}
 
 
-# ---------------------------------------------------------------- spans to draw: a three-field entry joins along a spanning tree
-m_draw = {p: list(v) for p, v in m.items()}
-for e in entries:
-    fs = sorted(e['fields'])
-    if len(fs) < 3:
-        continue
-    k = e['layer']
-    for a, b in itertools.combinations(fs, 2):
-        m_draw[(a, b)][k] -= 1
-    tree, rest = [fs[0]], fs[1:]
-    while rest:
-        a, b = min(((t, r) for t in tree for r in rest), key=lambda ab: math.dist(C[ab[0]], C[ab[1]]))
-        m_draw[tuple(sorted((a, b)))][k] += 1
-        tree.append(b); rest.remove(b)
-
-# ---------------------------------------------------------------- paint order: shelf, then per level the terraces and their spans
-TER, SPANS, SHARES, ring_store = [], [], [], {}
+def add(cls, d, k, **kw):
+    TER.append(dict(c=cls, d=d, k=k, **kw))
 
 
-def add(cls, d, k):
-    TER.append(dict(c=cls, d=d, k=k))
-
-
-for ring in rings_at(0.5):
-    add('shelf', 'M' + 'L'.join(fmt(x, y) for x, y in simplify_ring(ring, 0.9)) + 'Z', 1)
-drawn_below = {}
-for z in range(1, L):                                             # cited (1) up to published (4); the shelf is 0
-    for ring in rings_at(z + 0.5):
+for ring in rings_at(U[0], 0.5):
+    add('shelf', path_of(simplify_ring(ring, 0.9)), 1)
+for z in range(1, L):
+    for ring in rings_at(U[z], 0.5):
         simp = simplify_ring(ring, 0.9)
         ring_store.setdefault(z, []).append(simp)
-        w, e_, t, lit, shd = ring_paths(simp, z)
+        w, e_, t, lit, shd, arch = ring_paths(simp, z)
         k = z + 1
         if w: add(f'rw r{k}', w, k)
         if e_: add(f're r{k}', e_, k)
         add(f'tp t{k}', t, k)
         if lit: add('tk lit', lit, k)
         if shd: add('tk shd', shd, k)
-    for (a, b), mm in sorted(m_draw.items()):
-        s = mm[z]
-        if s <= 0:
-            continue
-        rho, small = rho_of(m_draw, a, b, z)
-        drawn = rho >= SPAN_MIN
-        SHARES.append(dict(a=a, b=b, layer=LAYERS[z], n=s, of=n[small][z], drawn=drawn))
-        if not drawn:
-            continue
-        (ax, ay), (bx, by) = C[a], C[b]
-        th = math.atan2(by - ay, bx - ax)
-        ux, uy = math.cos(th), math.sin(th); nx, ny = -uy, ux
-        ra, rb = edge(a, z, th) - 3, edge(b, z, th + math.pi) - 3
-        pa, pb = (ax + ux * ra, ay + uy * ra), (bx - ux * rb, by - uy * rb)
-        poly = [(pa[0] + nx * rho, pa[1] + ny * rho), (pb[0] + nx * rho, pb[1] + ny * rho), (pb[0] - nx * rho, pb[1] - ny * rho), (pa[0] - nx * rho, pa[1] - ny * rho)]
-        rise = ZS if drawn_below.get((a, b)) == z - 1 else SLAB * ZS   # a wall when the layer below is shared too
-        w, e_, t, _, _ = ring_paths(poly, z, rise)
-        k = z + 1
-        if w: add(f'rw r{k} span', w, k)
-        if e_: add(f're r{k} span', e_, k)
-        add(f'tp t{k} span', t, k)
-        q = [P(x, y, z) for x, y in poly]
-        add('tk edge span', f'M{fmt(*q[0])}L{fmt(*q[1])}M{fmt(*q[3])}L{fmt(*q[2])}', k)   # long edges only: no seam where it lands
-        drawn_below[(a, b)] = z
-        SPANS.append(dict(a=a, b=b, layer=LAYERS[z], n=s, of=n[small][z], half_width=round(rho, 1),
-                          mid=[round((pa[0] + pb[0]) / 2, 1), round((pa[1] + pb[1]) / 2 - z * ZS, 1)],
-                          u=[round(ux, 3), round(uy, 3)], length=round(math.dist(pa, pb), 1)))
+        if arch: add('tk arch', arch, k)
+    for j in JOINS.get(z, []):                                     # a faint shade on the deck at the waist, clear at the abutments
+        norms = []
+        for i2, (px, py) in enumerate(j['pts']):
+            (x0, y0), (x1, y1) = j['pts'][max(i2 - 1, 0)], j['pts'][min(i2 + 1, 24)]
+            vx, vy = x1 - x0, y1 - y0; vl = math.hypot(vx, vy) or 1e-9
+            norms.append((-vy / vl, vx / vl))
+        left = [(px + nx_ * profile(j, i2 / 24, 1), py + ny_ * profile(j, i2 / 24, 1)) for i2, ((px, py), (nx_, ny_)) in enumerate(zip(j['pts'], norms))]
+        right = [(px - nx_ * profile(j, i2 / 24, -1), py - ny_ * profile(j, i2 / 24, -1)) for i2, ((px, py), (nx_, ny_)) in enumerate(zip(j['pts'], norms))]
+        poly = left + right[::-1]
+        j['d'] = path_of(poly, z)
+        add('shade', j['d'], z + 1, g=[*P(*j['pts'][0], z), *P(*j['pts'][-1], z)])
 
-# ---------------------------------------------------------------- items: numbered marks on their bench, shared ones on their span
-PITCH, MARGIN, ROWGAP = MAT['placement']['pitch'], MAT['placement']['margin'], MAT['placement']['row_gap']
+TERRACES = []                                                    # each field's own terrace outline per level: the click targets
+for f in FIELDS:
+    cx, cy = C[f]
+    for z, Fz in UF[f].items():
+        ring = next((r for r in rings_at(Fz, 0.5) if point_in(r, cx, cy)), None)
+        if ring:
+            TERRACES.append(dict(f=f, lay=z + 1, d=path_of(simplify_ring(ring, 0.9), z)))
+JOIN_OUT = [dict(a=j['a'], b=j['b'], layer=LAYERS[j['z']], n=j['n'], of=j['of'], half_width=round(j['rho'], 1), length=round(j['length'], 1), d=j['d'])
+            for z in sorted(JOINS) for j in JOINS[z]]
 
-
-def bench_rows(key, lay):
-    """Rows of candidate x positions on the bench of layer `lay` for field `key`, front (south) rows first,
-    inside the field's own footprint so a shared terrace never pulls an item toward a neighbour."""
-    cx, cy = C[key]
-    outer = next((r for r in ring_store.get(lay, []) if point_in(r, cx, cy)), None)
-    if outer is None:
-        return []
-    inner = next((r for r in ring_store.get(lay + 1, []) if point_in(r, cx, cy)), None)
-    Rr = R[key][lay] + MARGIN
-
-    def ok(x, y):
-        if math.hypot(x - cx, y - cy) > Rr:
-            return False
-        for dx, dy in ((0, 0), (MARGIN, 0), (-MARGIN, 0), (0, MARGIN), (0, -MARGIN)):
-            if not point_in(outer, x + dx, y + dy):
-                return False
-            if inner is not None and point_in(inner, x + dx, y + dy):
-                return False
-        return True
-
-    rows, y = [], cy + Rr - MARGIN - 2
-    while y > cy - Rr + MARGIN:
-        xs = [x for x in range(int(cx - Rr), int(cx + Rr) + 1, PITCH) if ok(x, y)]
-        best, run = [], []
-        for x in xs:
-            if run and x - run[-1] > PITCH:
-                if len(run) > len(best):
-                    best = run
-                run = []
-            run.append(x)
-        if len(run) > len(best):
-            best = run
-        if len(best) >= 2:
-            rows.append((y, best))
-        y -= ROWGAP
-    return rows
-
-
-own = sorted([e for e in entries if e.get('own')], key=lambda e: (e['year'] or 0, e['title']))
-for idx, e in enumerate(own, start=1):
-    e['i'] = idx
+# ---------------------------------------------------------------- items (listed in the panel; nothing is drawn on the map)
+own = sorted([e for e in entries if e.get('own')], key=lambda e: (-(e['year'] or 0), e['title']))
 items = []
-
-
-def emit(e, x, y, z):
-    mt = MAT['materials'][e['material']]
-    home = next(f for f in FIELDS if f in e['fields'])
-    items.append(dict(i=e['i'], f=home, fields=[f for f in FIELDS if f in e['fields']], type=e['material'], year=e['year'], name=e['title'],
-                      x=round(x, 1), y=round(y, 1), lay=z + 1, glyph=mt['glyph'], public=e['public'], evidence=mt.get('evidence', True),
-                      label=mt['label'], href=e.get('href'), summary=e.get('summary'), authors=e.get('authors'), venue=e.get('venue')))
-
-
-span_at = {(s['a'], s['b'], LI[s['layer']]): s for s in SPANS}
-by_span, by_bench = {}, {}
 for e in own:
-    z, placed = e['layer'], False
-    for a, b in itertools.combinations(sorted(e['fields']), 2):
-        if (a, b, z) in span_at:
-            by_span.setdefault((a, b, z), []).append(e); placed = True; break
-    if not placed:
-        by_bench.setdefault((next(f for f in FIELDS if f in e['fields']), z), []).append(e)
-for (a, b, z), group in by_span.items():
-    sp = span_at[(a, b, z)]
-    (ux, uy), (mx, my) = sp['u'], sp['mid']
-    for j, e in enumerate(group):
-        off = (j - (len(group) - 1) / 2) * PITCH
-        emit(e, mx + ux * off, my + uy * off, z)
-for (f, z), group in by_bench.items():
-    rows, placed = bench_rows(f, z), []
-    if rows:
-        ri = 0
-        for e in group:
-            while ri < len(rows) and not rows[ri][1]:
-                ri += 1
-            if ri >= len(rows):
-                break
-            y, xs = rows[ri]
-            placed.append((e, xs.pop(0), y))
-    else:
-        cx, cy = C[f]
-        placed = [(e, cx + (i - len(group) / 2) * PITCH, cy) for i, e in enumerate(group)]
-    for e, x, y in placed:
-        emit(e, x, y - z * ZS, z)
-    if len(placed) < len(group):
-        _, x, y = placed[-1]
-        items.append(dict(i=len(items) + 1000, f=f, fields=[f], type='overflow', name=f'+{len(group) - len(placed)} more', x=round(x + PITCH, 1),
-                          y=round(y - z * ZS, 1), lay=z + 1, glyph='plus', public=True, evidence=False, label='more'))
+    mt = MAT['materials'][e['material']]
+    items.append(dict(slug=e['slug'], f=next(f for f in FIELDS if f in e['fields']), fields=[f for f in FIELDS if f in e['fields']], type=e['material'],
+                      year=e['year'], name=e['title'], lay=e['layer'] + 1, layer=LAYERS[e['layer']], public=e['public'], label=mt['label'],
+                      href=e.get('href'), summary=e.get('summary'), authors=e.get('authors'), venue=e.get('venue')))
+LIST_TITLES = [x for x in (reading.get('list_titles') or []) if x in ('read', 'cited', 'to-read')]
+READING = {f: {} for f in FIELDS}
+for e in sorted([e for e in entries if not e.get('own')], key=lambda e: (-(e['year'] or 0), e['title'])):
+    if LAYERS[e['layer']] not in LIST_TITLES:
+        continue
+    for f in e['fields']:
+        READING[f].setdefault(LAYERS[e['layer']], []).append(dict(title=e['title'], year=e.get('year'), authors=e.get('authors'), url=e.get('url') or (f"https://doi.org/{e['doi']}" if e.get('doi') else None) or (f"https://arxiv.org/abs/{e['arxiv']}" if e.get('arxiv') else None), fields=sorted(e['fields'])))
 
 # ---------------------------------------------------------------- camera and labels
-shelf_pts = [p for ring in rings_at(0.5) for p in ring]
+shelf_pts = [p for ring in rings_at(U[0], 0.5) for p in ring]
 bx0, bx1 = min(p[0] for p in shelf_pts), max(p[0] for p in shelf_pts)
 by0, by1 = min(p[1] for p in shelf_pts) - 4 * ZS, max(p[1] for p in shelf_pts)
 MX, MYT, MYB = 150, 80, 30
@@ -707,8 +777,10 @@ for f in FIELDS:
     elif nf[LI['written']]: parts.append(f"{nf[LI['written']]} WRITTEN")
     if nf[LI['read']]: parts.append(f"{nf[LI['read']]} READ")
     near_y = cy - R[f][top] - top * ZS - 10
-    for lv in range(L - 1, 0, -1):
-        hit = next((r for r in ring_store.get(lv, []) if point_in(r, cx, cy)), None)
+    for lv in range(L - 1, 0, -1):                              # the field's own top ring, so a join never drags the caption away
+        if lv not in UF[f]:
+            continue
+        hit = next((r for r in rings_at(UF[f][lv], 0.5) if point_in(r, cx, cy)), None)
         if hit:
             near_y = min(p[1] for p in hit) - lv * ZS - 9; break
     name = TITLE[f].upper()
@@ -721,7 +793,7 @@ for f in FIELDS:
     wfx, wfy = to_world(fx, fy)
     labels.append(dict(f=f, kind='field', name=name, sub=sub, far=[round(wfx, 1), round(wfy, 1)], near=[cx, round(near_y)], anchor=anchor, tgt=[cx, round(cy - top * ZS)]))
     # bench labels sit on the front skirt: outward from the plateau centre when that points down, else on a front
-    # diagonal; among the candidates take the one farthest from any span leaving this field
+    # diagonal; among the candidates take the one farthest from any join leaving this field
     out = math.atan2(cy - CY, cx - CX)
     cands = ([out] if math.sin(out) >= 0.35 else []) + [math.pi / 4, 3 * math.pi / 4]
     partners = [math.atan2(C[o][1] - cy, C[o][0] - cx) for (a_, b_) in sharing for o in (a_, b_) if f in (a_, b_) and o != f]
@@ -735,18 +807,18 @@ for f in FIELDS:
                            name=f'{nf[k]} {SHOW.get(LAYERS[k], LAYERS[k]).upper()}', lay=k + 1))
 
 DATA = dict(W=W, H=H, ZS=ZS, cam0=cam0, built=date.today().isoformat(), layers=LAYERS, materials=MAT['materials'],
-            placeholders=PLACEHOLDERS, terrain=TER, spans=SPANS, shares=SHARES,
+            placeholders=PLACEHOLDERS, list_titles=LIST_TITLES, terrain=TER, joins=JOIN_OUT, shares=SHARES, terraces=TERRACES,
             hits=[dict(f=f, cx=C[f][0], cy=round(C[f][1] - 1.5 * ZS), r=round(R[f][LAND] + 6)) for f in FIELDS],
             fields={f: dict(c=list(C[f]), r=[round(x, 1) for x in R[f]], n=n[f], title=TITLE[f], years=years[f]) for f in FIELDS},
-            labels=labels, items=items)
+            labels=labels, items=items, reading=READING)
 OUT.write_text(json.dumps(DATA, separators=(',', ':'), ensure_ascii=False))
 
-print(f'{OUT.relative_to(ROOT)}: {len(json.dumps(DATA)) // 1024} KB, {len(entries)} entries, {len(items)} marks, {len(SPANS)} spans drawn, '
-      f'{sum(1 for s in SHARES if not s["drawn"])} shares listed only, {len(PLACEHOLDERS)} placeholder counts in use')
+print(f'{OUT.relative_to(ROOT)}: {len(json.dumps(DATA)) // 1024} KB, {len(entries)} entries, {len(items)} works listed, {len(JOIN_OUT)} joins drawn, '
+      f'{sum(1 for s in SHARES if not s["drawn"])} shares listed only, {len(TERRACES)} terrace targets, {len(PLACEHOLDERS)} placeholder counts in use')
 for f in FIELDS:
     print(f'  {f:14s} ' + '  '.join(f'{LAYERS[k]} {n[f][k]}{"*" if ph_flag[f][k] else ""}' for k in range(L)) + f'  at {C[f]}')
-for s in SPANS:
-    print(f'  span {s["a"]}–{s["b"]} {s["layer"]} {s["n"]}/{s["of"]} half-width {s["half_width"]} length {s["length"]}')
+for j in JOIN_OUT:
+    print(f'  join {j["a"]}–{j["b"]} {j["layer"]} {j["n"]}/{j["of"]} half-width {j["half_width"]} length {j["length"]}')
 for s in SHARES:
     if not s['drawn']:
         print(f'  listed {s["a"]}–{s["b"]} {s["layer"]} {s["n"]}/{s["of"]} (too thin to draw)')

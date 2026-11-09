@@ -19,14 +19,14 @@ export default function MethodPage() {
       </p>
       <h2 className="mt-10 font-sans text-xl font-semibold tracking-tight">The land</h2>
       <p className="mt-3">
-        Each field is a mesa built from its own counts alone. Its terraces are the five layers, lowest to highest, and each step is as wide as the logarithm of the number of entries at that layer. The reading list is drawn under water, as a pale shelf, because a list of intentions is not evidence. Projects I shipped stand with posts on the written terrace; papers and patents make the summit. Each stands on its bench as a numbered mark.
+        Each field is a mesa built from its own counts alone. Its terraces are the five layers, lowest to highest, and each step is as wide as the logarithm of the number of entries at that layer. The reading list is drawn under water, as a pale shelf, because a list of intentions is not evidence. Projects I shipped stand with posts on the written terrace; papers and patents make the summit. Nothing is drawn on a terrace for a single work: open a field and its works are listed beside the map, one list per layer.
       </p>
-      <h2 className="mt-10 font-sans text-xl font-semibold tracking-tight">Spans</h2>
+      <h2 className="mt-10 font-sans text-xl font-semibold tracking-tight">Ridges and arches</h2>
       <p className="mt-3">
-        Each field keeps its whole stack. Where two fields share entries at a layer, a span joins them at that layer and nowhere else, as wide as the shared fraction of the smaller field&rsquo;s entries there. A joint paper with no shared reading is therefore an arch: connected at the summit, open beneath. Sharing at several layers stacks into a wall, and a layer that is not shared leaves a window in it. A shared item is counted once in each field it belongs to; the span marks it as one item, not two. Shares too thin to draw are listed under the field instead.
+        Each field keeps its whole stack. Where two fields share entries at a layer, the terraces of that layer flow together in a ridge, as wide as the shared fraction of the smaller field&rsquo;s entries there, and nowhere else. A joint paper with no shared reading is therefore an arch: the summits are joined and the rock opens beneath. Sharing at several layers stacks into a wall, and a layer that is not shared leaves a window in it. A shared item is counted once in each field it belongs to; the ridge marks it as one item, not two. Shares too thin to draw are listed under the field instead.
       </p>
       <p className="mt-3">
-        Fields that share entries sit shore to shore; fields that share nothing sit apart. No span means no shared entry in the ledger, not that the fields are unrelated. The length of a span means nothing; it is set by where the fields sit. Positions are fixed once and never move; only the shapes change as the ledger grows.
+        Fields that share entries sit shore to shore; fields that share nothing sit apart. No span means no shared entry in the ledger, not that the fields are unrelated. The length of a ridge means nothing; it is set by where the fields sit. Positions are fixed once and never move; only the shapes change as the ledger grows.
       </p>
       <h2 className="mt-10 font-sans text-xl font-semibold tracking-tight">What is left out</h2>
       <p className="mt-3">
